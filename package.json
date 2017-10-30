@@ -14,13 +14,18 @@
     "topojson-client": "^3.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "watch-sass": "node-sass src/style.scss src/style.css -w --source-map=src/style.css.map",
+    "start-js": "react-scripts start",
+    "start": "concurrently --names \"Sass,React\" \"npm run watch-sass\" \"npm run start-js\"",
+    "build-sass": "node-sass src/style.scss src/style.css --output-style=compressed",
+    "build-js": "react-scripts build && react-snapshot",
+    "build": "npm run build-sass && npm run build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
     "eslint": "^4.10.0",
-    "eslint-plugin-react": "^7.4.0"
+    "eslint-plugin-react": "^7.4.0",
+    "node-sass": "^4.5.3"
   }
 }

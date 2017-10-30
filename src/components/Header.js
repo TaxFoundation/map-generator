@@ -5,6 +5,7 @@ class Header extends Component {
   render() {
     return (
       <AppBar
+        className="header"
         title="US Map Generator"
       />
     );

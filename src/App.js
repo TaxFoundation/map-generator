@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
-        <div>
+        <div className="app">
           <Header></Header>
           <Map></Map>
           <Controls></Controls>
