@@ -6,6 +6,7 @@ class Header extends Component {
     return (
       <AppBar
         className="header"
+        showMenuIconButton={false}
         title="US Map Generator"
       />
     );
