@@ -1,7 +1,7 @@
 import React from 'react';
 import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
-import chroma from 'chroma-js';
+import { colorScale } from '../../helpers';
 import Features from '../../data/us.json';
 import Names from '../../data/states';
 
@@ -50,7 +50,6 @@ class USMap extends React.Component {
           .translate([this.xScale/2, this.yScale/2 - 25])
       );
     const USDataFeatures = feature(Features, Features.objects[this.props.type]).features;
-    const colorScale = chroma.scale(this.state.colors).domain(this.state.domain).mode('lch');
 
     const states = this.state.data.map((d) => {
       // Match state's path to the current state data
@@ -69,6 +68,8 @@ class USMap extends React.Component {
         if (d.id in this.smallStates) {
           isSmallState = true;
           let smallState = this.smallStates[d.id];
+
+          // TODO factor into FSC
           smallStateRect = (
             <g>
               <rect
@@ -76,7 +77,7 @@ class USMap extends React.Component {
                 y={smallState.y}
                 height="16"
                 width="16"
-                fill={colorScale(d.value)}
+                fill={colorScale(this.state.colors, this.state.domain)(d.value)}
                 stroke='#ffffff'
                 strokeLinejoin='bevel'
               />
@@ -118,7 +119,7 @@ class USMap extends React.Component {
             d={ path(statePath) }
             id={`state-${d.id}`}
             className='state'
-            fill={colorScale(d.value)}
+            fill={colorScale(this.state.colors, this.state.domain)(d.value)}
             stroke='#ffffff'
             strokeLinejoin='bevel'
           />
@@ -142,9 +143,7 @@ class USMap extends React.Component {
         <rect
           key={`legend-${d}`}
           fill={
-            chroma.scale(this.state.colors)
-              .domain([0, this.state.legendCount - 1])
-              .mode('lch')(d)
+            colorScale(this.state.colors, [0, this.state.legendCount - 1])(d)
           }
           height={20 * this.yScalar}
           width={keyWidth}
