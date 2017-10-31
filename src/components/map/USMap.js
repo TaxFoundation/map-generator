@@ -1,5 +1,5 @@
 import React from 'react';
-import { geoAlbersUsa, geoPath } from 'd3-geo';
+import { geoAlbersUsa, geoPath, geoCentroid } from 'd3-geo';
 import { feature } from 'topojson-client';
 import chroma from 'chroma-js';
 import Features from '../../data/us.json';
@@ -16,66 +16,58 @@ class USMap extends React.Component {
       domain: this.props.domain || [0, 0.5, 1],
       dataType: this.props.dataType || 'sequential',
       legendCount: this.props.legendCount || 10,
-      scale: 800,
-      xScale: 600,
-      yScale: 400
     };
-
-    this.xScalar = this.state.xScale / 600;
-    this.yScalar = this.state.yScale / 400;
+    
+    this.scale = 800;
+    this.xScale = 600;
+    this.yScale = 400;
+    this.xScalar = this.xScale / 600;
+    this.yScalar = this.yScale / 400;
     
     this.smallStates = {
       10: {
         x: 560 * this.xScalar,
-        y: 160 * this.yScalar,
-        originX: 528 * this.xScalar,
-        originY: 148 * this.yScalar
+        y: 160 * this.yScalar
       },
       11: {
         x: 560 * this.xScalar,
-        y: 200 * this.yScalar,
-        originX: 509 * this.xScalar,
-        originY: 152 * this.yScalar
+        y: 200 * this.yScalar
       },
       44: {
         x: 560 * this.xScalar,
-        y: 120 * this.yScalar,
-        originX: 557 * this.xScalar,
-        originY: 104 * this.yScalar
+        y: 120 * this.yScalar
       }
     };
 
-    this.projection = this.projection.bind(this);    
-  }
-
-  projection() {
-    return geoAlbersUsa()
-      .scale(this.state.scale)
-      .translate([this.state.xScale/2, this.state.yScale/2 - 25]);
+    this.labelOverrides = {};
   }
 
   render() {
-    const path = geoPath().projection(this.projection);
+    const path = geoPath()
+      .projection(
+        geoAlbersUsa()
+          .scale(this.scale)
+          .translate([this.xScale/2, this.yScale/2 - 25])
+      );
     const USDataFeatures = feature(Features, Features.objects[this.props.type]).features;
     const colorScale = chroma.scale(this.state.colors).domain(this.state.domain).mode('lch');
 
     const states = this.state.data.map((d) => {
+      // Match state's path to the current state data
       let statePath = USDataFeatures.filter((s) => {
         return +s.id === +d.id;
       })[0];
+
+      let center = path.centroid(statePath);
+
+      // Creat rect/label for small states
+      let isSmallState = false;
       let smallStateRect;
       if (d.id in this.smallStates) {
+        isSmallState = true;
         let smallState = this.smallStates[d.id];
         smallStateRect = (
           <g>
-            <line
-              stroke="#666666"
-              strokeWidth="1"
-              x1={smallState.x + 3}
-              y1={smallState.y + 3}
-              x2={smallState.originX}
-              y2={smallState.originY}
-            />
             <rect
               x={smallState.x}
               y={smallState.y}
@@ -96,18 +88,39 @@ class USMap extends React.Component {
           </g>
         );
       }
+      
+      // Create state labels
+      let labelOverride = false;
+      let labelX = center[0];
+      let labelY = center[1] + 6;
+      if (d.id in this.labelOverrides) {
+        labelOverride = true;
+        labelX = this.labelOverrides[d.id].x;
+        labelY = this.labelOverrides[d.id].y;
+      }
+
+      let label = (
+        <text
+          fontSize="12"
+          textAnchor="middle"
+          x={labelX}
+          y={labelY}
+        >
+          {d.abbr}
+        </text>
+      );
 
       return (
         <g key={`state-${d.id}`}>
           <path
-            d={ geoPath().projection(this.projection())(statePath) }
+            d={ path(statePath) }
             id={`state-${d.id}`}
             className='state'
             fill={colorScale(d.value)}
             stroke='#ffffff'
             strokeLinejoin='bevel'
           />
-          {smallStateRect}
+          { isSmallState ? smallStateRect : label}
         </g>
       );
     });
@@ -116,7 +129,7 @@ class USMap extends React.Component {
       const keyGap = 10;
       const keyWidth = (
         (
-          (this.state.xScale / 2) / this.state.legendCount
+          (this.xScale / 2) / this.state.legendCount
         ) - keyGap
       ) * this.xScalar;
 
@@ -130,7 +143,7 @@ class USMap extends React.Component {
           }
           height={20 * this.yScalar}
           width={keyWidth}
-          x={(this.state.xScale / 2) + ((keyWidth + keyGap) * d)}
+          x={(this.xScale / 2) + ((keyWidth + keyGap) * d)}
           y={380 * this.yScalar}
         ></rect>
       );
@@ -138,7 +151,7 @@ class USMap extends React.Component {
 
     return (
       <div>
-        <svg width="100%" viewBox={`0 0 ${this.state.xScale} ${this.state.yScale}`}>
+        <svg width="100%" viewBox={`0 0 ${this.xScale} ${this.yScale}`}>
           <g className='states'>
             { states }
           </g>
