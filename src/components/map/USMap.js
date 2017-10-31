@@ -113,13 +113,24 @@ class USMap extends React.Component {
     });
 
     const legend = [...Array(this.state.legendCount).keys()].map((d) => {
+      const keyGap = 10;
+      const keyWidth = (
+        (
+          (this.state.xScale / 2) / this.state.legendCount
+        ) - keyGap
+      ) * this.xScalar;
+
       return (
         <rect
           key={`legend-${d}`}
-          fill={chroma.scale(this.state.colors).domain(this.state.domain).mode('lch')(d/10)}
+          fill={
+            chroma.scale(this.state.colors)
+              .domain([0, this.state.legendCount - 1])
+              .mode('lch')(d)
+          }
           height={20 * this.yScalar}
-          width={20 * this.xScalar}
-          x={(this.state.xScale / 2) + (30 * d)}
+          width={keyWidth}
+          x={(this.state.xScale / 2) + ((keyWidth + keyGap) * d)}
           y={380 * this.yScalar}
         ></rect>
       );
