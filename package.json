@@ -19,7 +19,7 @@
   "scripts": {
     "watch-sass": "node-sass src/style.scss src/style.css -w --source-map=src/style.css.map",
     "start-js": "react-scripts start",
-    "start": "concurrently --names \"Sass,React\" \"npm run watch-sass\" \"npm run start-js\"",
+    "start": "concurrently -c \"magenta,cyan\" --names \"Sass,React\" \"npm run watch-sass\" \"npm run start-js\"",
     "build-sass": "node-sass src/style.scss src/style.css --output-style=compressed",
     "build-js": "react-scripts build && react-snapshot",
     "build": "npm run build-sass && npm run build-js",
