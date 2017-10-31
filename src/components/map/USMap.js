@@ -1,5 +1,5 @@
 import React from 'react';
-import { geoAlbersUsa, geoPath, geoCentroid } from 'd3-geo';
+import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import chroma from 'chroma-js';
 import Features from '../../data/us.json';
