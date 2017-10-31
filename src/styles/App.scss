@@ -10,3 +10,16 @@ body {
   grid-gap: 10px;
   grid-template: 64px calc(100vh - 84px) / 3fr 2fr;
 }
+
+.panel {
+  grid-column: span 1;
+  grid-row: span 1;
+
+  &__section {
+    padding: 10px;
+  
+    &--scroll {
+      overflow-y: auto;
+    }
+  }
+}

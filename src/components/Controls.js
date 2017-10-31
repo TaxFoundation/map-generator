@@ -6,10 +6,10 @@ import { Tabs, Tab } from 'material-ui/Tabs';
 class Controls extends Component {
   render() {
     return (
-      <Paper className="controls">
-        <h2 className="controls__section">Map Options</h2>
+      <Paper className="controls panel">
+        <h2 className="panel__section">Map Options</h2>
         <Divider />
-        <Tabs>
+        <Tabs className="panel__section--scroll">
           <Tab label="Data"></Tab>
           <Tab label="Style"></Tab>
           <Tab label="Output"></Tab>

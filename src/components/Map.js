@@ -7,9 +7,9 @@ class Map extends Component {
   render() {
     return (
       <Paper
-        className="map"
+        className="map panel"
       >
-        <h2 className="map__section">Map Result</h2>
+        <h2 className="panel__section">Map Result</h2>
         <Divider />
         <USMap type="states" />
       </Paper>
