@@ -58,60 +58,62 @@ class USMap extends React.Component {
         return +s.id === +d.id;
       })[0];
 
-      let center = path.centroid(statePath);
-
-      // Creat rect/label for small states
       let isSmallState = false;
       let smallStateRect;
-      if (d.id in this.smallStates) {
-        isSmallState = true;
-        let smallState = this.smallStates[d.id];
-        smallStateRect = (
-          <g>
-            <rect
-              x={smallState.x}
-              y={smallState.y}
-              height="16"
-              width="16"
-              fill={colorScale(d.value)}
-              stroke='#ffffff'
-              strokeLinejoin='bevel'
-            />
-            <text
-              fontSize="12"
-              textAnchor="middle"
-              x={smallState.x + 8}
-              y={smallState.y + 28}
-            >
-              {d.abbr}
-            </text>
-          </g>
+      let label;
+
+      if (this.props.type === 'states') {
+        let center = path.centroid(statePath);
+  
+        // Creat rect/label for small states
+        if (d.id in this.smallStates) {
+          isSmallState = true;
+          let smallState = this.smallStates[d.id];
+          smallStateRect = (
+            <g>
+              <rect
+                x={smallState.x}
+                y={smallState.y}
+                height="16"
+                width="16"
+                fill={colorScale(d.value)}
+                stroke='#ffffff'
+                strokeLinejoin='bevel'
+              />
+              <text
+                fontSize="12"
+                textAnchor="middle"
+                x={smallState.x + 8}
+                y={smallState.y + 28}
+              >
+                {d.abbr}
+              </text>
+            </g>
+          );
+        }
+        
+        // Create state labels
+        let labelX = center[0];
+        let labelY = center[1] + 6;
+        if (d.id in this.labelOverrides) {
+          labelX = this.labelOverrides[d.id].x;
+          labelY = this.labelOverrides[d.id].y;
+        }
+  
+        label = (
+          <text
+            fontSize="12"
+            textAnchor="middle"
+            x={labelX}
+            y={labelY}
+          >
+            {d.abbr}
+          </text>
         );
       }
-      
-      // Create state labels
-      let labelOverride = false;
-      let labelX = center[0];
-      let labelY = center[1] + 6;
-      if (d.id in this.labelOverrides) {
-        labelOverride = true;
-        labelX = this.labelOverrides[d.id].x;
-        labelY = this.labelOverrides[d.id].y;
-      }
-
-      let label = (
-        <text
-          fontSize="12"
-          textAnchor="middle"
-          x={labelX}
-          y={labelY}
-        >
-          {d.abbr}
-        </text>
-      );
 
       return (
-        <g key={`state-${d.id}`}>
+        <g key={`geo-${d.id}`}>
           <path
             d={ path(statePath) }
             id={`state-${d.id}`}
@@ -120,7 +122,10 @@ class USMap extends React.Component {
             stroke='#ffffff'
             strokeLinejoin='bevel'
           />
-          { isSmallState ? smallStateRect : label}
+          { this.props.type === 'states'
+            ? (isSmallState ? smallStateRect : label)
+            : null
+          }
         </g>
       );
     });
