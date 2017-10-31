@@ -11,7 +11,9 @@ class Map extends Component {
       >
         <h2 className="panel__section">Map Result</h2>
         <Divider />
-        <USMap type="states" />
+        <div className="panel__section">
+          <USMap type="states" />
+        </div>
       </Paper>
     );
   }
