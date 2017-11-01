@@ -1,30 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
-import DataType from '../components/controls/DataType';
+import MapType from '../components/controls/MapType';
 import {
   updateMapType,
   updateMapData,
-  updateDomain,
-  updateDataType,
-  updateColumnHeaders,
-  updateSteps,
-  updateColors
+  updateColumnHeaders
 } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
 
 class DataControls extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      fileUploaded: false
-    };
-  }
-
   render() {
     return (
-      <div className="controls__data panel__section">
+      <div className="panel__section">
         <h3>Upload Data</h3>
         <RaisedButton
           containerElement="label"
@@ -47,9 +35,9 @@ class DataControls extends Component {
           />
         </RaisedButton>
         <h3>Describe Your Data</h3>
-        <DataType
-          dataType={this.props.dataType}
-          updateDataType={this.props.updateDataType}
+        <MapType
+          mapType={this.props.mapType}
+          updateMapType={this.props.updateMapType}
         />
       </div>
     );
@@ -60,12 +48,7 @@ function mapStateToProps(state) {
   return {
     mapData: state.mapData,
     mapType: state.mapType,
-    dataType: state.dataType,
-    columnHeaders: state.columnHeaders,
-    domain: state.domain,
-    scale: state.scale,
-    steps: state.steps,
-    colors: state.colors
+    columnHeaders: state.columnHeaders
   };
 }
 
@@ -76,11 +59,7 @@ function mapDispatchToProps(dispatch) {
     {
       updateMapType: updateMapType,
       updateMapData: updateMapData,
-      updateDomain: updateDomain,
-      updateDataType: updateDataType,
-      updateColumnHeaders: updateColumnHeaders,
-      updateSteps: updateSteps,
-      updateColors: updateColors
+      updateColumnHeaders: updateColumnHeaders
     },
     dispatch
   );
