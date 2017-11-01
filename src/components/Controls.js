@@ -10,7 +10,7 @@ class Controls extends Component {
       <Paper className="controls panel">
         <h2 className="panel__section">Map Options</h2>
         <Divider />
-        <Tabs className="panel__section--scroll">
+        <Tabs>
           <Tab label="Data">
             <DataControls />
           </Tab>
