@@ -4,6 +4,7 @@ import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import { colorScale, labelColor } from '../helpers';
 import Features from '../data/us.json';
+import smallStateRects from '../data/smallStateRects';
 
 class USMap extends React.Component {
   constructor(props) {
@@ -14,21 +15,6 @@ class USMap extends React.Component {
     this.yScale = 400;
     this.xScalar = this.xScale / 600;
     this.yScalar = this.yScale / 400;
-
-    this.smallStates = {
-      10: {
-        x: 560,
-        y: 160
-      },
-      11: {
-        x: 560,
-        y: 200
-      },
-      44: {
-        x: 560,
-        y: 120
-      }
-    };
 
     this.labelOverrides = {};
   }
@@ -59,9 +45,9 @@ class USMap extends React.Component {
         let center = path.centroid(statePath);
 
         // Creat rect/label for small states
-        if (d.id in this.smallStates) {
+        if (d.id in smallStateRects) {
           isSmallState = true;
-          let smallState = this.smallStates[d.id];
+          let smallState = smallStateRects[d.id];
 
           // TODO factor into FSC
           smallStateRect = (
