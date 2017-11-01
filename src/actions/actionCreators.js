@@ -1,12 +1,33 @@
-// update data
-export function updateData(data) {
+// update map type
+export function updateMapType(mapType) {
   return {
-    type: 'UPDATE_DATA',
-    data
+    type: 'UPDATE_MAP_TYPE',
+    mapType
+  };
+}
+
+// update data
+export function updateMapData(mapData) {
+  return {
+    type: 'UPDATE_MAP_DATA',
+    mapData
+  };
+}
+// update data type
+export function updateDataType(dataType) {
+  return {
+    type: 'UPDATE_DATA_TYPE',
+    dataType
   };
 }
 
 // update column headers
+export function updateColumnHeaders(headers) {
+  return {
+    type: 'UPDATE_COL_HEADERS',
+    headers
+  };
+}
 
 // update domain
 export function updateDomain(domain) {
@@ -16,13 +37,6 @@ export function updateDomain(domain) {
   };
 }
 
-// update data type
-export function updateType(dataType) {
-  return {
-    type: 'UPDATE_TYPE',
-    dataType
-  };
-}
 
 // update colors
 export function updateColors(colors) {

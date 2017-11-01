@@ -3,13 +3,23 @@ import { connect } from 'react-redux';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
+import {
+  updateMapType,
+  updateMapData,
+  updateDomain,
+  updateDataType,
+  updateColumnHeaders,
+  updateSteps,
+  updateColors
+} from '../actions/actionCreators';
+import { bindActionCreators } from 'redux';
 
 class DataControls extends Component {
   constructor() {
     super();
 
     this.state = {
-      fileUploaded: false,
+      fileUploaded: false
     };
   }
 
@@ -23,11 +33,13 @@ class DataControls extends Component {
           <SelectField
             autoWidth={true}
             floatingLabelText="What Type of Data is This?"
+            onChange={(e, i, v) => {this.props.updateDataType(v);}}
             value={this.props.dataType}
           >
-            { types.map((t) => {
+            {types.map(t => {
               return (
                 <MenuItem
+                  key={`data-type-${t}`}
                   value={t}
                   primaryText={t.charAt(0).toLocaleUpperCase() + t.slice(1)}
                 />
@@ -61,10 +73,7 @@ class DataControls extends Component {
             }}
           />
         </RaisedButton>
-        { this.state.fileUploaded
-          ? <DataSettings />
-          : null
-        }
+        {this.state.fileUploaded ? <DataSettings /> : null}
       </div>
     );
   }
@@ -73,11 +82,28 @@ class DataControls extends Component {
 function mapStateToProps(state) {
   return {
     mapData: state.mapData,
+    mapType: state.mapType,
     dataType: state.dataType,
     columnHeaders: state.columnHeaders,
     domain: state.domain,
-    scale: state.scale
+    scale: state.scale,
+    steps: state.steps,
+    colors: state.colors
   };
 }
 
-export default connect(mapStateToProps)(DataControls);
+// anything returned will end up as props in DataControls
+function mapDispatchToProps(dispatch) {
+  // whenever one of these is called, it's passed to reducers
+  return bindActionCreators({
+    updateMapType: updateMapType,
+    updateMapData: updateMapData,
+    updateDomain: updateDomain,
+    updateDataType: updateDataType,
+    updateColumnHeaders: updateColumnHeaders,
+    updateSteps: updateSteps,
+    updateColors: updateColors
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DataControls);
