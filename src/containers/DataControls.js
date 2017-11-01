@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
-import SelectField from 'material-ui/SelectField';
+import DataType from '../components/controls/DataType';
 import {
   updateMapType,
   updateMapData,
@@ -24,32 +23,6 @@ class DataControls extends Component {
   }
 
   render() {
-    const DataSettings = () => {
-      const types = ['sequential', 'divergent', 'qualitative'];
-
-      return (
-        <div>
-          <h3>Describe Your Data</h3>
-          <SelectField
-            autoWidth={true}
-            floatingLabelText="What Type of Data is This?"
-            onChange={(e, i, v) => {this.props.updateDataType(v);}}
-            value={this.props.dataType}
-          >
-            {types.map(t => {
-              return (
-                <MenuItem
-                  key={`data-type-${t}`}
-                  value={t}
-                  primaryText={t.charAt(0).toLocaleUpperCase() + t.slice(1)}
-                />
-              );
-            })}
-          </SelectField>
-        </div>
-      );
-    };
-
     return (
       <div className="controls__data panel__section">
         <h3>Upload Data</h3>
@@ -73,7 +46,11 @@ class DataControls extends Component {
             }}
           />
         </RaisedButton>
-        {this.state.fileUploaded ? <DataSettings /> : null}
+        <h3>Describe Your Data</h3>
+        <DataType
+          dataType={this.props.dataType}
+          updateDataType={this.props.updateDataType}
+        />
       </div>
     );
   }
@@ -95,15 +72,18 @@ function mapStateToProps(state) {
 // anything returned will end up as props in DataControls
 function mapDispatchToProps(dispatch) {
   // whenever one of these is called, it's passed to reducers
-  return bindActionCreators({
-    updateMapType: updateMapType,
-    updateMapData: updateMapData,
-    updateDomain: updateDomain,
-    updateDataType: updateDataType,
-    updateColumnHeaders: updateColumnHeaders,
-    updateSteps: updateSteps,
-    updateColors: updateColors
-  }, dispatch);
+  return bindActionCreators(
+    {
+      updateMapType: updateMapType,
+      updateMapData: updateMapData,
+      updateDomain: updateDomain,
+      updateDataType: updateDataType,
+      updateColumnHeaders: updateColumnHeaders,
+      updateSteps: updateSteps,
+      updateColors: updateColors
+    },
+    dispatch
+  );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataControls);
