@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import DataControls from './controls/DataControls';
+import DataControls from '../containers/DataControls';
 
 class Controls extends Component {
   render() {

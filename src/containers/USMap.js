@@ -1,22 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
-import { colorScale } from '../../helpers';
-import Features from '../../data/us.json';
-import Names from '../../data/states';
+import { colorScale } from '../helpers';
+import Features from '../data/us.json';
 
 class USMap extends React.Component {
   constructor(props) {
     super(props);
-    // takes type of states or counties
-
-    this.state = {
-      data: this.props.data || Names,
-      colors: this.props.colors || ['#edf8b1', '#7fcdbb', '#2c7fb8'],
-      domain: this.props.domain || [0, 0.5, 1],
-      dataType: this.props.dataType || 'sequential',
-      legendCount: this.props.legendCount || 10,
-    };
     
     this.scale = 800;
     this.xScale = 600;
@@ -49,9 +40,9 @@ class USMap extends React.Component {
           .scale(this.scale)
           .translate([this.xScale/2, this.yScale/2 - 25])
       );
-    const USDataFeatures = feature(Features, Features.objects[this.props.type]).features;
+    const USDataFeatures = feature(Features, Features.objects[this.props.mapType]).features;
 
-    const states = this.state.data.map((d) => {
+    const states = this.props.mapData.map((d) => {
       // Match state's path to the current state data
       let statePath = USDataFeatures.filter((s) => {
         return +s.id === +d.id;
@@ -61,7 +52,7 @@ class USMap extends React.Component {
       let smallStateRect;
       let label;
 
-      if (this.props.type === 'states') {
+      if (this.props.mapType === 'states') {
         let center = path.centroid(statePath);
   
         // Creat rect/label for small states
@@ -77,7 +68,7 @@ class USMap extends React.Component {
                 y={smallState.y}
                 height="16"
                 width="16"
-                fill={colorScale(this.state.colors, this.state.domain)(d.value)}
+                fill={colorScale(this.props.colors, this.props.domain)(d.value)}
                 stroke='#ffffff'
                 strokeLinejoin='bevel'
               />
@@ -119,11 +110,11 @@ class USMap extends React.Component {
             d={ path(statePath) }
             id={`state-${d.id}`}
             className='state'
-            fill={colorScale(this.state.colors, this.state.domain)(d.value)}
+            fill={colorScale(this.props.colors, this.props.domain)(d.value)}
             stroke='#ffffff'
             strokeLinejoin='bevel'
           />
-          { this.props.type === 'states'
+          { this.props.mapType === 'states'
             ? (isSmallState ? smallStateRect : label)
             : null
           }
@@ -131,11 +122,11 @@ class USMap extends React.Component {
       );
     });
 
-    const legend = [...Array(this.state.legendCount).keys()].map((d) => {
+    const legend = [...Array(this.props.steps).keys()].map((d) => {
       const keyGap = 10;
       const keyWidth = (
         (
-          (this.xScale / 2) / this.state.legendCount
+          (this.xScale / 2) / this.props.steps
         ) - keyGap
       ) * this.xScalar;
 
@@ -143,7 +134,7 @@ class USMap extends React.Component {
         <rect
           key={`legend-${d}`}
           fill={
-            colorScale(this.state.colors, [0, this.state.legendCount - 1])(d)
+            colorScale(this.props.colors, [0, this.props.steps - 1])(d)
           }
           height={20 * this.yScalar}
           width={keyWidth}
@@ -168,4 +159,15 @@ class USMap extends React.Component {
   }
 }
 
-export default USMap;
+function mapStateToProps(state) {
+  return {
+    mapData: state.mapData,
+    mapType: state.mapType,
+    domain: state.domain,
+    scale: state.scale,
+    colors: state.colors,
+    steps: state.steps
+  };
+}
+
+export default connect(mapStateToProps)(USMap);

@@ -5,6 +5,7 @@ import data from './data/states';
 
 const defaultState = {
   mapData: data,
+  mapType: 'states',
   columnHeaders: [''],
   colors: ['#edf8b1', '#7fcdbb', '#2c7fb8'],
   domain: [0, 0.5, 1],

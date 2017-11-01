@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
@@ -9,7 +10,6 @@ class DataControls extends Component {
 
     this.state = {
       fileUploaded: false,
-      dataType: 'sequential'
     };
   }
 
@@ -23,8 +23,7 @@ class DataControls extends Component {
           <SelectField
             autoWidth={true}
             floatingLabelText="What Type of Data is This?"
-            onChange={(e, i, v) => {this.setState({dataType: v});}}
-            value={this.state.dataType}
+            value={this.props.dataType}
           >
             { types.map((t) => {
               return (
@@ -71,4 +70,14 @@ class DataControls extends Component {
   }
 }
 
-export default DataControls;
+function mapStateToProps(state) {
+  return {
+    mapData: state.mapData,
+    dataType: state.dataType,
+    columnHeaders: state.columnHeaders,
+    domain: state.domain,
+    scale: state.scale
+  };
+}
+
+export default connect(mapStateToProps)(DataControls);
