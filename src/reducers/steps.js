@@ -1,5 +1,10 @@
 function steps(state = [], action) {
-  return state;
+  switch(action.type) {
+    case 'UPDATE_STEPS':
+      return action.steps;
+    default:
+      return state;
+  }
 }
 
 export default steps;
