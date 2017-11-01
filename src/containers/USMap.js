@@ -17,16 +17,16 @@ class USMap extends React.Component {
 
     this.smallStates = {
       10: {
-        x: 560 * this.xScalar,
-        y: 160 * this.yScalar
+        x: 560,
+        y: 160
       },
       11: {
-        x: 560 * this.xScalar,
-        y: 200 * this.yScalar
+        x: 560,
+        y: 200
       },
       44: {
-        x: 560 * this.xScalar,
-        y: 120 * this.yScalar
+        x: 560,
+        y: 120
       }
     };
 
@@ -67,8 +67,8 @@ class USMap extends React.Component {
           smallStateRect = (
             <g>
               <rect
-                x={smallState.x}
-                y={smallState.y}
+                x={smallState.x * this.xScalar}
+                y={smallState.y * this.yScalar}
                 height="16"
                 width="16"
                 fill={fill}
@@ -78,8 +78,8 @@ class USMap extends React.Component {
               <text
                 fontSize="12"
                 textAnchor="middle"
-                x={smallState.x + 8}
-                y={smallState.y + 28}
+                x={smallState.x * this.xScalar + 8}
+                y={smallState.y * this.yScalar + 28}
               >
                 {d.abbr}
               </text>
