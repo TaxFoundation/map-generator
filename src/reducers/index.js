@@ -7,6 +7,14 @@ import domain from './domain';
 import scale from './scale';
 import steps from './steps';
 
-const rootReducer = combineReducers({ mapData, dataType, colors, columnHeaders, domain, scale, steps });
+const rootReducer = combineReducers({
+  mapData,
+  dataType,
+  colors,
+  columnHeaders,
+  domain,
+  scale,
+  steps
+});
 
 export default rootReducer;
