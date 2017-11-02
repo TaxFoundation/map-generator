@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
-import MapType from '../components/controls/MapType';
+import Typography from 'material-ui/Typography';
+import Divider from 'material-ui/Divider';
+import SelectList from '../components/controls/SelectList';
 import {
   updateMapType,
   updateMapData,
@@ -13,30 +15,23 @@ class DataControls extends Component {
   render() {
     return (
       <div className="panel__section">
-        <h3>Upload Data</h3>
-        <Button
-          component="label"
-          label="Choose File to Upload"
-          raised
-        >
-          <input
-            type="file"
-            style={{
-              cursor: 'pointer',
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              right: 0,
-              left: 0,
-              width: '100%',
-              opacity: 0
-            }}
-          />
-        </Button>
-        <h3>Describe Your Data</h3>
-        <MapType
-          mapType={this.props.mapType}
-          updateMapType={this.props.updateMapType}
+        <Typography type="subheading">Upload Data</Typography>
+        <input
+          accept="csv,CSV"
+          id="file"
+          style={{display: 'none'}}
+          type="file"
+        />
+        <label htmlFor="file">
+          <Button color="primary" component="span" raised>Upload a CSV File</Button>
+        </label>
+        <Divider />
+        <Typography type="subheading">Describe Your Data</Typography>
+        <SelectList
+          listName="map-type"
+          types={['states', 'counties']}
+          update={this.props.updateMapType}
+          value={this.props.mapType}
         />
       </div>
     );

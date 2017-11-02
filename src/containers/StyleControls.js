@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import DataType from '../components/controls/DataType';
+import Typography from 'material-ui/Typography';
+import Divider from 'material-ui/Divider';
+import SelectList from '../components/controls/SelectList';
 import ColorControls from '../components/controls/ColorControls';
 import {
   updateDomain,
@@ -14,10 +16,13 @@ class StyleControls extends Component {
   render() {
     return (
       <div className="panel__section">
-        <h3>Describe Your Presentation</h3>
-        <DataType
-          dataType={this.props.dataType}
-          updateDataType={this.props.updateDataType}
+        <Typography type="subheading">Describe Your Presentation</Typography>
+        <Divider />
+        <SelectList
+          listName="data-type"
+          types={['sequential', 'divergent', 'qualitative']}
+          update={this.props.updateDataType}
+          value={this.props.dataType}
         />
         <ColorControls
           colors={this.props.colors}

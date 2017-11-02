@@ -1,6 +1,8 @@
 import React from 'react';
 import Select from 'material-ui/Select';
+import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
+import { FormControl } from 'material-ui/Form';
 import { colorScale } from '../../helpers';
 import colorPalettes from '../../data/colorPalette';
 
@@ -30,25 +32,27 @@ const ColorControls = props => {
   };
 
   return (
-    <Select
-      floatingLabelText="Color Palette"
-      fullWidth={true}
-      onChange={event => {
-        props.updateColors(event.target.value);
-      }}
-      selectionRenderer={(value) => {
-        return <PaletteDisplay palette={value} steps={props.steps} />;
-      }}
-      value={props.colors}
-    >
-      {colorPalettes.map(p => {
-        return (
-          <MenuItem key={`palette-${p.id}`} value={p.palette}>
-            <PaletteDisplay palette={p.palette} steps={props.steps} />
-          </MenuItem>
-        );
-      })}
-    </Select>
+    <FormControl fullWidth>
+      <InputLabel htmlFor="color-palette">Color Palette</InputLabel>
+      <Select
+        input={<Input id="color-palette" />}
+        onChange={event => {
+          props.updateColors(event.target.value);
+        }}
+        renderValue={(value) => {
+          return <PaletteDisplay palette={value} steps={props.steps} />;
+        }}
+        value={props.colors}
+      >
+        {colorPalettes.map(p => {
+          return (
+            <MenuItem key={`palette-${p.id}`} value={p.palette}>
+              <PaletteDisplay palette={p.palette} steps={props.steps} />
+            </MenuItem>
+          );
+        })}
+      </Select>
+    </FormControl>
   );
 };
 

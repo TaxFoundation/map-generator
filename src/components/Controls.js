@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography';
 import DataControls from '../containers/DataControls';
 import StyleControls from '../containers/StyleControls';
+import OutputControls from '../containers/OutputControls';
 
 class Controls extends Component {
   state = {
@@ -18,15 +18,14 @@ class Controls extends Component {
 
   render() {
     const { value } = this.state;
-    
+
     return (
       <Paper className="controls panel">
         <Typography type="headline" className="panel__section">Map Options</Typography>
-        <Divider />
         <AppBar position="static">
           <Tabs
-            fullWidth
             onChange={this.handleChange}
+            value={value}
           >
             <Tab label="Data">
             </Tab>
@@ -37,7 +36,7 @@ class Controls extends Component {
         </AppBar>
         {value === 0 && <DataControls />}
         {value === 1 && <StyleControls />}
-        {value === 2}
+        {value === 2 && <OutputControls />}
       </Paper>
     );
   }
