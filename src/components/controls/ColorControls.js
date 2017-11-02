@@ -14,7 +14,7 @@ const ColorControls = props => {
               key={`palette-step-${s + 1}`}
               style={{
                 backgroundColor: colorScale(props.palette, [
-                  1,
+                  0,
                   props.steps - 1
                 ])(s),
                 display: 'inline-block',
@@ -28,7 +28,7 @@ const ColorControls = props => {
       </div>
     );
   };
-  
+
   return (
     <SelectField
       floatingLabelText="Color Palette"
@@ -36,9 +36,12 @@ const ColorControls = props => {
       onChange={(e, i, v) => {
         props.updateColors(v);
       }}
+      selectionRenderer={() => {
+        return <PaletteDisplay palette={props.colors} steps={props.steps} />;
+      }}
       value={props.colors}
     >
-      {colorPalettes.map((p) => {
+      {colorPalettes.map(p => {
         return (
           <MenuItem key={`palette-${p.id}`} value={p.palette}>
             <PaletteDisplay palette={p.palette} steps={props.steps} />
