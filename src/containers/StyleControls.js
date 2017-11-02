@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DataType from '../components/controls/DataType';
+import ColorControls from '../components/controls/ColorControls';
 import {
   updateDomain,
   updateDataType,
@@ -17,6 +18,11 @@ class StyleControls extends Component {
         <DataType
           dataType={this.props.dataType}
           updateDataType={this.props.updateDataType}
+        />
+        <ColorControls
+          colors={this.props.colors}
+          updateColors={this.props.updateColors}
+          steps={this.props.steps}
         />
       </div>
     );
