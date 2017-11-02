@@ -4,9 +4,19 @@ import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
 import { FormControl } from 'material-ui/Form';
 import { colorScale } from '../../helpers';
-import colorPalettes from '../../data/colorPalette';
+import {
+  sequentialColorPalettes,
+  divergentColorPalettes,
+  qualitativeColorPalettes
+} from '../../data/colorPalette';
 
 const ColorControls = props => {
+  const palettes = {
+    sequential: sequentialColorPalettes,
+    divergent: divergentColorPalettes,
+    qualitative: qualitativeColorPalettes
+  };
+
   const PaletteDisplay = props => {
     return (
       <div style={{ width: '100%' }}>
@@ -44,7 +54,7 @@ const ColorControls = props => {
         }}
         value={props.colors}
       >
-        {colorPalettes.map(p => {
+        {palettes[props.dataType].map(p => {
           return (
             <MenuItem key={`palette-${p.id}`} value={p.palette}>
               <PaletteDisplay palette={p.palette} steps={props.steps} />

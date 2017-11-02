@@ -26,6 +26,7 @@ class StyleControls extends Component {
         />
         <ColorControls
           colors={this.props.colors}
+          dataType={this.props.dataType}
           updateColors={this.props.updateColors}
           steps={this.props.steps}
         />

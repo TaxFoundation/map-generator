@@ -8,7 +8,7 @@ class Header extends Component {
     return (
       <AppBar position="static" className="header">
         <Toolbar>
-          <Typography type="title">
+          <Typography type="title" color="inherit">
             US Map Generator
           </Typography>
         </Toolbar>
