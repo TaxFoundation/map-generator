@@ -62,6 +62,7 @@ class USMap extends React.Component {
                 strokeLinejoin="bevel"
               />
               <text
+                fontFamily="Lato"
                 fontSize="12"
                 textAnchor="middle"
                 x={smallState.x * this.xScalar + 8}
@@ -84,6 +85,7 @@ class USMap extends React.Component {
         label = (
           <text
             fill={labelColor(fill)}
+            fontFamily="Lato"
             fontSize="12"
             textAnchor="middle"
             x={labelX}

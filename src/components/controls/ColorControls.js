@@ -1,6 +1,6 @@
 import React from 'react';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+import Select from 'material-ui/Select';
+import { MenuItem } from 'material-ui/Menu';
 import { colorScale } from '../../helpers';
 import colorPalettes from '../../data/colorPalette';
 
@@ -30,11 +30,11 @@ const ColorControls = props => {
   };
 
   return (
-    <SelectField
+    <Select
       floatingLabelText="Color Palette"
       fullWidth={true}
-      onChange={(e, i, v) => {
-        props.updateColors(v);
+      onChange={event => {
+        props.updateColors(event.target.value);
       }}
       selectionRenderer={(value) => {
         return <PaletteDisplay palette={value} steps={props.steps} />;
@@ -48,7 +48,7 @@ const ColorControls = props => {
           </MenuItem>
         );
       })}
-    </SelectField>
+    </Select>
   );
 };
 

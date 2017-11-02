@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 import MapType from '../components/controls/MapType';
 import {
   updateMapType,
@@ -14,11 +14,10 @@ class DataControls extends Component {
     return (
       <div className="panel__section">
         <h3>Upload Data</h3>
-        <RaisedButton
-          containerElement="label"
-          fullWidth={true}
+        <Button
+          component="label"
           label="Choose File to Upload"
-          labelPosition="before"
+          raised
         >
           <input
             type="file"
@@ -33,7 +32,7 @@ class DataControls extends Component {
               opacity: 0
             }}
           />
-        </RaisedButton>
+        </Button>
         <h3>Describe Your Data</h3>
         <MapType
           mapType={this.props.mapType}

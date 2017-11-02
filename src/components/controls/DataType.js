@@ -1,17 +1,17 @@
 import React from 'react';
-import MenuItem from 'material-ui/MenuItem';
-import SelectField from 'material-ui/SelectField';
+import { MenuItem } from 'material-ui/Menu';
+import Select from 'material-ui/Select';
 
 const DataType = (props) => {
   const types = ['sequential', 'divergent', 'qualitative'];
 
   return (
     <div>
-      <SelectField
+      <Select
         floatingLabelText="What Type of Data is This?"
         fullWidth={true}
-        onChange={(e, i, v) => {
-          props.updateDataType(v);
+        onChange={event => {
+          props.updateDataType(event.target.value);
         }}
         value={props.dataType}
       >
@@ -24,7 +24,7 @@ const DataType = (props) => {
             />
           );
         })}
-      </SelectField>
+      </Select>
     </div>
   );
 };
