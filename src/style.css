@@ -11,11 +11,10 @@ body {
 
 .panel {
   grid-column: span 1;
-  grid-row: span 1; }
+  grid-row: span 1;
+  overflow-y: auto; }
   .panel__section {
     padding: 10px; }
-    .panel__section--scroll {
-      overflow-y: auto; }
 
 .header {
   grid-column: 1 / 3;

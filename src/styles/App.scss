@@ -14,12 +14,9 @@ body {
 .panel {
   grid-column: span 1;
   grid-row: span 1;
+  overflow-y: auto;
 
   &__section {
     padding: 10px;
-  
-    &--scroll {
-      overflow-y: auto;
-    }
   }
 }

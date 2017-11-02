@@ -11,13 +11,15 @@
     "material-ui": "^0.19.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
     "react-scripts": "1.0.14",
+    "redux": "^3.7.2",
     "topojson-client": "^3.0.0"
   },
   "scripts": {
     "watch-sass": "node-sass src/style.scss src/style.css -w --source-map=src/style.css.map",
     "start-js": "react-scripts start",
-    "start": "concurrently --names \"Sass,React\" \"npm run watch-sass\" \"npm run start-js\"",
+    "start": "concurrently -c \"magenta,cyan\" --names \"Sass,React\" \"npm run watch-sass\" \"npm run start-js\"",
     "build-sass": "node-sass src/style.scss src/style.css --output-style=compressed",
     "build-js": "react-scripts build && react-snapshot",
     "build": "npm run build-sass && npm run build-js",
@@ -27,6 +29,7 @@
   "devDependencies": {
     "eslint": "^4.10.0",
     "eslint-plugin-react": "^7.4.0",
-    "node-sass": "^4.5.3"
+    "node-sass": "^4.5.3",
+    "redux-devtools-extension": "^2.13.2"
   }
 }
