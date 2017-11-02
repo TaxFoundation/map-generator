@@ -36,8 +36,8 @@ const ColorControls = props => {
       onChange={(e, i, v) => {
         props.updateColors(v);
       }}
-      selectionRenderer={() => {
-        return <PaletteDisplay palette={props.colors} steps={props.steps} />;
+      selectionRenderer={(value) => {
+        return <PaletteDisplay palette={value} steps={props.steps} />;
       }}
       value={props.colors}
     >
