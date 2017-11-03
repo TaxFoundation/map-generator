@@ -9,16 +9,10 @@ export const labelColor = (backgroundColor) => {
   return chroma.contrast('#000', backgroundColor) > 4.5 ? '#000000' : '#ffffff';
 };
 
-export const readFile = (file, handler) => {
-  if (Array.isArray(file)) {
-    console.error('This app only accepts one file at a time');
-    return;
-  }
-
+export const readCSVFile = (file, handler) => {
   const reader = new FileReader();
   reader.onload = (event) => {
     if (file.type !== 'text/csv') {
-      console.error('This app only reads CSV files');
       return;
     } else {
       handler(csvParse(event.target.result));

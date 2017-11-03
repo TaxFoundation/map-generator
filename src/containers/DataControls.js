@@ -4,7 +4,8 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import SelectList from '../components/controls/SelectList';
-import { readFile } from '../helpers';
+import Snackbar from 'material-ui/Snackbar';
+import { readCSVFile } from '../helpers';
 import {
   updateRawData,
   updateMapType,
@@ -18,8 +19,28 @@ class DataControls extends Component {
     super(props);
 
     this.state = {
-      filename: 'Upload a CSV File'
+      filename: 'Upload a CSV File',
+      showWarning: false,
+      warningMessage: '',
+      buttonColor: 'primary'
     };
+  }
+
+  changeUploadText = text => this.setState({filename: text})
+
+  changeWarningMessage = message => this.setState({ warningMessage: message })
+
+  openWarning = () => this.setState({ showWarning: true });
+
+  closeWarning = () => this.setState({ showWarning: false });
+
+  changeButtonColor = color => this.setState({ buttonColor: color });
+
+  triggerWarning = (warning, button, color) => {
+    this.openWarning();
+    this.changeWarningMessage(warning);
+    this.changeUploadText(button);
+    this.changeButtonColor('accent');
   }
 
   render() {
@@ -30,19 +51,33 @@ class DataControls extends Component {
           accept="csv,CSV"
           id="file"
           onChange={(e) => {
-            if (e.target.files.length > 1) {
-              alert('Please only upload one file');
-              return;
+            let files = e.target.files;
+            if (files.length > 1) {
+              this.triggerWarning(
+                'Please only upload one file.',
+                'Upload Only One CSV File'
+              );
+            } else if (files[0].type !== 'text/csv') {
+              this.triggerWarning(
+                'Please only upload CSV files.',
+                'Upload Only One CSV File'
+              );
             } else {
-              readFile(e.target.files[0], this.props.updateRawData);
-              this.setState({filename: `Using ${e.target.files[0].name}`});
+              if (this.state.buttonColor !== 'primary') {
+                this.changeButtonColor('primary');
+              }
+              if (this.state.showWarning) {
+                this.closeWarning();
+              }
+              readCSVFile(files[0], this.props.updateRawData);
+              this.changeUploadText(`Using ${files[0].name}`);
             }
           }}
           style={{display: 'none'}}
           type="file"
         />
         <label htmlFor="file">
-          <Button color="primary" component="span" raised>{this.state.filename}</Button>
+          <Button color={this.state.buttonColor} component="span" raised>{this.state.filename}</Button>
         </label>
         <Divider />
         <Typography type="subheading">Describe Your Data</Typography>
@@ -51,6 +86,15 @@ class DataControls extends Component {
           types={['states', 'counties']}
           update={this.props.updateMapType}
           value={this.props.mapType}
+        />
+        <Snackbar
+          anchorOrigin={{
+            horizontal: 'center',
+            vertical: 'top'
+          }}
+          autoHideDuration={10000}
+          open={this.state.showWarning}
+          message={this.state.warningMessage}
         />
       </div>
     );
