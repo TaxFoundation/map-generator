@@ -4,6 +4,7 @@ import rootReducer from './reducers/index';
 import data from './data/states';
 
 const defaultState = {
+  rawData: data,
   mapData: data,
   mapType: 'states',
   columnHeaders: [''],

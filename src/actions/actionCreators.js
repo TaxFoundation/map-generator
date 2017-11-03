@@ -1,3 +1,11 @@
+// take in raw data
+export function updateRawData(rawData) {
+  return {
+    type: 'UPDATE_RAW_DATA',
+    rawData
+  };
+}
+
 // update map type
 export function updateMapType(mapType) {
   return {

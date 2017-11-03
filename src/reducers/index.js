@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import rawData from './rawData';
 import mapData from './mapData';
 import mapType from './mapType';
 import dataType from './dataType';
@@ -9,6 +10,7 @@ import scale from './scale';
 import steps from './steps';
 
 const rootReducer = combineReducers({
+  rawData,
   mapData,
   mapType,
   dataType,
