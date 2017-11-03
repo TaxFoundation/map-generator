@@ -1,69 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Select from 'material-ui/Select';
 import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
 import { FormControl } from 'material-ui/Form';
-import { colorScale } from '../../helpers';
+import PalettePreview from './PalettePreview';
 import {
   sequentialColorPalettes,
   divergentColorPalettes,
   qualitativeColorPalettes
 } from '../../data/colorPalette';
 
-const ColorControls = props => {
-  const palettes = {
-    sequential: sequentialColorPalettes,
-    divergent: divergentColorPalettes,
-    qualitative: qualitativeColorPalettes
-  };
+class ColorControls extends Component {
+  constructor(props) {
+    super(props);
 
-  const PaletteDisplay = props => {
+    this.palettes = {
+      sequential: sequentialColorPalettes,
+      divergent: divergentColorPalettes,
+      qualitative: qualitativeColorPalettes
+    };
+  }
+
+  render() {
     return (
-      <div style={{ width: '100%' }}>
-        {[...Array(props.steps).keys()].map(s => {
-          return (
-            <div
-              key={`palette-step-${s + 1}`}
-              style={{
-                backgroundColor: colorScale(props.palette, [
-                  0,
-                  props.steps - 1
-                ])(s),
-                display: 'inline-block',
-                height: '20px',
-                marginTop: '6px',
-                width: `${100 / props.steps}%`
-              }}
-            />
-          );
-        })}
-      </div>
+      <FormControl fullWidth>
+        <InputLabel htmlFor="color-palette">Color Palette</InputLabel>
+        <Select
+          input={<Input id="color-palette" />}
+          onChange={event => {
+            this.props.updateColors(event.target.value);
+          }}
+          renderValue={(value) => {
+            return <PalettePreview palette={value} steps={this.props.steps} />;
+          }}
+          value={this.props.colors}
+        >
+          {this.palettes[this.props.dataType].map(p => {
+            return (
+              <MenuItem key={`palette-${p.id}`} value={p.palette}>
+                <PalettePreview palette={p.palette} steps={this.props.steps} />
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
     );
-  };
-
-  return (
-    <FormControl fullWidth>
-      <InputLabel htmlFor="color-palette">Color Palette</InputLabel>
-      <Select
-        input={<Input id="color-palette" />}
-        onChange={event => {
-          props.updateColors(event.target.value);
-        }}
-        renderValue={(value) => {
-          return <PaletteDisplay palette={value} steps={props.steps} />;
-        }}
-        value={props.colors}
-      >
-        {palettes[props.dataType].map(p => {
-          return (
-            <MenuItem key={`palette-${p.id}`} value={p.palette}>
-              <PaletteDisplay palette={p.palette} steps={props.steps} />
-            </MenuItem>
-          );
-        })}
-      </Select>
-    </FormControl>
-  );
+  }
 };
 
 export default ColorControls;
