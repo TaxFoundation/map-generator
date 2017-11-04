@@ -2,9 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
-import { colorScale, labelColor } from '../helpers';
+import { colorScale } from '../helpers';
 import Features from '../data/us.json';
+import states from '../data/states';
 import smallStateRects from '../data/smallStateRects';
+import SmallStateRect from '../components/map/SmallStateRect';
+import Label from '../components/map/Label';
 
 class USMap extends React.Component {
   constructor(props) {
@@ -15,8 +18,6 @@ class USMap extends React.Component {
     this.yScale = 400;
     this.xScalar = this.xScale / 600;
     this.yScalar = this.yScale / 400;
-
-    this.labelOverrides = {};
   }
 
   render() {
@@ -30,84 +31,52 @@ class USMap extends React.Component {
       Features.objects[this.props.mapType]
     ).features;
 
-    const geographies = this.props.mapData.map(d => {
+    const geographies = USDataFeatures.map(d => {
       // Match state's path to the current state data
-      let statePath = USDataFeatures.filter(s => {
+      let data = this.props.mapData.find(s => {
         return +s.id === +d.id;
-      })[0];
+      });
 
-      let fill = colorScale(this.props.colors, this.props.domain)(d.value);
+      let fill = '#777777';
       let isSmallState = false;
-      let smallStateRect;
-      let label;
+      let abbr;
 
-      if (this.props.mapType === 'states') {
-        let center = path.centroid(statePath);
+      if (data !== undefined) {
+        fill = colorScale(this.props.colors, this.props.domain, data.value);
 
-        // Creat rect/label for small states
-        if (d.id in smallStateRects) {
-          isSmallState = true;
-          let smallState = smallStateRects[d.id];
-
-          // TODO factor into FSC
-          smallStateRect = (
-            <g>
-              <rect
-                x={smallState.x * this.xScalar}
-                y={smallState.y * this.yScalar}
-                height="16"
-                width="16"
-                fill={fill}
-                stroke="#ffffff"
-                strokeLinejoin="bevel"
-              />
-              <text
-                fontFamily="Lato"
-                fontSize="12"
-                textAnchor="middle"
-                x={smallState.x * this.xScalar + 8}
-                y={smallState.y * this.yScalar + 28}
-              >
-                {d.abbr}
-              </text>
-            </g>
-          );
+        if (this.props.mapType === 'states') {
+          abbr = states.filter(s => +s.id === +data.id)[0]['abbr'];
+  
+          // Creat rect/label for small states
+          if (d.id in smallStateRects) {
+            isSmallState = true;
+          }
         }
-
-        // Create state labels
-        let labelX = center[0];
-        let labelY = center[1] + 6;
-        if (d.id in this.labelOverrides) {
-          labelX = this.labelOverrides[d.id].x;
-          labelY = this.labelOverrides[d.id].y;
-        }
-
-        label = (
-          <text
-            fill={labelColor(fill)}
-            fontFamily="Lato"
-            fontSize="12"
-            textAnchor="middle"
-            x={labelX}
-            y={labelY}
-          >
-            {d.abbr}
-          </text>
-        );
       }
 
       return (
         <g key={`geo-${d.id}`}>
           <path
-            d={path(statePath)}
-            id={`state-${d.id}`}
+            d={path(d)}
+            id={`geography-${d.id}`}
             className="state"
             fill={fill}
             stroke="#ffffff"
             strokeLinejoin="bevel"
           />
           {this.props.mapType === 'states'
-            ? isSmallState ? smallStateRect : label
+            ? isSmallState
+              ? <SmallStateRect
+                smallState={smallStateRects[d.id]}
+                fill={fill}
+                abbr={abbr}
+              />
+              : <Label 
+                id={d.id}
+                fill={fill}
+                center={path.centroid(d)}
+                abbr={abbr}
+              />
             : null}
         </g>
       );
@@ -121,7 +90,7 @@ class USMap extends React.Component {
       return (
         <rect
           key={`legend-${d}`}
-          fill={colorScale(this.props.colors, [0, this.props.steps - 1])(d)}
+          fill={colorScale(this.props.colors, [0, this.props.steps - 1], d)}
           height={20 * this.yScalar}
           width={keyWidth}
           x={this.xScale / 2 + (keyWidth + keyGap) * d}
@@ -133,7 +102,7 @@ class USMap extends React.Component {
     return (
       <div>
         <svg width="100%" viewBox={`0 0 ${this.xScale} ${this.yScale}`}>
-          <g className="states">{geographies}</g>
+          <g className="geographies">{geographies}</g>
           <g className="legend">{legend}</g>
         </svg>
       </div>

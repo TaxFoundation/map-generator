@@ -8,9 +8,10 @@ import Snackbar from 'material-ui/Snackbar';
 import { readCSVFile } from '../helpers';
 import {
   updateRawData,
+  updateRawColumnHeaders,
   updateMapType,
   updateMapData,
-  updateColumnHeaders
+  updateId
 } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
 
@@ -69,7 +70,11 @@ class DataControls extends Component {
               if (this.state.showWarning) {
                 this.closeWarning();
               }
-              readCSVFile(files[0], this.props.updateRawData);
+              readCSVFile(
+                files[0],
+                this.props.updateRawData,
+                this.props.updateRawColumnHeaders
+              );
               this.changeUploadText(`Using ${files[0].name}`);
             }
           }}
@@ -77,7 +82,9 @@ class DataControls extends Component {
           type="file"
         />
         <label htmlFor="file">
-          <Button color={this.state.buttonColor} component="span" raised>{this.state.filename}</Button>
+          <Button color={this.state.buttonColor} component="span" raised>
+            {this.state.filename}
+          </Button>
         </label>
         <Divider />
         <Typography type="subheading">Describe Your Data</Typography>
@@ -86,6 +93,12 @@ class DataControls extends Component {
           types={['states', 'counties']}
           update={this.props.updateMapType}
           value={this.props.mapType}
+        />
+        <SelectList
+          list-name="id-select"
+          types={this.props.rawColumnHeaders }
+          update={this.props.updateId}
+          value={this.props.id}
         />
         <Snackbar
           anchorOrigin={{
@@ -103,9 +116,10 @@ class DataControls extends Component {
 
 function mapStateToProps(state) {
   return {
+    rawColumnHeaders: state.rawColumnHeaders,
     mapData: state.mapData,
     mapType: state.mapType,
-    columnHeaders: state.columnHeaders
+    id: state.id
   };
 }
 
@@ -115,9 +129,10 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       updateRawData: updateRawData,
+      updateRawColumnHeaders: updateRawColumnHeaders,
       updateMapType: updateMapType,
       updateMapData: updateMapData,
-      updateColumnHeaders: updateColumnHeaders
+      updateId: updateId
     },
     dispatch
   );

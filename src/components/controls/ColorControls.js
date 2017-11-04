@@ -46,6 +46,6 @@ class ColorControls extends Component {
       </FormControl>
     );
   }
-};
+}
 
 export default ColorControls;

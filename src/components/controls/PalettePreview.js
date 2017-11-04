@@ -9,10 +9,11 @@ const PalettePreview = props => {
           <div
             key={`palette-step-${s + 1}`}
             style={{
-              backgroundColor: colorScale(props.palette, [
-                0,
-                props.steps - 1
-              ])(s),
+              backgroundColor: colorScale(
+                props.palette, 
+                [0, props.steps - 1],
+                s
+              ),
               display: 'inline-block',
               height: '20px',
               marginTop: '6px',
