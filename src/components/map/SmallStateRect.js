@@ -13,6 +13,7 @@ const SmallStateRect = (props) => {
         strokeLinejoin="bevel"
       />
       <text
+        fontFamily="Lato"
         fontSize="12"
         textAnchor="middle"
         x={props.smallState.x + 8}
