@@ -90,12 +90,14 @@ class DataControls extends Component {
         <Typography type="subheading">Describe Your Data</Typography>
         <SelectList
           listName="map-type"
+          label="What type of US map is it?"
           types={['states', 'counties']}
           update={this.props.updateMapType}
           value={this.props.mapType}
         />
         <SelectList
           list-name="id-select"
+          label="Which column is the state ID?"
           types={this.props.rawColumnHeaders }
           update={this.props.updateId}
           value={this.props.id}

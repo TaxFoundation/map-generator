@@ -9,7 +9,7 @@ const SelectList = props => {
 
   return (
     <FormControl fullWidth>
-      <InputLabel htmlFor={props.listName}>Type of Map</InputLabel>
+      <InputLabel htmlFor={props.listName}>{props.label}</InputLabel>
       <Select
         input={<Input id={props.listName} />}
         onChange={event => {
