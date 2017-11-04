@@ -1,3 +1,25 @@
+// take in raw data
+export function updateRawData(rawData) {
+  return {
+    type: 'UPDATE_RAW_DATA',
+    rawData
+  };
+}
+
+export function updateRawColumnHeaders(rawColumnHeaders) {
+  return {
+    type: 'UPDATE_RAW_COLUMN_HEADERS',
+    rawColumnHeaders
+  };
+}
+
+export function updateId(id) {
+  return {
+    type: 'UPDATE_ID',
+    id
+  };
+}
+
 // update map type
 export function updateMapType(mapType) {
   return {
@@ -18,14 +40,6 @@ export function updateDataType(dataType) {
   return {
     type: 'UPDATE_DATA_TYPE',
     dataType
-  };
-}
-
-// update column headers
-export function updateColumnHeaders(headers) {
-  return {
-    type: 'UPDATE_COL_HEADERS',
-    headers
   };
 }
 

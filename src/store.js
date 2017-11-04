@@ -3,10 +3,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers/index';
 import data from './data/states';
 
+const defaultData = data.map(d => {return {id: d.id, value: d.value};});
+
 const defaultState = {
-  mapData: data,
+  rawData: data,
+  rawColumnHeaders: ['id', 'abbr', 'name'],
+  id: 'id',
+  mapData: defaultData,
   mapType: 'states',
-  columnHeaders: [''],
   colors: ['#edf8b1', '#2c7fb8'],
   domain: [0, 56],
   dataType: 'sequential',

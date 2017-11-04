@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default SmallStateRect = (props) => {
+const SmallStateRect = (props) => {
   return (
     <g>
       <rect
@@ -8,18 +8,21 @@ export default SmallStateRect = (props) => {
         y={props.smallState.y}
         height="16"
         width="16"
-        fill={colorScale(props.theState.value)}
+        fill={props.fill}
         stroke="#ffffff"
         strokeLinejoin="bevel"
       />
       <text
+        fontFamily="Lato"
         fontSize="12"
         textAnchor="middle"
         x={props.smallState.x + 8}
         y={props.smallState.y + 28}
       >
-        {props.theState.abbr}
+        {props.abbr}
       </text>
     </g>
   );
 };
+
+export default SmallStateRect;
