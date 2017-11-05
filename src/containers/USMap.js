@@ -8,6 +8,7 @@ import states from '../data/states';
 import smallStateRects from '../data/smallStateRects';
 import SmallStateRect from '../components/map/SmallStateRect';
 import Label from '../components/map/Label';
+import StateOutlines from '../components/map/StateOutlines';
 
 class USMap extends React.Component {
   constructor(props) {
@@ -66,7 +67,7 @@ class USMap extends React.Component {
             id={`geography-${d.id}`}
             className="state"
             fill={fill}
-            stroke="#ffffff"
+            stroke={this.props.mapType === 'states' ? '#ffffff' : 'none'}
             strokeLinejoin="bevel"
           />
           {this.props.mapType === 'states'
@@ -114,6 +115,9 @@ class USMap extends React.Component {
         <svg width="100%" viewBox={`0 0 ${this.xScale} ${this.yScale}`}>
           <g className="geographies">{geographies}</g>
           <g className="legend">{legend}</g>
+          {this.props.mapType === 'counties'
+            ? <g className="state-outlines"><StateOutlines path={path} /></g>
+            : null}
         </svg>
       </div>
     );
