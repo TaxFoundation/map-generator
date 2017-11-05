@@ -6,6 +6,7 @@ import mapData from './mapData';
 import mapType from './mapType';
 import dataType from './dataType';
 import colors from './colors';
+import colorMode from './colorMode';
 import domain from './domain';
 import scale from './scale';
 import steps from './steps';
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   mapType,
   dataType,
   colors,
+  colorMode,
   domain,
   scale,
   steps

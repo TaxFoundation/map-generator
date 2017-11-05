@@ -12,6 +12,7 @@ const defaultState = {
   mapData: defaultData,
   mapType: 'states',
   colors: ['#edf8b1', '#2c7fb8'],
+  colorMode: 'lch',
   domain: [0, 56],
   dataType: 'sequential',
   scale: 'linear',

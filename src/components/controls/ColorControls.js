@@ -19,6 +19,12 @@ class ColorControls extends Component {
       divergent: divergentColorPalettes,
       qualitative: qualitativeColorPalettes
     };
+
+    this.colorModes = [
+      'lch',
+      'rgb',
+      'hsv'
+    ];
   }
 
   render() {
@@ -31,14 +37,23 @@ class ColorControls extends Component {
             this.props.updateColors(event.target.value);
           }}
           renderValue={(value) => {
-            return <PalettePreview palette={value} steps={this.props.steps} />;
+            return (
+              <PalettePreview
+                colorMode={this.props.colorMode}
+                palette={value}
+                steps={this.props.steps}
+              />);
           }}
           value={this.props.colors}
         >
           {this.palettes[this.props.dataType].map(p => {
             return (
               <MenuItem key={`palette-${p.id}`} value={p.palette}>
-                <PalettePreview palette={p.palette} steps={this.props.steps} />
+                <PalettePreview
+                  mode={this.props.colorMode}
+                  palette={p.palette}
+                  steps={this.props.steps}
+                />
               </MenuItem>
             );
           })}

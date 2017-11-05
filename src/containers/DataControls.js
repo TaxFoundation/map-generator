@@ -94,6 +94,7 @@ class DataControls extends Component {
           types={['states', 'counties']}
           update={this.props.updateMapType}
           value={this.props.mapType}
+          case='first'
         />
         <SelectList
           list-name="id-select"

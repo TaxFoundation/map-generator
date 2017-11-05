@@ -4,11 +4,13 @@ import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import SelectList from '../components/controls/SelectList';
 import ColorControls from '../components/controls/ColorControls';
+import ColorModeControls from '../components/controls/ColorModeControls';
 import {
   updateDomain,
   updateDataType,
   updateSteps,
-  updateColors
+  updateColors,
+  updateColorMode
 } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
 
@@ -26,9 +28,14 @@ class StyleControls extends Component {
         />
         <ColorControls
           colors={this.props.colors}
+          colorMode={this.props.colorMode}
           dataType={this.props.dataType}
           updateColors={this.props.updateColors}
           steps={this.props.steps}
+        />
+        <ColorModeControls
+          colorMode={this.props.colorMode}
+          updateColorMode={this.props.updateColorMode}
         />
       </div>
     );
@@ -41,7 +48,8 @@ function mapStateToProps(state) {
     domain: state.domain,
     scale: state.scale,
     steps: state.steps,
-    colors: state.colors
+    colors: state.colors,
+    colorMode: state.colorMode
   };
 }
 
@@ -53,7 +61,8 @@ function mapDispatchToProps(dispatch) {
       updateDataType: updateDataType,
       updateDomain: updateDomain,
       updateSteps: updateSteps,
-      updateColors: updateColors
+      updateColors: updateColors,
+      updateColorMode: updateColorMode
     },
     dispatch
   );

@@ -18,7 +18,17 @@ const SelectList = props => {
         value={props.value}
       >
         {types.map(t => {
-          const text = t.charAt(0).toLocaleUpperCase() + t.slice(1);
+          let text;
+          switch(props.case) {
+          case('upper'):
+            text = t.toLocaleUpperCase();
+            break;
+          case('first'):
+            text = t.charAt(0).toLocaleUpperCase() + t.slice(1);
+            break;
+          default:
+            text = t;
+          }
           return (
             <MenuItem key={`map-type-${t}`} value={t}>
               {text}

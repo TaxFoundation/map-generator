@@ -42,7 +42,12 @@ class USMap extends React.Component {
       let abbr;
 
       if (data !== undefined) {
-        fill = colorScale(this.props.colors, this.props.domain, data.value);
+        fill = colorScale(
+          this.props.colors,
+          this.props.domain,
+          data.value,
+          this.props.colorMode
+        );
 
         if (this.props.mapType === 'states') {
           abbr = states.filter(s => +s.id === +data.id)[0]['abbr'];
@@ -90,7 +95,12 @@ class USMap extends React.Component {
       return (
         <rect
           key={`legend-${d}`}
-          fill={colorScale(this.props.colors, [0, this.props.steps - 1], d)}
+          fill={colorScale(
+            this.props.colors,
+            [0, this.props.steps - 1],
+            d,
+            this.props.colorMode
+          )}
           height={20 * this.yScalar}
           width={keyWidth}
           x={this.xScale / 2 + (keyWidth + keyGap) * d}
@@ -117,6 +127,7 @@ function mapStateToProps(state) {
     domain: state.domain,
     scale: state.scale,
     colors: state.colors,
+    colorMode: state.colorMode,
     steps: state.steps
   };
 }

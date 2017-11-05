@@ -60,6 +60,13 @@ export function updateColors(colors) {
   };
 }
 
+export function updateColorMode(colorMode) {
+  return {
+    type: 'UPDATE_COLOR_MODE',
+    colorMode
+  };
+}
+
 // update steps
 export function updateSteps(steps) {
   return {
