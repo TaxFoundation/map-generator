@@ -1,13 +1,15 @@
 import React from 'react';
 
 const SmallStateRect = (props) => {
+  const dimension = 12;
+
   return (
     <g>
       <rect
         x={props.smallState.x}
         y={props.smallState.y}
-        height="16"
-        width="16"
+        height={dimension}
+        width={dimension}
         fill={props.fill}
         stroke="#ffffff"
         strokeLinejoin="bevel"
@@ -15,9 +17,9 @@ const SmallStateRect = (props) => {
       <text
         fontFamily="Lato"
         fontSize="12"
-        textAnchor="middle"
-        x={props.smallState.x + 8}
-        y={props.smallState.y + 28}
+        textAnchor="end"
+        x={props.smallState.x - dimension / 2}
+        y={props.smallState.y + dimension - 1}
       >
         {props.abbr}
       </text>
