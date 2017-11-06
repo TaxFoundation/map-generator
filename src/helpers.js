@@ -7,7 +7,7 @@ export const colorScale = (colors, theDomain, value, steps, mode = 'lch') => {
 };
 
 export const labelColor = (backgroundColor) => {
-  return chroma.contrast('#000', backgroundColor) > 4.5 ? '#000000' : '#ffffff';
+  return chroma.contrast('#000', backgroundColor) > 6 ? '#000000' : '#ffffff';
 };
 
 export const readCSVFile = (file, updateRawData, updateRawColumnHeaders) => {
