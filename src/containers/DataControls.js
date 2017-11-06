@@ -26,6 +26,7 @@ class DataControls extends Component {
         <Divider />
         <Typography type="subheading">Describe Your Data</Typography>
         <SelectList
+          className="controls__control"
           listName="map-type"
           label="What type of US map is it?"
           types={['states', 'counties']}
@@ -34,6 +35,7 @@ class DataControls extends Component {
           case="first"
         />
         <SelectList
+          className="controls__control"
           list-name="id-select"
           label="Which column is the state ID?"
           types={this.props.rawColumnHeaders}
@@ -41,6 +43,7 @@ class DataControls extends Component {
           value={this.props.id}
         />
         <SelectList
+          className="controls__control"
           list-name="value-select"
           label="Which column is the value to map?"
           types={this.props.rawColumnHeaders}

@@ -1,4 +1,8 @@
 .controls {
   grid-column: 2 / 3;
   margin-right: 10px;
+
+  &__control {
+    margin-bottom: 2rem;
+  }
 }

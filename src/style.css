@@ -26,5 +26,7 @@ body {
 .controls {
   grid-column: 2 / 3;
   margin-right: 10px; }
+  .controls__control {
+    margin-bottom: 2rem; }
 
 /*# sourceMappingURL=style.css.map */

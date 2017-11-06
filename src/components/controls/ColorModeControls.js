@@ -10,6 +10,7 @@ const ColorModeControls = (props) => {
 
   return (
     <SelectList
+      className={props.className}
       list-name="color-mode-select"
       label="Which color mode do you want to use?"
       types={colorModes}

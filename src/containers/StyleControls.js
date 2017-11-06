@@ -22,12 +22,14 @@ class StyleControls extends Component {
         <Typography type="subheading">Describe Your Presentation</Typography>
         <Divider />
         <SelectList
+          className="controls__control"
           listName="data-type"
           types={['sequential', 'divergent', 'qualitative']}
           update={this.props.updateDataType}
           value={this.props.dataType}
         />
         <ColorControls
+          className="controls__control"
           colors={this.props.colors}
           colorMode={this.props.colorMode}
           dataType={this.props.dataType}
@@ -35,10 +37,12 @@ class StyleControls extends Component {
           steps={this.props.steps}
         />
         <ColorModeControls
+          className="controls__control"
           colorMode={this.props.colorMode}
           updateColorMode={this.props.updateColorMode}
         />
         <SelectList
+          className="controls__control"
           list-name="steps"
           types={range([1, 10])}
           update={this.props.updateSteps}

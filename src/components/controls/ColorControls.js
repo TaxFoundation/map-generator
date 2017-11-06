@@ -29,36 +29,38 @@ class ColorControls extends Component {
 
   render() {
     return (
-      <FormControl fullWidth>
-        <InputLabel htmlFor="color-palette">Color Palette</InputLabel>
-        <Select
-          input={<Input id="color-palette" />}
-          onChange={event => {
-            this.props.updateColors(event.target.value);
-          }}
-          renderValue={(value) => {
-            return (
-              <PalettePreview
-                colorMode={this.props.colorMode}
-                palette={value}
-                steps={this.props.steps}
-              />);
-          }}
-          value={this.props.colors}
-        >
-          {this.palettes[this.props.dataType].map(p => {
-            return (
-              <MenuItem key={`palette-${p.id}`} value={p.palette}>
+      <div className={this.props.className}>
+        <FormControl fullWidth>
+          <InputLabel htmlFor="color-palette">Color Palette</InputLabel>
+          <Select
+            input={<Input id="color-palette" />}
+            onChange={event => {
+              this.props.updateColors(event.target.value);
+            }}
+            renderValue={(value) => {
+              return (
                 <PalettePreview
-                  mode={this.props.colorMode}
-                  palette={p.palette}
+                  colorMode={this.props.colorMode}
+                  palette={value}
                   steps={this.props.steps}
-                />
-              </MenuItem>
-            );
-          })}
-        </Select>
-      </FormControl>
+                />);
+            }}
+            value={this.props.colors}
+          >
+            {this.palettes[this.props.dataType].map(p => {
+              return (
+                <MenuItem key={`palette-${p.id}`} value={p.palette}>
+                  <PalettePreview
+                    mode={this.props.colorMode}
+                    palette={p.palette}
+                    steps={this.props.steps}
+                  />
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+      </div>
     );
   }
 }
