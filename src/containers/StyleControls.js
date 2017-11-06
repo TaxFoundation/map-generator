@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
+import { range } from '../helpers';
 import SelectList from '../components/controls/SelectList';
 import ColorControls from '../components/controls/ColorControls';
 import ColorModeControls from '../components/controls/ColorModeControls';
@@ -36,6 +37,12 @@ class StyleControls extends Component {
         <ColorModeControls
           colorMode={this.props.colorMode}
           updateColorMode={this.props.updateColorMode}
+        />
+        <SelectList
+          list-name="steps"
+          types={range([1, 10])}
+          update={this.props.updateSteps}
+          value={this.props.steps}
         />
       </div>
     );

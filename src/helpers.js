@@ -2,8 +2,8 @@ import chroma from 'chroma-js';
 import { csvParse } from 'd3-dsv';
 import states from './data/states';
 
-export const colorScale = (colors, theDomain, value, mode = 'lch') => {
-  return chroma.scale(colors).domain(theDomain).mode(mode)(value);
+export const colorScale = (colors, theDomain, value, steps, mode = 'lch') => {
+  return chroma.scale(colors).domain(theDomain).mode(mode).classes(steps)(value);
 };
 
 export const labelColor = (backgroundColor) => {
@@ -43,6 +43,12 @@ export const validateIdChoice = (data, id) => {
   let fipsMatches = matcher(ids, fips);
   let abbrsMatches = matcher(ids, abbrs);
   let namesMatches = matcher(ids, names);
+};
 
-  console.log(fipsMatches, abbrsMatches, namesMatches);
+export const range = (startAndEnd) => {
+  let newArray = [];
+  for (let s = startAndEnd[0], e = startAndEnd[1]; s <= e; s++) {
+    newArray.push(s);
+  }
+  return newArray.sort((a, b) => {return a - b;});
 };

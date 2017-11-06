@@ -47,6 +47,7 @@ class USMap extends React.Component {
           this.props.colors,
           this.props.domain,
           data.value,
+          this.props.steps,
           this.props.colorMode
         );
 
@@ -100,6 +101,7 @@ class USMap extends React.Component {
             this.props.colors,
             [0, this.props.steps - 1],
             d,
+            this.props.steps,
             this.props.colorMode
           )}
           height={20 * this.yScalar}

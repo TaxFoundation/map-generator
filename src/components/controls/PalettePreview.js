@@ -9,6 +9,7 @@ const PalettePreview = props => {
           props.palette,
           [0, props.steps - 1],
           s,
+          props.steps,
           props.colorMode
         );
 
