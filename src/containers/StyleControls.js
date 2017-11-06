@@ -22,6 +22,7 @@ class StyleControls extends Component {
         <Typography type="subheading">Describe Your Presentation</Typography>
         <Divider />
         <SelectList
+          case="first"
           className="controls__control"
           listName="data-type"
           types={['sequential', 'divergent', 'qualitative']}
