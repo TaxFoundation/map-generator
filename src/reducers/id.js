@@ -1,4 +1,4 @@
-function columnHeaders(state = [], action) {
+function updateId(state = null, action) {
   switch(action.type) {
   case 'UPDATE_ID':
     return action.id;
@@ -7,4 +7,4 @@ function columnHeaders(state = [], action) {
   }
 }
 
-export default columnHeaders;
+export default updateId;

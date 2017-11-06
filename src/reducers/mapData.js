@@ -1,4 +1,4 @@
-function mapData(state = [], action) {
+function mapData(state = null, action) {
   switch(action.type) {
   case 'UPDATE_MAP_DATA':
     return action.mapData;

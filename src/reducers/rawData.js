@@ -1,4 +1,4 @@
-function rawData(state = [], action) {
+function rawData(state = null, action) {
   switch(action.type) {
   case 'UPDATE_RAW_DATA':
     return action.rawData;

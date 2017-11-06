@@ -1,7 +1,7 @@
-function colors(state = [], action) {
+function colors(state = null, action) {
   switch(action.type) {
   case 'UPDATE_COLORS':
-    return action.colors
+    return action.colors;
   default:
     return state;
   }

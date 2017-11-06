@@ -1,9 +1,9 @@
-function steps(state = [], action) {
+function steps(state = null, action) {
   switch(action.type) {
-    case 'UPDATE_STEPS':
-      return action.steps;
-    default:
-      return state;
+  case 'UPDATE_STEPS':
+    return action.steps;
+  default:
+    return state;
   }
 }
 
