@@ -7,8 +7,9 @@ const defaultData = data.map(d => {return {id: d.id, value: d.value};});
 
 const defaultState = {
   rawData: data,
-  rawColumnHeaders: ['id', 'abbr', 'name'],
+  rawColumnHeaders: ['id', 'abbr', 'name', 'value'],
   id: 'id',
+  value: 'value',
   mapData: defaultData,
   mapType: 'states',
   colors: ['#edf8b1', '#2c7fb8'],

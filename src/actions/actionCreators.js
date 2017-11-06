@@ -20,6 +20,13 @@ export function updateId(id) {
   };
 }
 
+export function updateValue(value) {
+  return {
+    type: 'UPDATE_VALUE',
+    value
+  };
+}
+
 // update map type
 export function updateMapType(mapType) {
   return {
