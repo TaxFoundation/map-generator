@@ -24,6 +24,7 @@ class StyleControls extends Component {
         <SelectList
           case="first"
           className="controls__control"
+          label="What type of data is this?"
           listName="data-type"
           types={['sequential', 'divergent', 'qualitative']}
           update={this.props.updateDataType}
@@ -44,6 +45,7 @@ class StyleControls extends Component {
         />
         <SelectList
           className="controls__control"
+          label="How many bins should that data be divided into?"
           list-name="steps"
           types={range([1, 10])}
           update={this.props.updateSteps}
