@@ -6,8 +6,20 @@ import { range } from '../helpers';
 import SelectList from '../components/controls/SelectList';
 import ColorControls from '../components/controls/ColorControls';
 import ColorModeControls from '../components/controls/ColorModeControls';
+import { sequentialSteps, divergentSteps } from '../data/colorPalette';
 import { updateDomain, updateDataType, updateSteps, updateColors, updateColorMode } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
+
+const palettes = dataType => {
+  switch (dataType) {
+    case 'sequential':
+      return sequentialSteps;
+      break;
+    case 'divergent':
+      return divergentSteps;
+      break;
+  }
+};
 
 class StyleControls extends Component {
   render() {
@@ -41,7 +53,7 @@ class StyleControls extends Component {
           className="controls__control"
           label="How many bins should that data be divided into?"
           list-name="steps"
-          types={range([1, 10])}
+          types={palettes(this.props.dataType)}
           update={this.props.updateSteps}
           value={this.props.steps}
         />
