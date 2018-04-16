@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Select from 'material-ui/Select';
 import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
@@ -47,5 +48,14 @@ class ColorControls extends Component {
     );
   }
 }
+
+ColorControls.propTypes = {
+  className: PropTypes.string,
+  colorMode: PropTypes.string,
+  steps: PropTypes.number,
+  updateColors: PropTypes.func,
+  colors: PropTypes.arrayOf(PropTypes.string),
+  dataType: PropTypes.string,
+};
 
 export default ColorControls;
