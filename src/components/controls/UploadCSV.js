@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import Snackbar from 'material-ui/Snackbar';
 import { readCSVFile } from '../../helpers';
@@ -76,5 +77,10 @@ class UploadCSV extends Component {
     );
   }
 }
+
+UploadCSV.propTypes = {
+  updateRawData: PropTypes.func,
+  updateRawColumnHeaders: PropTypes.func,
+};
 
 export default UploadCSV;
