@@ -3,7 +3,8 @@ module.exports = {
         "browser": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["eslint:recommended", "plugin:prettier/recommended", "plugin:react/recommended", "prettier/react"],
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -12,7 +13,7 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react", "prettier"
     ],
     "rules": {
         "indent": [
@@ -31,6 +32,15 @@ module.exports = {
             "error",
             "always"
         ],
-        "react/jsx-uses-vars": 2
+        "react/jsx-uses-vars": 2,
+        "react/jsx-uses-react": 2,
+        "prettier/prettier": [
+        "error",
+            {
+                trailingComma: "es5",
+                singleQuote: true,
+                printWidth: 120
+            }
+        ]
     }
 };
