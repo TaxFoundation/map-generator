@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  updateDomain,
-  updateDataType,
-  updateSteps,
-  updateColors
-} from '../actions/actionCreators';
+import { updateDomain, updateDataType, updateSteps, updateColors } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
 
 class OutputControls extends Component {
   render() {
-    return (
-      <div className="panel__section">
-
-      </div>
-    );
+    return <div className="panel__section" />;
   }
 }
 
@@ -24,7 +15,7 @@ function mapStateToProps(state) {
     domain: state.domain,
     scale: state.scale,
     steps: state.steps,
-    colors: state.colors
+    colors: state.colors,
   };
 }
 
@@ -36,7 +27,7 @@ function mapDispatchToProps(dispatch) {
       updateDataType: updateDataType,
       updateDomain: updateDomain,
       updateSteps: updateSteps,
-      updateColors: updateColors
+      updateColors: updateColors,
     },
     dispatch
   );

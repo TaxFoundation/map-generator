@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SmallStateRect = (props) => {
+const SmallStateRect = props => {
   const dimension = 12;
 
   return (

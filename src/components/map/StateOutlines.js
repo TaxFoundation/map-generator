@@ -3,13 +3,10 @@ import { feature } from 'topojson-client';
 import Features from '../../data/us.json';
 import states from '../../data/states';
 
-const StateOutlines = (props) => {
-  const paths = feature(
-    Features,
-    Features.objects['states']
-  ).features;
+const StateOutlines = props => {
+  const paths = feature(Features, Features.objects['states']).features;
 
-  return states.map((theState) => {
+  return states.map(theState => {
     return (
       <path
         key={`outline-${theState.id}`}

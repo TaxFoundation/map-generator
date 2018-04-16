@@ -12,30 +12,27 @@ class Controls extends Component {
     super(props);
 
     this.state = {
-      value: 0
+      value: 0,
     };
   }
 
   handleChange = (event, value) => {
-    this.setState({value});
-  }
+    this.setState({ value });
+  };
 
   render() {
     const { value } = this.state;
 
     return (
       <Paper className="controls panel">
-        <Typography type="headline" className="panel__section">Map Options</Typography>
+        <Typography type="headline" className="panel__section">
+          Map Options
+        </Typography>
         <AppBar position="static">
-          <Tabs
-            onChange={this.handleChange}
-            value={value}
-          >
-            <Tab label="Data">
-            </Tab>
-            <Tab label="Style">
-            </Tab>
-            <Tab label="Output"></Tab>
+          <Tabs onChange={this.handleChange} value={value}>
+            <Tab label="Data" />
+            <Tab label="Style" />
+            <Tab label="Output" />
           </Tabs>
         </AppBar>
         {value === 0 && <DataControls />}

@@ -6,13 +6,7 @@ import { range } from '../helpers';
 import SelectList from '../components/controls/SelectList';
 import ColorControls from '../components/controls/ColorControls';
 import ColorModeControls from '../components/controls/ColorModeControls';
-import {
-  updateDomain,
-  updateDataType,
-  updateSteps,
-  updateColors,
-  updateColorMode
-} from '../actions/actionCreators';
+import { updateDomain, updateDataType, updateSteps, updateColors, updateColorMode } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
 
 class StyleControls extends Component {
@@ -63,7 +57,7 @@ function mapStateToProps(state) {
     scale: state.scale,
     steps: state.steps,
     colors: state.colors,
-    colorMode: state.colorMode
+    colorMode: state.colorMode,
   };
 }
 
@@ -76,7 +70,7 @@ function mapDispatchToProps(dispatch) {
       updateDomain: updateDomain,
       updateSteps: updateSteps,
       updateColors: updateColors,
-      updateColorMode: updateColorMode
+      updateColorMode: updateColorMode,
     },
     dispatch
   );

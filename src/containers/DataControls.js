@@ -10,7 +10,7 @@ import {
   updateMapType,
   updateMapData,
   updateId,
-  updateValue
+  updateValue,
 } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
 
@@ -61,7 +61,7 @@ function mapStateToProps(state) {
     mapData: state.mapData,
     mapType: state.mapType,
     id: state.id,
-    value: state.value
+    value: state.value,
   };
 }
 
@@ -75,7 +75,7 @@ function mapDispatchToProps(dispatch) {
       updateMapType: updateMapType,
       updateMapData: updateMapData,
       updateId: updateId,
-      updateValue: updateValue
+      updateValue: updateValue,
     },
     dispatch
   );

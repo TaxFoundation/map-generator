@@ -11,7 +11,7 @@ class UploadCSV extends Component {
       filename: 'Upload a CSV File',
       showWarning: false,
       warningMessage: '',
-      buttonColor: 'primary'
+      buttonColor: 'primary',
     };
   }
 
@@ -41,15 +41,9 @@ class UploadCSV extends Component {
           onChange={e => {
             let files = e.target.files;
             if (files.length > 1) {
-              this.triggerWarning(
-                'Please only upload one file.',
-                'Upload Only One CSV File'
-              );
+              this.triggerWarning('Please only upload one file.', 'Upload Only One CSV File');
             } else if (files[0].type !== 'text/csv') {
-              this.triggerWarning(
-                'Please only upload CSV files.',
-                'Upload Only One CSV File'
-              );
+              this.triggerWarning('Please only upload CSV files.', 'Upload Only One CSV File');
             } else {
               if (this.state.buttonColor !== 'primary') {
                 this.changeButtonColor('primary');
@@ -57,11 +51,7 @@ class UploadCSV extends Component {
               if (this.state.showWarning) {
                 this.closeWarning();
               }
-              readCSVFile(
-                files[0],
-                this.props.updateRawData,
-                this.props.updateRawColumnHeaders
-              );
+              readCSVFile(files[0], this.props.updateRawData, this.props.updateRawColumnHeaders);
               this.changeUploadText(`Using ${files[0].name}`);
             }
           }}
@@ -76,7 +66,7 @@ class UploadCSV extends Component {
         <Snackbar
           anchorOrigin={{
             horizontal: 'center',
-            vertical: 'top'
+            vertical: 'top',
           }}
           autoHideDuration={10000}
           open={this.state.showWarning}

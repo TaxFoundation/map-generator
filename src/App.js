@@ -7,24 +7,23 @@ import Header from './components/Header';
 import Map from './components/Map';
 import Controls from './components/Controls';
 
-
 class App extends Component {
   theme = () => {
     return createMuiTheme({
       palette: {
-        primary: blueGrey
-      }
-    })
-  }
+        primary: blueGrey,
+      },
+    });
+  };
 
   render() {
     return (
       <Provider store={store}>
         <MuiThemeProvider theme={this.theme}>
           <div className="app">
-            <Header></Header>
-            <Map></Map>
-            <Controls></Controls>
+            <Header />
+            <Map />
+            <Controls />
           </div>
         </MuiThemeProvider>
       </Provider>

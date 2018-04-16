@@ -1,7 +1,7 @@
 import React from 'react';
 import { labelColor } from '../../helpers';
 
-const Label = (props) => {
+const Label = props => {
   if (!isNaN(props.center[0]) && !isNaN(props.center[1])) {
     const labelOverrides = [];
     let labelX = props.center[0];
@@ -10,16 +10,9 @@ const Label = (props) => {
       labelX = labelOverrides[props.id].x;
       labelY = labelOverrides[props.id].y;
     }
-  
+
     return (
-      <text
-        fill={labelColor(props.fill)}
-        fontFamily="Lato"
-        fontSize="12"
-        textAnchor="middle"
-        x={labelX}
-        y={labelY}
-      >
+      <text fill={labelColor(props.fill)} fontFamily="Lato" fontSize="12" textAnchor="middle" x={labelX} y={labelY}>
         {props.abbr}
       </text>
     );

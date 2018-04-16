@@ -3,7 +3,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers/index';
 import data from './data/states';
 
-const defaultData = data.map(d => {return {id: d.id, value: d.value};});
+const defaultData = data.map(d => {
+  return { id: d.id, value: d.value };
+});
 
 const defaultState = {
   rawData: data,

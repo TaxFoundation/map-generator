@@ -1,12 +1,8 @@
 import React from 'react';
 import SelectList from './SelectList';
 
-const ColorModeControls = (props) => {
-  const colorModes = [
-    'lch',
-    'rgb',
-    'hsv'
-  ];
+const ColorModeControls = props => {
+  const colorModes = ['lch', 'rgb', 'hsv'];
 
   return (
     <SelectList
