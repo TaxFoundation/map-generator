@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { colorScale } from '../../helpers';
 
 const PalettePreview = props => {
@@ -22,6 +23,12 @@ const PalettePreview = props => {
       })}
     </div>
   );
+};
+
+PalettePreview.propTypes = {
+  steps: PropTypes.number,
+  palette: PropTypes.arrayOf(PropTypes.string),
+  colorMode: PropTypes.string,
 };
 
 export default PalettePreview;

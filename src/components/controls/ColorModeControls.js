@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SelectList from './SelectList';
 
 const ColorModeControls = props => {
@@ -15,6 +16,12 @@ const ColorModeControls = props => {
       case="upper"
     />
   );
+};
+
+ColorModeControls.propTypes = {
+  className: PropTypes.string,
+  updateColorMode: PropTypes.func,
+  colorMode: PropTypes.string,
 };
 
 export default ColorModeControls;
