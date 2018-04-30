@@ -65,7 +65,7 @@ class UploadCSV extends Component {
           type="file"
         />
         <label htmlFor="file">
-          <Button color={this.state.buttonColor} component="span" variant="raised">
+          <Button color={this.state.buttonColor} component="span" variant="raised" fullWidth={true}>
             {this.state.filename}
           </Button>
         </label>

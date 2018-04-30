@@ -13,15 +13,15 @@ import { bindActionCreators } from 'redux';
 
 const palettes = dataType => {
   switch (dataType) {
-  case 'sequential':
-    return sequentialSteps;
-    break;
-  case 'divergent':
-    return divergentSteps;
-    break;
-  case 'qualitative':
-    return ['n/a'];
-    break;
+    case 'sequential':
+      return sequentialSteps;
+      break;
+    case 'divergent':
+      return divergentSteps;
+      break;
+    case 'qualitative':
+      return ['n/a'];
+      break;
   }
 };
 
@@ -29,7 +29,7 @@ class StyleControls extends Component {
   render() {
     return (
       <div className="panel__section">
-        <Typography type="subheading">Describe Your Presentation</Typography>
+        <Typography variant="subheading">Describe Your Presentation</Typography>
         <Divider />
         <SelectList
           case="first"

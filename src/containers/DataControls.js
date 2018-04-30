@@ -19,12 +19,12 @@ class DataControls extends Component {
   render() {
     return (
       <div className="panel__section">
-        <Typography type="subheading">Upload Data</Typography>
+        <Typography variant="subheading">Upload Data</Typography>
         <UploadCSV
           updateRawData={this.props.updateRawData}
           updateRawColumnHeaders={this.props.updateRawColumnHeaders}
         />
-        <Typography type="subheading">Describe Your Data</Typography>
+        <Typography variant="subheading">Describe Your Data</Typography>
         <SelectList
           className="controls__control"
           listName="map-type"

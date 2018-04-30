@@ -25,7 +25,7 @@ class Controls extends Component {
 
     return (
       <Paper className="controls panel">
-        <Typography type="headline" className="panel__section">
+        <Typography variant="headline" className="panel__section">
           Map Options
         </Typography>
         <AppBar position="static">
