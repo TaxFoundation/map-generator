@@ -23,7 +23,6 @@ class DataControls extends Component {
           updateRawData={this.props.updateRawData}
           updateRawColumnHeaders={this.props.updateRawColumnHeaders}
         />
-        <Divider />
         <Typography type="subheading">Describe Your Data</Typography>
         <SelectList
           className="controls__control"

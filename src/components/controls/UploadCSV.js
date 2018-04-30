@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import Snackbar from 'material-ui/Snackbar';
 import { readCSVFile } from '../../helpers';
+
+const UploadButtonContainer = styled.div`
+  margin-bottom: 1rem;
+`;
 
 class UploadCSV extends Component {
   constructor(props) {
@@ -35,7 +40,7 @@ class UploadCSV extends Component {
 
   render() {
     return (
-      <div>
+      <UploadButtonContainer>
         <input
           accept="csv,CSV"
           id="file"
@@ -60,7 +65,7 @@ class UploadCSV extends Component {
           type="file"
         />
         <label htmlFor="file">
-          <Button color={this.state.buttonColor} component="span" raised>
+          <Button color={this.state.buttonColor} component="span" variant="raised">
             {this.state.filename}
           </Button>
         </label>
@@ -73,7 +78,7 @@ class UploadCSV extends Component {
           open={this.state.showWarning}
           message={this.state.warningMessage}
         />
-      </div>
+      </UploadButtonContainer>
     );
   }
 }

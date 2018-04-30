@@ -92,7 +92,7 @@ class USMap extends React.Component {
 
     return (
       <div>
-        <svg width="100%" viewBox={`0 0 ${this.xScale} ${this.yScale}`}>
+        <svg id="generated-map" width="100%" viewBox={`0 0 ${this.xScale} ${this.yScale}`}>
           <g className="geographies">{geographies}</g>
           <g className="legend">{legend}</g>
           {this.props.mapType === 'counties' ? (
@@ -110,7 +110,7 @@ USMap.propTypes = {
   mapData: PropTypes.arrayOf(PropTypes.object),
   mapType: PropTypes.string,
   colors: PropTypes.arrayOf(PropTypes.string),
-  domain: PropTypes.arrayOf(PropTypes.string),
+  domain: PropTypes.arrayOf(PropTypes.number),
   steps: PropTypes.number,
   colorMode: PropTypes.string,
 };

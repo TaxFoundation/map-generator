@@ -2,10 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateDomain, updateDataType, updateSteps, updateColors } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
+import Button from 'material-ui/Button';
+import { saveSVG } from '../helpers';
 
 class OutputControls extends Component {
   render() {
-    return <div className="panel__section" />;
+    return (
+      <div className="panel__section">
+        <Button variant="raised" color="primary" href={saveSVG('generated-map')} download="map.svg">
+          Download SVG
+        </Button>
+      </div>
+    );
   }
 }
 
