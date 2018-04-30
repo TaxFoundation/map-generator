@@ -65,7 +65,6 @@ export const saveSVG = elementId => {
     type: 'image/svg_xml;charset=utf-8',
   });
   const downloadURL = URL.createObjectURL(theBlob);
-  console.log(downloadURL);
 
   return downloadURL;
 };
