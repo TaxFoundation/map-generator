@@ -8,7 +8,13 @@ import SelectList from '../components/controls/SelectList';
 import ColorControls from '../components/controls/ColorControls';
 import ColorModeControls from '../components/controls/ColorModeControls';
 import { sequentialSteps, divergentSteps } from '../data/colorPalette';
-import { updateDomain, updateDataType, updateSteps, updateColors, updateColorMode } from '../actions/actionCreators';
+import {
+  updateDomain,
+  updateDataType,
+  updateSteps,
+  updateColors,
+  updateColorMode,
+} from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
 
 const palettes = dataType => {

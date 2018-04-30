@@ -49,7 +49,9 @@ SelectList.propTypes = {
   disabled: PropTypes.bool,
   listName: PropTypes.string,
   label: PropTypes.string,
-  types: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  types: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ),
   update: PropTypes.func,
   value: PropTypes.node,
 };

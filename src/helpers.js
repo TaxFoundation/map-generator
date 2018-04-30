@@ -61,9 +61,12 @@ export const range = startAndEnd => {
 
 export const saveSVG = elementId => {
   const theSVG = document.getElementById(elementId).outerHTML;
-  const theBlob = new Blob(['<?xml version="1.0" standalone="no"?>\r\n', theSVG], {
-    type: 'image/svg_xml;charset=utf-8',
-  });
+  const theBlob = new Blob(
+    ['<?xml version="1.0" standalone="no"?>\r\n', theSVG],
+    {
+      type: 'image/svg_xml;charset=utf-8',
+    }
+  );
   const downloadURL = URL.createObjectURL(theBlob);
 
   return downloadURL;

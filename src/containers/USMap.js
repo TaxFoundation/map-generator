@@ -28,7 +28,10 @@ class USMap extends React.Component {
         .scale(this.scale)
         .translate([this.xScale / 2, this.yScale / 2 - 25])
     );
-    const USDataFeatures = feature(Features, Features.objects[this.props.mapType]).features;
+    const USDataFeatures = feature(
+      Features,
+      Features.objects[this.props.mapType]
+    ).features;
 
     const geographies = USDataFeatures.map(d => {
       // Match state's path to the current state data
@@ -41,7 +44,13 @@ class USMap extends React.Component {
       let abbr;
 
       if (data !== undefined) {
-        fill = colorScale(this.props.colors, this.props.domain, data.value, this.props.steps, this.props.colorMode);
+        fill = colorScale(
+          this.props.colors,
+          this.props.domain,
+          data.value,
+          this.props.steps,
+          this.props.colorMode
+        );
 
         if (this.props.mapType === 'states') {
           abbr = states.filter(s => +s.id === +data.id)[0]['abbr'];
@@ -65,9 +74,18 @@ class USMap extends React.Component {
           />
           {this.props.mapType === 'states' ? (
             isSmallState ? (
-              <SmallStateRect smallState={smallStateRects[d.id]} fill={fill} abbr={abbr} />
+              <SmallStateRect
+                smallState={smallStateRects[d.id]}
+                fill={fill}
+                abbr={abbr}
+              />
             ) : (
-              <Label id={d.id} fill={fill} center={path.centroid(d)} abbr={abbr} />
+              <Label
+                id={d.id}
+                fill={fill}
+                center={path.centroid(d)}
+                abbr={abbr}
+              />
             )
           ) : null}
         </g>
@@ -76,12 +94,19 @@ class USMap extends React.Component {
 
     const legend = [...Array(this.props.steps).keys()].map(d => {
       const keyGap = 10;
-      const keyWidth = (this.xScale / 2 / this.props.steps - keyGap) * this.xScalar;
+      const keyWidth =
+        (this.xScale / 2 / this.props.steps - keyGap) * this.xScalar;
 
       return (
         <rect
           key={`legend-${d}`}
-          fill={colorScale(this.props.colors, [0, this.props.steps - 1], d, this.props.steps, this.props.colorMode)}
+          fill={colorScale(
+            this.props.colors,
+            [0, this.props.steps - 1],
+            d,
+            this.props.steps,
+            this.props.colorMode
+          )}
           height={20 * this.yScalar}
           width={keyWidth}
           x={this.xScale / 2 + (keyWidth + keyGap) * d}
@@ -92,7 +117,11 @@ class USMap extends React.Component {
 
     return (
       <div>
-        <svg id="generated-map" width="100%" viewBox={`0 0 ${this.xScale} ${this.yScale}`}>
+        <svg
+          id="generated-map"
+          width="100%"
+          viewBox={`0 0 ${this.xScale} ${this.yScale}`}
+        >
           <g className="geographies">{geographies}</g>
           <g className="legend">{legend}</g>
           {this.props.mapType === 'counties' ? (
