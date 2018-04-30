@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
@@ -12,12 +13,12 @@ import { bindActionCreators } from 'redux';
 
 const palettes = dataType => {
   switch (dataType) {
-    case 'sequential':
-      return sequentialSteps;
-      break;
-    case 'divergent':
-      return divergentSteps;
-      break;
+  case 'sequential':
+    return sequentialSteps;
+    break;
+  case 'divergent':
+    return divergentSteps;
+    break;
   }
 };
 
@@ -61,6 +62,17 @@ class StyleControls extends Component {
     );
   }
 }
+
+StyleControls.propTypes = {
+  updateDataType: PropTypes.func,
+  dataType: PropTypes.string,
+  colors: PropTypes.arrayOf(PropTypes.string),
+  colorMode: PropTypes.string,
+  updateColors: PropTypes.func,
+  steps: PropTypes.number,
+  updateColorMode: PropTypes.func,
+  updateSteps: PropTypes.func,
+};
 
 function mapStateToProps(state) {
   return {
