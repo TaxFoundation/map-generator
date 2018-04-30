@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
@@ -79,5 +80,17 @@ function mapDispatchToProps(dispatch) {
     dispatch
   );
 }
+
+DataControls.propTypes = {
+  updateRawData: PropTypes.func,
+  updateRawColumnHeaders: PropTypes.func,
+  updateMapType: PropTypes.func,
+  mapType: PropTypes.string,
+  rawColumnHeaders: PropTypes.arrayOf(PropTypes.string),
+  updateId: PropTypes.func,
+  id: PropTypes.string,
+  updateValue: PropTypes.func,
+  value: PropTypes.string,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataControls);
