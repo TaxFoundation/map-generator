@@ -20,8 +20,8 @@ const ColorModeControls = props => {
 
 ColorModeControls.propTypes = {
   className: PropTypes.string,
-  updateColorMode: PropTypes.func,
   colorMode: PropTypes.string,
+  updateColorMode: PropTypes.func,
 };
 
 export default ColorModeControls;

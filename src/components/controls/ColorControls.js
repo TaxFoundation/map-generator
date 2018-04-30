@@ -66,10 +66,10 @@ class ColorControls extends Component {
 ColorControls.propTypes = {
   className: PropTypes.string,
   colorMode: PropTypes.string,
-  steps: PropTypes.number,
-  updateColors: PropTypes.func,
   colors: PropTypes.arrayOf(PropTypes.string),
   dataType: PropTypes.string,
+  steps: PropTypes.number,
+  updateColors: PropTypes.func,
 };
 
 export default ColorControls;

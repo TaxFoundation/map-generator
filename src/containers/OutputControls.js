@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  updateDomain,
-  updateDataType,
-  updateSteps,
   updateColors,
+  updateDataType,
+  updateDomain,
+  updateSteps,
 } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
 import Button from 'material-ui/Button';
@@ -31,11 +31,11 @@ class OutputControls extends Component {
 
 function mapStateToProps(state) {
   return {
+    colors: state.colors,
     dataType: state.dataType,
     domain: state.domain,
     scale: state.scale,
     steps: state.steps,
-    colors: state.colors,
   };
 }
 
@@ -44,10 +44,10 @@ function mapDispatchToProps(dispatch) {
   // whenever one of these is called, it's passed to reducers
   return bindActionCreators(
     {
+      updateColors: updateColors,
       updateDataType: updateDataType,
       updateDomain: updateDomain,
       updateSteps: updateSteps,
-      updateColors: updateColors,
     },
     dispatch
   );

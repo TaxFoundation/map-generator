@@ -136,22 +136,22 @@ class USMap extends React.Component {
 }
 
 USMap.propTypes = {
-  mapData: PropTypes.arrayOf(PropTypes.object),
-  mapType: PropTypes.string,
+  colorMode: PropTypes.string,
   colors: PropTypes.arrayOf(PropTypes.string),
   domain: PropTypes.arrayOf(PropTypes.number),
+  mapData: PropTypes.arrayOf(PropTypes.object),
+  mapType: PropTypes.string,
   steps: PropTypes.number,
-  colorMode: PropTypes.string,
 };
 
 function mapStateToProps(state) {
   return {
+    colorMode: state.colorMode,
+    colors: state.colors,
+    domain: state.domain,
     mapData: state.mapData,
     mapType: state.mapType,
-    domain: state.domain,
     scale: state.scale,
-    colors: state.colors,
-    colorMode: state.colorMode,
     steps: state.steps,
   };
 }

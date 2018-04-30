@@ -32,9 +32,9 @@ const PalettePreview = props => {
 };
 
 PalettePreview.propTypes = {
-  steps: PropTypes.number,
-  palette: PropTypes.arrayOf(PropTypes.string),
   colorMode: PropTypes.string,
+  palette: PropTypes.arrayOf(PropTypes.string),
+  steps: PropTypes.number,
 };
 
 export default PalettePreview;

@@ -6,11 +6,11 @@ import Divider from 'material-ui/Divider';
 import SelectList from '../components/controls/SelectList';
 import UploadCSV from '../components/controls/UploadCSV';
 import {
-  updateRawData,
-  updateRawColumnHeaders,
-  updateMapType,
-  updateMapData,
   updateId,
+  updateMapData,
+  updateMapType,
+  updateRawColumnHeaders,
+  updateRawData,
   updateValue,
 } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
@@ -57,10 +57,10 @@ class DataControls extends Component {
 
 function mapStateToProps(state) {
   return {
-    rawColumnHeaders: state.rawColumnHeaders,
+    id: state.id,
     mapData: state.mapData,
     mapType: state.mapType,
-    id: state.id,
+    rawColumnHeaders: state.rawColumnHeaders,
     value: state.value,
   };
 }
@@ -70,11 +70,11 @@ function mapDispatchToProps(dispatch) {
   // whenever one of these is called, it's passed to reducers
   return bindActionCreators(
     {
-      updateRawData: updateRawData,
-      updateRawColumnHeaders: updateRawColumnHeaders,
-      updateMapType: updateMapType,
-      updateMapData: updateMapData,
       updateId: updateId,
+      updateMapData: updateMapData,
+      updateMapType: updateMapType,
+      updateRawColumnHeaders: updateRawColumnHeaders,
+      updateRawData: updateRawData,
       updateValue: updateValue,
     },
     dispatch
@@ -82,13 +82,13 @@ function mapDispatchToProps(dispatch) {
 }
 
 DataControls.propTypes = {
-  updateRawData: PropTypes.func,
-  updateRawColumnHeaders: PropTypes.func,
-  updateMapType: PropTypes.func,
+  id: PropTypes.string,
   mapType: PropTypes.string,
   rawColumnHeaders: PropTypes.arrayOf(PropTypes.string),
   updateId: PropTypes.func,
-  id: PropTypes.string,
+  updateMapType: PropTypes.func,
+  updateRawColumnHeaders: PropTypes.func,
+  updateRawData: PropTypes.func,
   updateValue: PropTypes.func,
   value: PropTypes.string,
 };

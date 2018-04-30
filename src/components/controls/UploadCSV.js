@@ -14,10 +14,10 @@ class UploadCSV extends Component {
     super(props);
 
     this.state = {
+      buttonColor: 'primary',
       filename: 'Upload a CSV File',
       showWarning: false,
       warningMessage: '',
-      buttonColor: 'primary',
     };
   }
 
@@ -99,8 +99,8 @@ class UploadCSV extends Component {
 }
 
 UploadCSV.propTypes = {
-  updateRawData: PropTypes.func,
   updateRawColumnHeaders: PropTypes.func,
+  updateRawData: PropTypes.func,
 };
 
 export default UploadCSV;

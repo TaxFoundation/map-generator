@@ -8,18 +8,18 @@ const defaultData = data.map(d => {
 });
 
 const defaultState = {
-  rawData: data,
-  rawColumnHeaders: ['id', 'abbr', 'name', 'value'],
+  colorMode: 'lch',
+  colors: ['#edf8b1', '#2c7fb8'],
+  dataType: 'sequential',
+  domain: [0, 56],
   id: 'id',
-  value: 'value',
   mapData: defaultData,
   mapType: 'states',
-  colors: ['#edf8b1', '#2c7fb8'],
-  colorMode: 'lch',
-  domain: [0, 56],
-  dataType: 'sequential',
+  rawColumnHeaders: ['id', 'abbr', 'name', 'value'],
+  rawData: data,
   scale: 'linear',
   steps: 10,
+  value: 'value',
 };
 
 const store = createStore(rootReducer, defaultState, composeWithDevTools());

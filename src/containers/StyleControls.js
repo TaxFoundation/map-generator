@@ -74,24 +74,24 @@ class StyleControls extends Component {
 }
 
 StyleControls.propTypes = {
-  updateDataType: PropTypes.func,
-  dataType: PropTypes.string,
-  colors: PropTypes.arrayOf(PropTypes.string),
   colorMode: PropTypes.string,
-  updateColors: PropTypes.func,
+  colors: PropTypes.arrayOf(PropTypes.string),
+  dataType: PropTypes.string,
   steps: PropTypes.number,
   updateColorMode: PropTypes.func,
+  updateColors: PropTypes.func,
+  updateDataType: PropTypes.func,
   updateSteps: PropTypes.func,
 };
 
 function mapStateToProps(state) {
   return {
+    colorMode: state.colorMode,
+    colors: state.colors,
     dataType: state.dataType,
     domain: state.domain,
     scale: state.scale,
     steps: state.steps,
-    colors: state.colors,
-    colorMode: state.colorMode,
   };
 }
 
@@ -100,11 +100,11 @@ function mapDispatchToProps(dispatch) {
   // whenever one of these is called, it's passed to reducers
   return bindActionCreators(
     {
+      updateColorMode: updateColorMode,
+      updateColors: updateColors,
       updateDataType: updateDataType,
       updateDomain: updateDomain,
       updateSteps: updateSteps,
-      updateColors: updateColors,
-      updateColorMode: updateColorMode,
     },
     dispatch
   );
