@@ -20,6 +20,7 @@
     "topojson-client": "^3.0.0"
   },
   "scripts": {
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "watch-sass": "node-sass src/style.scss src/style.css -w --source-map=src/style.css.map",
     "start-js": "react-scripts start",
     "start": "concurrently -c \"magenta,cyan\" --names \"Sass,React\" \"npm run watch-sass\" \"npm run start-js\"",
