@@ -6,11 +6,12 @@ import { MenuItem } from 'material-ui/Menu';
 import Select from 'material-ui/Select';
 
 const SelectList = props => {
+  const disabled = props.disabled || false;
   const types = props.types;
 
   return (
     <div className={props.className}>
-      <FormControl fullWidth>
+      <FormControl fullWidth disabled={disabled}>
         <InputLabel htmlFor={props.listName}>{props.label}</InputLabel>
         <Select
           input={<Input id={props.listName} />}
@@ -45,8 +46,10 @@ const SelectList = props => {
 
 SelectList.propTypes = {
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   listName: PropTypes.string,
   label: PropTypes.string,
+  types: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
   update: PropTypes.func,
   value: PropTypes.node,
 };

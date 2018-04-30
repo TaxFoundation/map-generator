@@ -19,6 +19,9 @@ const palettes = dataType => {
   case 'divergent':
     return divergentSteps;
     break;
+  case 'qualitative':
+    return ['n/a'];
+    break;
   }
 };
 
@@ -52,6 +55,7 @@ class StyleControls extends Component {
         />
         <SelectList
           className="controls__control"
+          disabled={this.props.dataType === 'qualitative' ? true : false}
           label="How many bins should that data be divided into?"
           list-name="steps"
           types={palettes(this.props.dataType)}
