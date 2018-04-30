@@ -12,7 +12,7 @@ const Label = props => {
     }
 
     return (
-      <text fill={labelColor(props.fill)} fontFamily="Lato" fontSize="12" textAnchor="middle" x={labelX} y={labelY}>
+      <text fill={labelColor(props.fill)} fontFamily="Lato" fontSize="10" textAnchor="middle" x={labelX} y={labelY}>
         {props.abbr}
       </text>
     );
