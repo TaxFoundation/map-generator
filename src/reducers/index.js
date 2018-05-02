@@ -24,7 +24,7 @@ const rootReducer = combineReducers({
   colorMode,
   domain,
   scale,
-  steps
+  steps,
 });
 
 export default rootReducer;

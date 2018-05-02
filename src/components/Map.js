@@ -8,7 +8,7 @@ class Map extends Component {
   render() {
     return (
       <Paper className="map panel">
-        <Typography type="headline" className="panel__section">
+        <Typography variant="headline" className="panel__section">
           Map Result
         </Typography>
         <Divider />

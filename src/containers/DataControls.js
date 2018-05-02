@@ -55,6 +55,18 @@ class DataControls extends Component {
   }
 }
 
+DataControls.propTypes = {
+  id: PropTypes.string,
+  mapType: PropTypes.string,
+  rawColumnHeaders: PropTypes.arrayOf(PropTypes.string),
+  updateId: PropTypes.func,
+  updateMapType: PropTypes.func,
+  updateRawColumnHeaders: PropTypes.func,
+  updateRawData: PropTypes.func,
+  updateValue: PropTypes.func,
+  value: PropTypes.string,
+};
+
 function mapStateToProps(state) {
   return {
     id: state.id,
@@ -80,17 +92,5 @@ function mapDispatchToProps(dispatch) {
     dispatch
   );
 }
-
-DataControls.propTypes = {
-  id: PropTypes.string,
-  mapType: PropTypes.string,
-  rawColumnHeaders: PropTypes.arrayOf(PropTypes.string),
-  updateId: PropTypes.func,
-  updateMapType: PropTypes.func,
-  updateRawColumnHeaders: PropTypes.func,
-  updateRawData: PropTypes.func,
-  updateValue: PropTypes.func,
-  value: PropTypes.string,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataControls);
