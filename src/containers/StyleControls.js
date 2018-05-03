@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import { range } from '../helpers';
@@ -8,14 +7,6 @@ import SelectList from '../components/controls/SelectList';
 import ColorControls from '../components/controls/ColorControls';
 import ColorModeControls from '../components/controls/ColorModeControls';
 import { sequentialSteps, divergentSteps } from '../data/colorPalette';
-import {
-  updateDomain,
-  updateDataType,
-  updateSteps,
-  updateColors,
-  updateColorMode,
-} from '../actions/actionCreators';
-import { bindActionCreators } from 'redux';
 
 const palettes = dataType => {
   switch (dataType) {
@@ -84,30 +75,4 @@ StyleControls.propTypes = {
   updateSteps: PropTypes.func,
 };
 
-function mapStateToProps(state) {
-  return {
-    colorMode: state.colorMode,
-    colors: state.colors,
-    dataType: state.dataType,
-    domain: state.domain,
-    scale: state.scale,
-    steps: state.steps,
-  };
-}
-
-// anything returned will end up as props in StyleControls
-function mapDispatchToProps(dispatch) {
-  // whenever one of these is called, it's passed to reducers
-  return bindActionCreators(
-    {
-      updateColorMode: updateColorMode,
-      updateColors: updateColors,
-      updateDataType: updateDataType,
-      updateDomain: updateDomain,
-      updateSteps: updateSteps,
-    },
-    dispatch
-  );
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(StyleControls);
+export default StyleControls;

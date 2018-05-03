@@ -1,6 +1,6 @@
 import React, { Component, createContext } from 'react';
 import { Provider } from 'react-redux';
-import defaultState from './defaultState';
+import data from './data/states';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { blueGrey } from 'material-ui/colors';
 import Header from './components/Header';
@@ -10,7 +10,35 @@ import Controls from './components/Controls';
 const MapGeneratorContext = createContext(defaultState());
 
 class Provider extends Component {
-  state = defaultState();
+  constructor() {
+    const defaultData = data.map(d => {
+      return {
+        id: d.id,
+        value: d.value,
+      };
+    });
+
+    this.state = {
+      colorMode: 'lch',
+      colors: ['#edf8b1', '#2c7fb8'],
+      dataType: 'sequential',
+      domain: [0, 56],
+      id: 'id',
+      mapData: defaultData,
+      mapType: 'states',
+      rawColumnHeaders: ['id', 'abbr', 'name', 'value'],
+      rawData: data,
+      scale: 'linear',
+      steps: 10,
+      value: 'value',
+    };
+
+    this.updateState = this.updateState.bind(this.updateState);
+  }
+
+  updateState(id, data) {
+    this.setState({ id: data });
+  }
 
   render() {
     return (
