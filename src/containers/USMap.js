@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import MapGeneratorContext from '../Context';
 import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import { colorScale } from '../helpers';
@@ -144,16 +144,4 @@ USMap.propTypes = {
   steps: PropTypes.number,
 };
 
-function mapStateToProps(state) {
-  return {
-    colorMode: state.colorMode,
-    colors: state.colors,
-    domain: state.domain,
-    mapData: state.mapData,
-    mapType: state.mapType,
-    scale: state.scale,
-    steps: state.steps,
-  };
-}
-
-export default connect(mapStateToProps)(USMap);
+export default USMap;
