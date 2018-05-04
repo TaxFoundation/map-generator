@@ -44,6 +44,23 @@ class Provider extends Component {
               [pieceOfState]: data,
             });
           },
+          updateMapData: (pieceOfState, data) => {
+            this.setState(
+              {
+                [pieceOfState]: data,
+              },
+              () => {
+                this.setState({
+                  mapData: this.state.rawData.map(d => {
+                    return {
+                      id: d[this.state.id],
+                      value: d[this.state.value],
+                    };
+                  }),
+                });
+              }
+            );
+          },
         }}
       >
         {this.props.children}

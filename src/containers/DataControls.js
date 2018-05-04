@@ -34,7 +34,7 @@ class DataControls extends Component {
               list-name="id-select"
               label="Which column is the state ID?"
               types={context.state.rawColumnHeaders}
-              update={data => context.updateState('id', data)}
+              update={data => context.updateMapData('id', data)}
               value={context.state.id}
             />
             <SelectList
@@ -42,7 +42,7 @@ class DataControls extends Component {
               list-name="value-select"
               label="Which column is the value to map?"
               types={context.state.rawColumnHeaders}
-              update={data => context.updateState('value', data)}
+              update={data => context.updateMapData('value', data)}
               value={context.state.value}
             />
           </div>
