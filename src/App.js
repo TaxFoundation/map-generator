@@ -32,17 +32,20 @@ class Provider extends Component {
       steps: 10,
       value: 'value',
     };
-
-    this.updateState = this.updateState.bind(this.updateState);
-  }
-
-  updateState(id, data) {
-    this.setState({ id: data });
   }
 
   render() {
     return (
-      <MapGeneratorContext.Provider value={{ state: this.state }}>
+      <MapGeneratorContext.Provider
+        value={{
+          state: this.state,
+          updateState: (pieceOfState, data) => {
+            this.setState({
+              [pieceOfState]: data,
+            });
+          },
+        }}
+      >
         {this.props.children}
       </MapGeneratorContext.Provider>
     );

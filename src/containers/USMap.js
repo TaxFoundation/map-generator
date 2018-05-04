@@ -144,18 +144,4 @@ USMap.propTypes = {
   steps: PropTypes.number,
 };
 
-export default props => (
-  <MapGeneratorContext.Consumer>
-    {context => (
-      <USMap
-        {...props}
-        mapData={context.state.mapData}
-        colorMode={context.state.colorMode}
-        colors={context.state.colors}
-        domain={context.state.domain}
-        mapType={context.state.mapType}
-        steps={context.state.steps}
-      />
-    )}
-  </MapGeneratorContext.Consumer>
-);
+export default USMap;

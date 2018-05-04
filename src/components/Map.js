@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MapGeneratorContext from '../Context';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import Typography from 'material-ui/Typography';
@@ -13,7 +14,18 @@ class Map extends Component {
         </Typography>
         <Divider />
         <div className="panel__section">
-          <USMap />
+          <MapGeneratorContext.Consumer>
+            {context => (
+              <USMap
+                mapData={context.state.mapData}
+                colorMode={context.state.colorMode}
+                colors={context.state.colors}
+                domain={context.state.domain}
+                mapType={context.state.mapType}
+                steps={context.state.steps}
+              />
+            )}
+          </MapGeneratorContext.Consumer>
         </div>
       </Paper>
     );
