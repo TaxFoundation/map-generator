@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import MapGeneratorContext from '../Context';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import { range } from '../helpers';
@@ -25,41 +26,47 @@ const palettes = dataType => {
 class StyleControls extends Component {
   render() {
     return (
-      <div className="panel__section">
-        <Typography variant="subheading">Describe Your Presentation</Typography>
-        <Divider />
-        <SelectList
-          case="first"
-          className="controls__control"
-          label="What type of data is this?"
-          listName="data-type"
-          types={['sequential', 'divergent', 'qualitative']}
-          update={this.props.updateDataType}
-          value={this.props.dataType}
-        />
-        <ColorControls
-          className="controls__control"
-          colors={this.props.colors}
-          colorMode={this.props.colorMode}
-          dataType={this.props.dataType}
-          updateColors={this.props.updateColors}
-          steps={this.props.steps}
-        />
-        <ColorModeControls
-          className="controls__control"
-          colorMode={this.props.colorMode}
-          updateColorMode={this.props.updateColorMode}
-        />
-        <SelectList
-          className="controls__control"
-          disabled={this.props.dataType === 'qualitative' ? true : false}
-          label="How many bins should that data be divided into?"
-          list-name="steps"
-          types={palettes(this.props.dataType)}
-          update={this.props.updateSteps}
-          value={this.props.steps}
-        />
-      </div>
+      <MapGeneratorContext.Consumer>
+        {context => (
+          <div className="panel__section">
+            <Typography variant="subheading">
+              Describe Your Presentation
+            </Typography>
+            <Divider />
+            <SelectList
+              case="first"
+              className="controls__control"
+              label="What type of data is this?"
+              listName="data-type"
+              types={['sequential', 'divergent', 'qualitative']}
+              update={data => context.updateState('dataType', data)}
+              value={context.state.dataType}
+            />
+            <ColorControls
+              className="controls__control"
+              colors={context.state.colors}
+              colorMode={context.state.colorMode}
+              dataType={context.state.dataType}
+              updateColors={data => context.updateState('colors', data)}
+              steps={context.state.steps}
+            />
+            <ColorModeControls
+              className="controls__control"
+              colorMode={context.state.colorMode}
+              updateColorMode={data => context.updateState('colorMode', data)}
+            />
+            <SelectList
+              className="controls__control"
+              disabled={context.state.dataType === 'qualitative' ? true : false}
+              label="How many bins should that data be divided into?"
+              list-name="steps"
+              types={palettes(context.state.dataType)}
+              update={data => context.updateState('steps', data)}
+              value={context.state.steps}
+            />
+          </div>
+        )}
+      </MapGeneratorContext.Consumer>
     );
   }
 }

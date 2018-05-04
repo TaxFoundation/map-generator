@@ -1,16 +1,16 @@
-import React, { Component, createContext } from 'react';
-import { Provider } from 'react-redux';
+import React, { Component } from 'react';
 import data from './data/states';
+import MapGeneratorContext from './Context';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { blueGrey } from 'material-ui/colors';
 import Header from './components/Header';
 import Map from './components/Map';
 import Controls from './components/Controls';
 
-const MapGeneratorContext = createContext(defaultState());
-
 class Provider extends Component {
   constructor() {
+    super();
+
     const defaultData = data.map(d => {
       return {
         id: d.id,
