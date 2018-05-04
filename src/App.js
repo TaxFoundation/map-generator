@@ -50,13 +50,21 @@ class Provider extends Component {
                 [pieceOfState]: data,
               },
               () => {
+                const newData = this.state.rawData.map(d => {
+                  return {
+                    id: d[this.state.id],
+                    value: +d[this.state.value],
+                  };
+                });
+
+                const newValues = newData.map(d => d.value);
+                const newMin = Math.min(...newValues);
+                const newMax = Math.max(...newValues);
+                console.log([newMin, newMax]);
+
                 this.setState({
-                  mapData: this.state.rawData.map(d => {
-                    return {
-                      id: d[this.state.id],
-                      value: d[this.state.value],
-                    };
-                  }),
+                  domain: [newMin, newMax],
+                  mapData: newData,
                 });
               }
             );
