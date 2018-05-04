@@ -42,8 +42,10 @@ class USMap extends React.Component {
       let fill = '#777777';
       let isSmallState = false;
       let abbr;
+      let value = '';
 
       if (data !== undefined) {
+        value = data.value;
         fill = colorScale(
           this.props.colors,
           this.props.domain,
@@ -85,6 +87,7 @@ class USMap extends React.Component {
                 fill={fill}
                 center={path.centroid(d)}
                 abbr={abbr}
+                value={value}
               />
             )
           ) : null}

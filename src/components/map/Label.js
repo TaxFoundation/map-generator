@@ -12,16 +12,26 @@ const Label = props => {
     }
 
     return (
-      <text
-        fill={labelColor(props.fill)}
-        fontFamily="Lato"
-        fontSize="10"
-        textAnchor="middle"
-        x={labelX}
-        y={labelY}
-      >
-        {props.abbr}
-      </text>
+      <g transform={`translate(${labelX}, ${labelY})`}>
+        <text
+          dy="-6"
+          fill={labelColor(props.fill)}
+          fontFamily="Lato"
+          fontSize="10"
+          textAnchor="middle"
+        >
+          {props.abbr}
+        </text>
+        <text
+          dy="6"
+          fill={labelColor(props.fill)}
+          fontFamily="Lato"
+          fontSize="10"
+          textAnchor="middle"
+        >
+          {props.value}
+        </text>
+      </g>
     );
   } else {
     return null;
