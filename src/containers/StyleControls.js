@@ -10,6 +10,7 @@ import {
   FormControlLabel,
   FormHelperText,
 } from 'material-ui/Form';
+import TextField from 'material-ui/TextField';
 import { range } from '../helpers';
 import SelectList from '../components/controls/SelectList';
 import ColorControls from '../components/controls/ColorControls';
@@ -83,6 +84,14 @@ class StyleControls extends Component {
                 label="Percentages"
               />
             </div>
+            <TextField
+              label="Show this many decimal places."
+              value={context.state.decimals}
+              onChange={e => context.updateState('decimals', +e.target.value)}
+              margin="normal"
+              type="number"
+              fullWidth
+            />
             <ColorControls
               className="controls__control"
               colors={context.state.colors}
