@@ -16,6 +16,9 @@ body {
   overflow-y: auto;
 
   &__section {
-    padding: 10px;
+    display: block !important;
+    margin: 0 auto !important;
+    padding: 10px !important;
+    width: 90%;
   }
 }

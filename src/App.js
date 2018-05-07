@@ -31,6 +31,10 @@ class Provider extends Component {
       scale: 'linear',
       steps: 10,
       value: 'value',
+      format: 'number',
+      decimals: 0,
+      comma: true,
+      unit: 1,
     };
   }
 

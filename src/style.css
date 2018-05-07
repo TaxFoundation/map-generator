@@ -13,7 +13,10 @@ body {
   grid-row: span 1;
   overflow-y: auto; }
   .panel__section {
-    padding: 10px; }
+    display: block !important;
+    margin: 0 auto !important;
+    padding: 10px !important;
+    width: 90%; }
 
 .header {
   grid-column: 1 / 3;

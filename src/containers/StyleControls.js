@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import MapGeneratorContext from '../Context';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
+import Radio from 'material-ui/Radio';
+import {
+  FormLabel,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+} from 'material-ui/Form';
 import { range } from '../helpers';
 import SelectList from '../components/controls/SelectList';
 import ColorControls from '../components/controls/ColorControls';
@@ -28,10 +35,8 @@ class StyleControls extends Component {
     return (
       <MapGeneratorContext.Consumer>
         {context => (
-          <div className="panel__section">
-            <Typography variant="subheading">
-              Describe Your Presentation
-            </Typography>
+          <FormControl className="panel__section">
+            <FormLabel>Describe Your Presentation</FormLabel>
             <Divider />
             <SelectList
               case="first"
@@ -42,6 +47,42 @@ class StyleControls extends Component {
               update={data => context.updateState('dataType', data)}
               value={context.state.dataType}
             />
+            <FormLabel>How Should the Data be Formatted?</FormLabel>
+            <div>
+              <FormControlLabel
+                checked={context.state.format === 'number'}
+                value="number"
+                control={
+                  <Radio
+                    color="primary"
+                    onChange={e => context.updateState('format', 'number')}
+                  />
+                }
+                label="Numbers"
+              />
+              <FormControlLabel
+                checked={context.state.format === 'dollar'}
+                value="dollar"
+                control={
+                  <Radio
+                    color="primary"
+                    onChange={e => context.updateState('format', 'dollar')}
+                  />
+                }
+                label="Dollars"
+              />
+              <FormControlLabel
+                checked={context.state.format === 'percentage'}
+                value="percentage"
+                control={
+                  <Radio
+                    color="primary"
+                    onChange={e => context.updateState('format', 'percentage')}
+                  />
+                }
+                label="Percentages"
+              />
+            </div>
             <ColorControls
               className="controls__control"
               colors={context.state.colors}
@@ -64,7 +105,7 @@ class StyleControls extends Component {
               update={data => context.updateState('steps', data)}
               value={context.state.steps}
             />
-          </div>
+          </FormControl>
         )}
       </MapGeneratorContext.Consumer>
     );

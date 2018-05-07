@@ -1,5 +1,6 @@
 import chroma from 'chroma-js';
 import { csvParse } from 'd3-dsv';
+import { format } from 'd3-format';
 import states from './data/states';
 
 export const colorScale = (colors, theDomain, value, steps, mode = 'lch') => {
@@ -70,4 +71,20 @@ export const saveSVG = elementId => {
   const downloadURL = URL.createObjectURL(theBlob);
 
   return downloadURL;
+};
+
+export const formatter = (parameters, value) => {
+  let dollar = parameters.format === 'dollar' ? '$' : '';
+  let percentage = parameters.format === 'percentage' ? '%' : '';
+  let comma = parameters.comma ? ',' : '';
+  let decimalPlaces = '.0f';
+  if (parameters.decimals > 0 && !parameters.format === 'percentage') {
+    decimalPlaces = `.${parameters.decimals}f`;
+  } else if (parameters.format === 'percentage') {
+    decimalPlaces = `.${parameters.decimals}`;
+  }
+
+  return format(`${dollar}${comma}${decimalPlaces}${percentage}`)(
+    value / parameters.unit
+  );
 };
