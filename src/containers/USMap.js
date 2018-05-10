@@ -40,7 +40,39 @@ class USMap extends React.Component {
       });
 
       let fill = '#777777';
+      let value = '';
+
+      if (data !== undefined) {
+        value = data.value;
+        fill = colorScale(
+          this.props.colors,
+          this.props.domain,
+          data.value,
+          this.props.steps,
+          this.props.colorMode
+        );
+      }
+
+      return (
+        <path
+          d={path(d)}
+          id={`geography-${d.id}`}
+          className="state"
+          fill={fill}
+          stroke={this.props.mapType === 'states' ? '#ffffff' : 'none'}
+          strokeLinejoin="bevel"
+        />
+      );
+    });
+
+    const labels = USDataFeatures.map(d => {
+      // Match state's path to the current state data
+      let data = this.props.mapData.find(s => {
+        return +s.id === +d.id;
+      });
+
       let isSmallState = false;
+      let fill = '#777777';
       let abbr;
       let value = '';
 
@@ -64,35 +96,23 @@ class USMap extends React.Component {
         }
       }
 
-      return (
-        <g key={`geo-${d.id}`}>
-          <path
-            d={path(d)}
-            id={`geography-${d.id}`}
-            className="state"
+      return this.props.mapType === 'states' ? (
+        isSmallState ? (
+          <SmallStateRect
+            smallState={smallStateRects[d.id]}
             fill={fill}
-            stroke={this.props.mapType === 'states' ? '#ffffff' : 'none'}
-            strokeLinejoin="bevel"
+            abbr={abbr}
           />
-          {this.props.mapType === 'states' ? (
-            isSmallState ? (
-              <SmallStateRect
-                smallState={smallStateRects[d.id]}
-                fill={fill}
-                abbr={abbr}
-              />
-            ) : (
-              <Label
-                id={d.id}
-                fill={fill}
-                center={path.centroid(d)}
-                abbr={abbr}
-                value={value}
-              />
-            )
-          ) : null}
-        </g>
-      );
+        ) : (
+          <Label
+            id={d.id}
+            fill={fill}
+            center={path.centroid(d)}
+            abbr={abbr}
+            value={value}
+          />
+        )
+      ) : null;
     });
 
     const legend = [...Array(this.props.steps).keys()].map(d => {
@@ -126,6 +146,7 @@ class USMap extends React.Component {
           viewBox={`0 0 ${this.xScale} ${this.yScale}`}
         >
           <g className="geographies">{geographies}</g>
+          <g className="labels">{labels}</g>
           <g className="legend">{legend}</g>
           {this.props.mapType === 'counties' ? (
             <g className="state-outlines">
