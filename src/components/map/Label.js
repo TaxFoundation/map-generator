@@ -4,13 +4,10 @@ import { formatter, labelColor } from '../../helpers';
 
 const Label = props => {
   if (!isNaN(props.center[0]) && !isNaN(props.center[1])) {
-    const labelOverrides = [];
-    let labelX = props.center[0];
-    let labelY = props.center[1] + 6;
-    if (props.id in labelOverrides) {
-      labelX = labelOverrides[props.id].x;
-      labelY = labelOverrides[props.id].y;
-    }
+    let labelX = props.center[0] + props.adjustment[0];
+    let labelY = props.center[1] + props.adjustment[1] + 6;
+
+    let color = props.id === 15 ? '#333' : labelColor(props.fill);
 
     return (
       <MapGeneratorContext.Consumer>
@@ -18,7 +15,7 @@ const Label = props => {
           <g transform={`translate(${labelX}, ${labelY})`}>
             <text
               dy="-6"
-              fill={labelColor(props.fill)}
+              fill={color}
               fontFamily="Lato"
               fontSize="10"
               textAnchor="middle"
@@ -27,7 +24,7 @@ const Label = props => {
             </text>
             <text
               dy="6"
-              fill={labelColor(props.fill)}
+              fill={color}
               fontFamily="Lato"
               fontSize="10"
               textAnchor="middle"

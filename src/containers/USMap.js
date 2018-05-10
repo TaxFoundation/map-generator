@@ -6,6 +6,7 @@ import { feature } from 'topojson-client';
 import { colorScale } from '../helpers';
 import Features from '../data/us.json';
 import states from '../data/states';
+import adjustments from '../data/adjustments';
 import smallStateRects from '../data/smallStateRects';
 import SmallStateRect from '../components/map/SmallStateRect';
 import Label from '../components/map/Label';
@@ -75,6 +76,7 @@ class USMap extends React.Component {
       let fill = '#777777';
       let abbr;
       let value = '';
+      let adjustment = [0, 0];
 
       if (data !== undefined) {
         value = data.value;
@@ -93,6 +95,10 @@ class USMap extends React.Component {
           if (d.id in smallStateRects) {
             isSmallState = true;
           }
+
+          if (d.id in adjustments) {
+            adjustment = adjustments[d.id];
+          }
         }
       }
 
@@ -108,6 +114,7 @@ class USMap extends React.Component {
             id={d.id}
             fill={fill}
             center={path.centroid(d)}
+            adjustment={adjustment}
             abbr={abbr}
             value={value}
           />
