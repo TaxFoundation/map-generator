@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import Snackbar from 'material-ui/Snackbar';
+import MapGeneratorContext from '../../Context';
 import { readCSVFile } from '../../helpers';
 
 const UploadButtonContainer = styled.div`
@@ -15,13 +16,10 @@ class UploadCSV extends Component {
 
     this.state = {
       buttonColor: 'primary',
-      filename: 'Upload a CSV File',
       showWarning: false,
       warningMessage: '',
     };
   }
-
-  changeUploadText = text => this.setState({ filename: text });
 
   changeWarningMessage = message => this.setState({ warningMessage: message });
 
@@ -40,60 +38,64 @@ class UploadCSV extends Component {
 
   render() {
     return (
-      <UploadButtonContainer>
-        <input
-          accept="csv,CSV"
-          id="file"
-          onChange={e => {
-            let files = e.target.files;
-            if (files.length > 1) {
-              this.triggerWarning(
-                'Please only upload one file.',
-                'Upload Only One CSV File'
-              );
-            } else if (files[0].type !== 'text/csv') {
-              this.triggerWarning(
-                'Please only upload CSV files.',
-                'Upload Only One CSV File'
-              );
-            } else {
-              if (this.state.buttonColor !== 'primary') {
-                this.changeButtonColor('primary');
-              }
-              if (this.state.showWarning) {
-                this.closeWarning();
-              }
-              readCSVFile(
-                files[0],
-                this.props.updateRawData,
-                this.props.updateRawColumnHeaders
-              );
-              this.changeUploadText(`Using ${files[0].name}`);
-            }
-          }}
-          style={{ display: 'none' }}
-          type="file"
-        />
-        <label htmlFor="file">
-          <Button
-            color={this.state.buttonColor}
-            component="span"
-            variant="raised"
-            fullWidth={true}
-          >
-            {this.state.filename}
-          </Button>
-        </label>
-        <Snackbar
-          anchorOrigin={{
-            horizontal: 'center',
-            vertical: 'top',
-          }}
-          autoHideDuration={10000}
-          open={this.state.showWarning}
-          message={this.state.warningMessage}
-        />
-      </UploadButtonContainer>
+      <MapGeneratorContext.Consumer>
+        {context => (
+          <UploadButtonContainer>
+            <input
+              accept="csv,CSV"
+              id="file"
+              onChange={e => {
+                let files = e.target.files;
+                if (files.length > 1) {
+                  this.triggerWarning(
+                    'Please only upload one file.',
+                    'Upload Only One CSV File'
+                  );
+                } else if (files[0].type !== 'text/csv') {
+                  this.triggerWarning(
+                    'Please only upload CSV files.',
+                    'Upload Only One CSV File'
+                  );
+                } else {
+                  if (this.state.buttonColor !== 'primary') {
+                    this.changeButtonColor('primary');
+                  }
+                  if (this.state.showWarning) {
+                    this.closeWarning();
+                  }
+                  readCSVFile(
+                    files[0],
+                    this.props.updateRawData,
+                    this.props.updateRawColumnHeaders
+                  );
+                  context.updateState('filename', `Using ${files[0].name}`);
+                }
+              }}
+              style={{ display: 'none' }}
+              type="file"
+            />
+            <label htmlFor="file">
+              <Button
+                color={this.state.buttonColor}
+                component="span"
+                variant="raised"
+                fullWidth={true}
+              >
+                {context.state.filename}
+              </Button>
+            </label>
+            <Snackbar
+              anchorOrigin={{
+                horizontal: 'center',
+                vertical: 'top',
+              }}
+              autoHideDuration={10000}
+              open={this.state.showWarning}
+              message={this.state.warningMessage}
+            />
+          </UploadButtonContainer>
+        )}
+      </MapGeneratorContext.Consumer>
     );
   }
 }

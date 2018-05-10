@@ -15,7 +15,7 @@ class USMap extends React.Component {
   constructor(props) {
     super(props);
 
-    this.scale = 800;
+    this.scale = 780;
     this.xScale = 600;
     this.yScale = 400;
     this.xScalar = this.xScale / 600;

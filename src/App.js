@@ -24,6 +24,7 @@ class Provider extends Component {
       dataType: 'sequential',
       domain: [0, 56],
       id: 'id',
+      filename: 'Upload your CSV',
       mapData: defaultData,
       mapType: 'states',
       rawColumnHeaders: ['id', 'abbr', 'name', 'value'],
