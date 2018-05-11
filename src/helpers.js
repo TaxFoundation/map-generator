@@ -18,13 +18,9 @@ export const labelColor = backgroundColor => {
 export const readCSVFile = (file, updateRawData, updateRawColumnHeaders) => {
   const reader = new FileReader();
   reader.onload = event => {
-    if (file.type !== 'text/csv') {
-      return;
-    } else {
-      let data = csvParse(event.target.result);
-      updateRawData(data);
-      updateRawColumnHeaders(data.columns);
-    }
+    let data = csvParse(event.target.result);
+    updateRawData(data);
+    updateRawColumnHeaders(data.columns);
   };
   reader.readAsText(file);
 };
