@@ -29,11 +29,10 @@ class UploadCSV extends Component {
 
   changeButtonColor = color => this.setState({ buttonColor: color });
 
-  triggerWarning = (warning, button, color) => {
+  triggerWarning = (warning, color) => {
     this.openWarning();
     this.changeWarningMessage(warning);
-    this.changeUploadText(button);
-    this.changeButtonColor('accent');
+    this.changeButtonColor('secondary');
   };
 
   render() {
@@ -47,15 +46,10 @@ class UploadCSV extends Component {
               onChange={e => {
                 let files = e.target.files;
                 if (files.length > 1) {
-                  this.triggerWarning(
-                    'Please only upload one file.',
-                    'Upload Only One CSV File'
-                  );
+                  this.triggerWarning('Please only upload one file.');
                 } else if (files[0].type !== 'text/csv') {
-                  this.triggerWarning(
-                    'Please only upload CSV files.',
-                    'Upload Only One CSV File'
-                  );
+                  console.log(files[0].type);
+                  this.triggerWarning('Please only upload CSV files.');
                 } else {
                   if (this.state.buttonColor !== 'primary') {
                     this.changeButtonColor('primary');
