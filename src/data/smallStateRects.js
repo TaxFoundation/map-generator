@@ -32,7 +32,7 @@ const smallStateRects = {
     y: 160,
   },
   50: {
-    x: 450,
+    x: 430,
     y: 20,
   },
 };

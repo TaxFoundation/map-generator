@@ -108,6 +108,7 @@ class USMap extends React.Component {
             smallState={smallStateRects[d.id]}
             fill={fill}
             abbr={abbr}
+            value={value}
           />
         ) : (
           <Label
