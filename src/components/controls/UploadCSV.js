@@ -49,7 +49,6 @@ class UploadCSV extends Component {
                   this.triggerWarning('Please only upload one file.');
                   context.updateState('filename', `Just One CSV, Please`);
                 } else if (files[0].name.slice(-4) !== '.csv') {
-                  console.log(files[0].type);
                   this.triggerWarning('Please only upload CSV files.');
                   context.updateState('filename', `CSV Files Only, Please`);
                 } else {

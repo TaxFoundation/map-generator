@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MapGeneratorContext from '../Context';
-import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import Radio from 'material-ui/Radio';
 import {
@@ -11,7 +10,6 @@ import {
   FormHelperText,
 } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
-import { range } from '../helpers';
 import SelectList from '../components/controls/SelectList';
 import ColorControls from '../components/controls/ColorControls';
 import ColorModeControls from '../components/controls/ColorModeControls';
@@ -21,13 +19,10 @@ const palettes = dataType => {
   switch (dataType) {
     case 'sequential':
       return sequentialSteps;
-      break;
     case 'divergent':
       return divergentSteps;
-      break;
-    case 'qualitative':
+    default:
       return ['n/a'];
-      break;
   }
 };
 

@@ -58,6 +58,7 @@ class USMap extends React.Component {
         <path
           d={path(d)}
           id={`geography-${d.id}`}
+          key={`geography-${d.id}`}
           className="state"
           fill={fill}
           stroke={this.props.mapType === 'states' ? '#ffffff' : 'none'}
@@ -105,6 +106,7 @@ class USMap extends React.Component {
       return this.props.mapType === 'states' ? (
         isSmallState ? (
           <SmallStateRect
+            key={`ssr-${d.id}`}
             smallState={smallStateRects[d.id]}
             fill={fill}
             abbr={abbr}
@@ -112,6 +114,7 @@ class USMap extends React.Component {
           />
         ) : (
           <Label
+            key={`label-${d.id}`}
             id={d.id}
             fill={fill}
             center={path.centroid(d)}
