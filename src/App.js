@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import data from './data/states';
 import MapGeneratorContext from './Context';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import { blueGrey } from 'material-ui/colors';
+import { blueGrey, pink } from 'material-ui/colors';
 import Header from './components/Header';
 import Map from './components/Map';
 import Controls from './components/Controls';
@@ -85,6 +85,7 @@ class Provider extends Component {
 const theme = createMuiTheme({
   palette: {
     primary: blueGrey,
+    secondary: pink,
   },
 });
 
