@@ -73,14 +73,16 @@ export const formatter = (parameters, value) => {
   let dollar = parameters.format === 'dollar' ? '$' : '';
   let percentage = parameters.format === 'percentage' ? '%' : '';
   let comma = parameters.comma ? ',' : '';
-  let decimalPlaces = '.0f';
-  if (parameters.decimals > 0 && parameters.format !== 'percentage') {
-    decimalPlaces = `.${parameters.decimals}f`;
-  } else if (parameters.format === 'percentage') {
+  let decimalPlaces = '';
+  if (parameters.format === 'percentage') {
     decimalPlaces = `.${parameters.decimals}`;
+  } else {
+    decimalPlaces = `.${parameters.decimals}f`;
   }
 
-  return format(`${dollar}${comma}${decimalPlaces}${percentage}`)(
-    value / parameters.unit
-  );
+  let theFormat = `${dollar}${comma}${
+    parameters.decimals >= 0 ? decimalPlaces : ''
+  }${percentage}`;
+
+  return format(theFormat)(value / parameters.unit);
 };

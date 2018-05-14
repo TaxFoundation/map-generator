@@ -83,6 +83,7 @@ class StyleControls extends Component {
             </div>
             <TextField
               label="Show this many decimal places."
+              inputProps={{ min: 0, step: 1 }}
               value={context.state.decimals}
               onChange={e => context.updateState('decimals', +e.target.value)}
               margin="normal"
