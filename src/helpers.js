@@ -17,8 +17,8 @@ export const labelColor = backgroundColor => {
 
 export const readCSVFile = (file, updateRawData, updateRawColumnHeaders) => {
   const reader = new FileReader();
-  reader.onload = event => {
-    let data = csvParse(event.target.result);
+  reader.onload = async event => {
+    let data = await csvParse(event.target.result);
     updateRawData(data);
     updateRawColumnHeaders(data.columns);
   };
