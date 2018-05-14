@@ -74,7 +74,7 @@ export const formatter = (parameters, value) => {
   let percentage = parameters.format === 'percentage' ? '%' : '';
   let comma = parameters.comma ? ',' : '';
   let decimalPlaces = '.0f';
-  if (parameters.decimals > 0 && !parameters.format === 'percentage') {
+  if (parameters.decimals > 0 && parameters.format !== 'percentage') {
     decimalPlaces = `.${parameters.decimals}f`;
   } else if (parameters.format === 'percentage') {
     decimalPlaces = `.${parameters.decimals}`;
