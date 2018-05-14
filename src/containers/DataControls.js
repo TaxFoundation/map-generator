@@ -13,12 +13,7 @@ class DataControls extends Component {
         {context => (
           <div className="panel__section">
             <Typography variant="subheading">Upload Data</Typography>
-            <UploadCSV
-              updateRawData={data => context.updateState('rawData', data)}
-              updateRawColumnHeaders={data =>
-                context.updateState('rawColumnHeaders', data)
-              }
-            />
+            <UploadCSV />
             <Typography variant="subheading">Describe Your Data</Typography>
             <SelectList
               className="controls__control"

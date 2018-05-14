@@ -65,7 +65,6 @@ class Provider extends Component {
                 const newValues = newData.map(d => d.value);
                 const newMin = Math.min(...newValues);
                 const newMax = Math.max(...newValues);
-                console.log([newMin, newMax]);
 
                 this.setState({
                   domain: [newMin, newMax],

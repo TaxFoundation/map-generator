@@ -60,8 +60,8 @@ class UploadCSV extends Component {
                   }
                   readCSVFile(
                     files[0],
-                    this.props.updateRawData,
-                    this.props.updateRawColumnHeaders
+                    data => context.updateState('rawData', data),
+                    data => context.updateState('rawColumnHeaders', data)
                   );
                   context.updateState('filename', `Using ${files[0].name}`);
                 }
