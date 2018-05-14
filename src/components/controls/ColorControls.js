@@ -6,21 +6,10 @@ import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
 import { FormControl } from 'material-ui/Form';
 import PalettePreview from './PalettePreview';
-import {
-  sequentialColorPalettes,
-  divergentColorPalettes,
-  qualitativeColorPalettes,
-} from '../../data/colorPalette';
 
 class ColorControls extends Component {
   constructor(props) {
     super(props);
-
-    this.palettes = {
-      sequential: sequentialColorPalettes,
-      divergent: divergentColorPalettes,
-      qualitative: qualitativeColorPalettes,
-    };
 
     this.colorModes = ['lch', 'rgb', 'hsv'];
   }
@@ -51,7 +40,7 @@ class ColorControls extends Component {
                 }}
                 value={context.state.colors}
               >
-                {this.palettes[context.state.dataType].map(p => {
+                {context.palettes[context.state.dataType].map(p => {
                   return (
                     <MenuItem key={`palette-${p.id}`} value={p.palette}>
                       <PalettePreview

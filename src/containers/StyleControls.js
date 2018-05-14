@@ -14,17 +14,6 @@ import ColorControls from '../components/controls/ColorControls';
 import ColorModeControls from '../components/controls/ColorModeControls';
 import { sequentialSteps, divergentSteps } from '../data/colorPalette';
 
-const palettes = dataType => {
-  switch (dataType) {
-    case 'sequential':
-      return sequentialSteps;
-    case 'divergent':
-      return divergentSteps;
-    default:
-      return ['n/a'];
-  }
-};
-
 class StyleControls extends Component {
   render() {
     return (
@@ -45,6 +34,14 @@ class StyleControls extends Component {
                   'colors',
                   context.state.activeDataTypeColors[data]
                 );
+                {
+                  data !== 'qualitative'
+                    ? context.updateState(
+                        'steps',
+                        context.state.activeDataTypeSteps[data]
+                      )
+                    : null;
+                }
               }}
               value={context.state.dataType}
             />
@@ -98,15 +95,25 @@ class StyleControls extends Component {
               colorMode={context.state.colorMode}
               updateColorMode={data => context.updateState('colorMode', data)}
             />
-            <SelectList
-              className="controls__control"
-              disabled={context.state.dataType === 'qualitative' ? true : false}
-              label="How many bins should that data be divided into?"
-              list-name="steps"
-              types={palettes(context.state.dataType)}
-              update={data => context.updateState('steps', data)}
-              value={context.state.steps}
-            />
+            {context.state.dataType === 'qualitative' ? null : (
+              <SelectList
+                className="controls__control"
+                label="How many bins should that data be divided into?"
+                list-name="steps"
+                types={
+                  context.state.dataType === 'sequential'
+                    ? sequentialSteps
+                    : divergentSteps
+                }
+                update={data => {
+                  context.updateState('steps', data);
+                  let newSteps = { ...context.state.activeDataTypeSteps };
+                  newSteps[context.state.dataType] = data;
+                  context.updateState('activeDataTypeSteps', newSteps);
+                }}
+                value={context.state.steps}
+              />
+            )}
           </FormControl>
         )}
       </MapGeneratorContext.Consumer>

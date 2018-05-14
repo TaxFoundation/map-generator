@@ -10,6 +10,8 @@ import {
   sequentialColorPalettes,
   divergentColorPalettes,
   qualitativeColorPalettes,
+  sequentialSteps,
+  divergentSteps,
 } from './data/colorPalette';
 
 class Provider extends Component {
@@ -23,11 +25,21 @@ class Provider extends Component {
       };
     });
 
+    this.palettes = {
+      sequential: sequentialColorPalettes,
+      divergent: divergentColorPalettes,
+      qualitative: qualitativeColorPalettes,
+    };
+
     this.state = {
       activeDataTypeColors: {
         sequential: sequentialColorPalettes[0].palette,
         divergent: divergentColorPalettes[0].palette,
         qualitative: qualitativeColorPalettes[0].palette,
+      },
+      activeDataTypeSteps: {
+        sequential: sequentialSteps.slice(-1)[0],
+        divergent: divergentSteps.slice(-1)[0],
       },
       colorMode: 'lch',
       colors: sequentialColorPalettes[0].palette,
@@ -54,6 +66,7 @@ class Provider extends Component {
       <MapGeneratorContext.Provider
         value={{
           state: this.state,
+          palettes: this.palettes,
           updateState: (pieceOfState, data) => {
             this.setState({
               [pieceOfState]: data,
