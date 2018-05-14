@@ -6,6 +6,11 @@ import { blueGrey, pink } from 'material-ui/colors';
 import Header from './components/Header';
 import Map from './components/Map';
 import Controls from './components/Controls';
+import {
+  sequentialColorPalettes,
+  divergentColorPalettes,
+  qualitativeColorPalettes,
+} from './data/colorPalette';
 
 class Provider extends Component {
   constructor() {
@@ -19,8 +24,13 @@ class Provider extends Component {
     });
 
     this.state = {
+      activeDataTypeColors: {
+        sequential: sequentialColorPalettes[0].palette,
+        divergent: divergentColorPalettes[0].palette,
+        qualitative: qualitativeColorPalettes[0].palette,
+      },
       colorMode: 'lch',
-      colors: ['#edf8b1', '#2c7fb8'],
+      colors: sequentialColorPalettes[0].palette,
       dataType: 'sequential',
       domain: [0, 56],
       id: 'id',

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import MapGeneratorContext from '../Context';
 import Divider from 'material-ui/Divider';
 import Radio from 'material-ui/Radio';
@@ -40,7 +39,13 @@ class StyleControls extends Component {
               label="What type of data is this?"
               listName="data-type"
               types={['sequential', 'divergent', 'qualitative']}
-              update={data => context.updateState('dataType', data)}
+              update={data => {
+                context.updateState('dataType', data);
+                context.updateState(
+                  'colors',
+                  context.state.activeDataTypeColors[data]
+                );
+              }}
               value={context.state.dataType}
             />
             <FormLabel>How Should the Data be Formatted?</FormLabel>
@@ -87,14 +92,7 @@ class StyleControls extends Component {
               type="number"
               fullWidth
             />
-            <ColorControls
-              className="controls__control"
-              colors={context.state.colors}
-              colorMode={context.state.colorMode}
-              dataType={context.state.dataType}
-              updateColors={data => context.updateState('colors', data)}
-              steps={context.state.steps}
-            />
+            <ColorControls className="controls__control" />
             <ColorModeControls
               className="controls__control"
               colorMode={context.state.colorMode}
@@ -115,16 +113,5 @@ class StyleControls extends Component {
     );
   }
 }
-
-StyleControls.propTypes = {
-  colorMode: PropTypes.string,
-  colors: PropTypes.arrayOf(PropTypes.string),
-  dataType: PropTypes.string,
-  steps: PropTypes.number,
-  updateColorMode: PropTypes.func,
-  updateColors: PropTypes.func,
-  updateDataType: PropTypes.func,
-  updateSteps: PropTypes.func,
-};
 
 export default StyleControls;
