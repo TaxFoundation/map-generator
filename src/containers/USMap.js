@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MapGeneratorContext from '../Context';
 import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import { colorScale } from '../helpers';
@@ -41,10 +40,8 @@ class USMap extends React.Component {
       });
 
       let fill = '#777777';
-      let value = '';
 
       if (data !== undefined) {
-        value = data.value;
         fill = colorScale(
           this.props.colors,
           this.props.domain,
