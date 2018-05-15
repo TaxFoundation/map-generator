@@ -58,6 +58,8 @@ class Provider extends Component {
       decimals: 0,
       comma: true,
       unit: 1,
+      rank: '',
+      showRanks: false,
     };
   }
 
@@ -79,10 +81,14 @@ class Provider extends Component {
               },
               () => {
                 const newData = this.state.rawData.map(d => {
-                  return {
+                  let entry = {
                     id: d[this.state.id],
                     value: +d[this.state.value],
                   };
+
+                  if (this.state.showRank) entry['rank'] = d[this.state.rank];
+
+                  return entry;
                 });
 
                 const newValues = newData.map(d => d.value);

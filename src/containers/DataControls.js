@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import MapGeneratorContext from '../Context';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
+import { FormLabel, FormControlLabel } from 'material-ui/Form';
+import Switch from 'material-ui/Switch';
 import SelectList from '../components/controls/SelectList';
 import UploadCSV from '../components/controls/UploadCSV';
 
@@ -40,23 +41,36 @@ class DataControls extends Component {
               update={data => context.updateMapData('value', data)}
               value={context.state.value}
             />
+            <FormLabel>Will you show data ranks?</FormLabel>
+            <div>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={context.state.showRank}
+                    onChange={event =>
+                      context.updateState('showRank', !context.state.showRank)
+                    }
+                    value="showRank"
+                  />
+                }
+                label="Toggle Showing Ranks"
+              />
+              {context.state.showRank ? (
+                <SelectList
+                  className="controls__control"
+                  list-name="rank-select"
+                  label="Which column is the rank?"
+                  types={context.state.rawColumnHeaders}
+                  update={data => context.updateMapData('rank', data)}
+                  value={context.state.rank}
+                />
+              ) : null}
+            </div>
           </div>
         )}
       </MapGeneratorContext.Consumer>
     );
   }
 }
-
-DataControls.propTypes = {
-  id: PropTypes.string,
-  mapType: PropTypes.string,
-  rawColumnHeaders: PropTypes.arrayOf(PropTypes.string),
-  updateId: PropTypes.func,
-  updateMapType: PropTypes.func,
-  updateRawColumnHeaders: PropTypes.func,
-  updateRawData: PropTypes.func,
-  updateValue: PropTypes.func,
-  value: PropTypes.string,
-};
 
 export default DataControls;
