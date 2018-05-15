@@ -7,8 +7,7 @@ import Features from '../data/us.json';
 import states from '../data/states';
 import adjustments from '../data/adjustments';
 import smallStateRects from '../data/smallStateRects';
-import SmallStateRect from '../components/map/SmallStateRect';
-import Label from '../components/map/Label';
+import { Label, SmallStateRect } from '../components/map/Label';
 import StateOutlines from '../components/map/StateOutlines';
 
 class USMap extends React.Component {
