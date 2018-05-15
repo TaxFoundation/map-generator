@@ -39,6 +39,17 @@ const Label = props => {
                 props.value
               )}
             </text>
+            {props.rank && context.state.showRank ? (
+              <text
+                dy="18"
+                fill={color}
+                fontFamily="Lato"
+                fontSize="10"
+                textAnchor="middle"
+              >
+                {props.rank}
+              </text>
+            ) : null}
           </g>
         )}
       </MapGeneratorContext.Consumer>

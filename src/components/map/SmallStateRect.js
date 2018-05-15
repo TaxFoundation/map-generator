@@ -47,6 +47,18 @@ const SmallStateRect = props => {
               props.value
             )}
           </text>
+          {props.rank && context.state.showRank ? (
+            <text
+              dy="10"
+              fontFamily="Lato"
+              fontSize="10"
+              textAnchor="end"
+              x={props.smallState.x - padding}
+              y={props.smallState.y + dimension - 1}
+            >
+              {props.rank}
+            </text>
+          ) : null}
         </g>
       )}
     </MapGeneratorContext.Consumer>

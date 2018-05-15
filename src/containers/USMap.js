@@ -75,13 +75,15 @@ class USMap extends React.Component {
       let abbr;
       let value = '';
       let adjustment = [0, 0];
+      let rank = null;
 
       if (data !== undefined) {
         value = data.value;
+        data.rank ? (rank = data.rank) : null;
         fill = colorScale(
           this.props.colors,
           this.props.domain,
-          data.value,
+          value,
           this.props.steps,
           this.props.colorMode
         );
@@ -108,6 +110,7 @@ class USMap extends React.Component {
             fill={fill}
             abbr={abbr}
             value={value}
+            rank={rank ? rank : null}
           />
         ) : (
           <Label
@@ -118,6 +121,7 @@ class USMap extends React.Component {
             adjustment={adjustment}
             abbr={abbr}
             value={value}
+            rank={rank ? rank : null}
           />
         )
       ) : null;

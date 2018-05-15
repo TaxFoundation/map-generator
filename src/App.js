@@ -59,7 +59,7 @@ class Provider extends Component {
       comma: true,
       unit: 1,
       rank: '',
-      showRanks: false,
+      showRank: false,
     };
   }
 
