@@ -56,7 +56,7 @@ const SmallStateRect = props => {
               x={props.smallState.x - padding}
               y={props.smallState.y + dimension - 1}
             >
-              {props.rank}
+              {`#${props.rank}`}
             </text>
           ) : null}
         </g>

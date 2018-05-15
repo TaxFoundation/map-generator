@@ -44,7 +44,7 @@ class Provider extends Component {
       colorMode: 'lch',
       colors: sequentialColorPalettes[0].palette,
       dataType: 'sequential',
-      domain: [0, 56],
+      domain: [1, 56],
       id: 'id',
       filename: 'Upload your CSV',
       mapData: defaultData,

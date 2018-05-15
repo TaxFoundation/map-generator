@@ -47,7 +47,7 @@ const Label = props => {
                 fontSize="10"
                 textAnchor="middle"
               >
-                {props.rank}
+                {`#${props.rank}`}
               </text>
             ) : null}
           </g>
