@@ -38,6 +38,7 @@ export const Label = props => {
                 fill={color}
                 fontFamily="Lato"
                 fontSize={fontSize(context.state.showRank)}
+                fontWeight="700"
                 textAnchor="middle"
               >
                 {props.abbr}
@@ -104,6 +105,7 @@ export const SmallStateRect = props => {
               dy={offsetGen.next().value}
               fontFamily="Lato"
               fontSize={fontSize(context.state.showRank)}
+              fontWeight="700"
               textAnchor="end"
               x={props.smallState.x - padding}
               y={props.smallState.y + dimension - 1}
