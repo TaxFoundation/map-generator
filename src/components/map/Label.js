@@ -3,11 +3,11 @@ import MapGeneratorContext from '../../Context';
 import { formatter, labelColor } from '../../helpers';
 
 const fontSize = showRank => {
-  return showRank ? 7 : 10;
+  return showRank ? 8.5 : 10;
 };
 
 function* offsets(showRank, start) {
-  const offsetAmount = showRank ? 9 : 12;
+  const offsetAmount = showRank ? 10 : 12;
   const adjustedStart = showRank ? start - 3 : start;
   if (showRank) {
     yield adjustedStart;
