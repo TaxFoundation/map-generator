@@ -80,16 +80,20 @@ class Provider extends Component {
                 [pieceOfState]: data,
               },
               () => {
-                const newData = this.state.rawData.map(d => {
-                  let entry = {
-                    id: d[this.state.id],
-                    value: +d[this.state.value],
-                  };
+                const newData = this.state.rawData
+                  .filter(
+                    d => d.id !== '' && (d.id !== undefined || d.id !== null)
+                  )
+                  .map(d => {
+                    let entry = {
+                      id: d[this.state.id],
+                      value: +d[this.state.value],
+                    };
 
-                  if (this.state.showRank) entry['rank'] = d[this.state.rank];
+                    if (this.state.showRank) entry['rank'] = d[this.state.rank];
 
-                  return entry;
-                });
+                    return entry;
+                  });
 
                 const newValues = newData.map(d => d.value);
                 const newMin = Math.min(...newValues);
