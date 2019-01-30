@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import data from './data/states';
 import MapGeneratorContext from './Context';
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import { blueGrey, pink } from 'material-ui/colors';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { blueGrey, pink } from '@material-ui/core/colors';
 import Header from './components/Header';
 import Map from './components/Map';
 import Controls from './components/Controls';

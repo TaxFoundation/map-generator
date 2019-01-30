@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormControl } from 'material-ui/Form';
-import Input, { InputLabel } from 'material-ui/Input';
-import { MenuItem } from 'material-ui/Menu';
-import Select from 'material-ui/Select';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 const SelectList = props => {
   const disabled = props.disabled || false;

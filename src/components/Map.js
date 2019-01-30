@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import MapGeneratorContext from '../Context';
-import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
-import Typography from 'material-ui/Typography';
+import Divider from '@material-ui/core/Divider';
+import styled from 'styled-components';
+import { Panel, PanelTypography, PanelSection } from './Panel';
 import USMap from '../containers/USMap';
+
+const MapPaper = styled(Panel)`
+  grid-column: 1 / 2;
+  margin-left: 10px;
+`;
 
 class Map extends Component {
   render() {
     return (
-      <Paper className="map panel">
-        <Typography variant="headline" className="panel__section">
-          Map Result
-        </Typography>
+      <MapPaper>
+        <PanelTypography variant="headline">Map Result</PanelTypography>
         <Divider />
-        <div className="panel__section">
+        <PanelSection>
           <MapGeneratorContext.Consumer>
             {context => (
               <USMap
@@ -26,8 +29,8 @@ class Map extends Component {
               />
             )}
           </MapGeneratorContext.Consumer>
-        </div>
-      </Paper>
+        </PanelSection>
+      </MapPaper>
     );
   }
 }

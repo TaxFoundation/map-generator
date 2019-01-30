@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MapGeneratorContext from '../../Context';
-import Select from 'material-ui/Select';
-import Input, { InputLabel } from 'material-ui/Input';
-import { MenuItem } from 'material-ui/Menu';
-import { FormControl } from 'material-ui/Form';
+import Select from '@material-ui/core/Select';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
 import PalettePreview from './PalettePreview';
 
 class ColorControls extends Component {

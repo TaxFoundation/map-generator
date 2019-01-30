@@ -78,7 +78,9 @@ class USMap extends React.Component {
 
       if (data !== undefined) {
         value = data.value;
-        data.rank ? (rank = data.rank) : null;
+        if (data.rank) {
+          rank = data.rank;
+        }
         fill = colorScale(
           this.props.colors,
           this.props.domain,

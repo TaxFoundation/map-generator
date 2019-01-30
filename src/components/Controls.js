@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
-import Paper from 'material-ui/Paper';
-import AppBar from 'material-ui/AppBar';
-import Tabs, { Tab } from 'material-ui/Tabs';
-import Typography from 'material-ui/Typography';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import styled from 'styled-components';
+import { Panel, PanelTypography } from './Panel';
 import DataControls from '../containers/DataControls';
 import StyleControls from '../containers/StyleControls';
 import OutputControls from '../containers/OutputControls';
+
+const ControlsPanel = styled(Panel)`
+  grid-column: 2 / 3;
+  margin-right: 10px;
+`;
 
 class Controls extends Component {
   constructor(props) {
@@ -21,24 +27,20 @@ class Controls extends Component {
   };
 
   render() {
-    const { value } = this.state;
-
     return (
-      <Paper className="controls panel">
-        <Typography variant="headline" className="panel__section">
-          Map Options
-        </Typography>
+      <ControlsPanel>
+        <PanelTypography variant="headline">Map Options</PanelTypography>
         <AppBar position="static">
-          <Tabs onChange={this.handleChange} value={value}>
+          <Tabs onChange={this.handleChange} value={this.state.value}>
             <Tab label="Data" />
             <Tab label="Style" />
             <Tab label="Output" />
           </Tabs>
         </AppBar>
-        {value === 0 && <DataControls />}
-        {value === 1 && <StyleControls />}
-        {value === 2 && <OutputControls />}
-      </Paper>
+        {this.state.value === 0 && <DataControls />}
+        {this.state.value === 1 && <StyleControls />}
+        {this.state.value === 2 && <OutputControls />}
+      </ControlsPanel>
     );
   }
 }

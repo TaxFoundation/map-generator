@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import MapGeneratorContext from '../Context';
-import Divider from 'material-ui/Divider';
-import Radio from 'material-ui/Radio';
-import {
-  FormLabel,
-  FormControl,
-  FormControlLabel,
-  FormHelperText,
-} from 'material-ui/Form';
-import TextField from 'material-ui/TextField';
+import Divider from '@material-ui/core/Divider';
+import Radio from '@material-ui/core/Radio';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import TextField from '@material-ui/core/TextField';
+import styled from 'styled-components';
 import SelectList from '../components/controls/SelectList';
 import ColorControls from '../components/controls/ColorControls';
 import ColorModeControls from '../components/controls/ColorModeControls';
 import { sequentialSteps, divergentSteps } from '../data/colorPalette';
+
+const StyledFormControl = styled(FormControl)`
+  display: block !important;
+  margin: 0 auto !important;
+  padding: 10px !important;
+  width: 90%;
+`;
 
 class StyleControls extends Component {
   render() {
     return (
       <MapGeneratorContext.Consumer>
         {context => (
-          <FormControl className="panel__section">
+          <StyledFormControl>
             <FormLabel>Describe Your Presentation</FormLabel>
             <Divider />
             <SelectList
@@ -34,13 +39,11 @@ class StyleControls extends Component {
                   'colors',
                   context.state.activeDataTypeColors[data]
                 );
-                {
-                  data !== 'qualitative'
-                    ? context.updateState(
-                        'steps',
-                        context.state.activeDataTypeSteps[data]
-                      )
-                    : null;
+                if (data !== 'qualitative') {
+                  context.updateState(
+                    'steps',
+                    context.state.activeDataTypeSteps[data]
+                  );
                 }
               }}
               value={context.state.dataType}
@@ -115,7 +118,7 @@ class StyleControls extends Component {
                 value={context.state.steps}
               />
             )}
-          </FormControl>
+          </StyledFormControl>
         )}
       </MapGeneratorContext.Consumer>
     );

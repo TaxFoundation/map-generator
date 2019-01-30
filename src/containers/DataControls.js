@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import MapGeneratorContext from '../Context';
-import Typography from 'material-ui/Typography';
-import Divider from 'material-ui/Divider';
-import { FormLabel, FormControlLabel } from 'material-ui/Form';
-import Switch from 'material-ui/Switch';
+import Typography from '@material-ui/core/Typography';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import { PanelSection } from '../components/Panel';
 import SelectList from '../components/controls/SelectList';
 import UploadCSV from '../components/controls/UploadCSV';
 
@@ -12,7 +13,7 @@ class DataControls extends Component {
     return (
       <MapGeneratorContext.Consumer>
         {context => (
-          <div className="panel__section">
+          <PanelSection>
             <Typography variant="subheading">Upload Data</Typography>
             <UploadCSV />
             <Typography variant="subheading">Describe Your Data</Typography>
@@ -66,7 +67,7 @@ class DataControls extends Component {
                 />
               ) : null}
             </div>
-          </div>
+          </PanelSection>
         )}
       </MapGeneratorContext.Consumer>
     );
