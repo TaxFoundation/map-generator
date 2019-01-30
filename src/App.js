@@ -33,7 +33,7 @@ class Provider extends Component {
 
     this.state = {
       activeDataTypeColors: {
-        sequential: sequentialColorPalettes[0].palette,
+        sequential: sequentialColorPalettes.find(p => p.id === 3).palette,
         divergent: divergentColorPalettes[0].palette,
         qualitative: qualitativeColorPalettes[0].palette,
       },
@@ -42,7 +42,7 @@ class Provider extends Component {
         divergent: divergentSteps.slice(-1)[0],
       },
       colorMode: 'lch',
-      colors: sequentialColorPalettes[0].palette,
+      colors: sequentialColorPalettes.find(p => p.id === 3).palette,
       dataType: 'sequential',
       domain: [1, 56],
       id: 'id',
