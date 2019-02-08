@@ -73,7 +73,7 @@ class UploadCSV extends Component {
               <Button
                 color={this.state.buttonColor}
                 component="span"
-                variant="raised"
+                variant="contained"
                 fullWidth={true}
               >
                 {context.state.filename}

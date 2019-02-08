@@ -119,6 +119,9 @@ const theme = createMuiTheme({
     primary: blueGrey,
     secondary: pink,
   },
+  typography: {
+    useNextVariants: true,
+  },
 });
 
 class App extends Component {

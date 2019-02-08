@@ -14,9 +14,9 @@ class DataControls extends Component {
       <MapGeneratorContext.Consumer>
         {context => (
           <PanelSection>
-            <Typography variant="subheading">Upload Data</Typography>
+            <Typography variant="subtitle1">Upload Data</Typography>
             <UploadCSV />
-            <Typography variant="subheading">Describe Your Data</Typography>
+            <Typography variant="subtitle1">Describe Your Data</Typography>
             <SelectList
               className="controls__control"
               listName="map-type"

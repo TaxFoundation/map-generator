@@ -18,7 +18,7 @@ const Controls = () => {
 
   return (
     <ControlsPanel>
-      <PanelTypography variant="headline">Map Options</PanelTypography>
+      <PanelTypography variant="h5">Map Options</PanelTypography>
       <AppBar position="static">
         <Tabs
           onChange={(e, v) => {

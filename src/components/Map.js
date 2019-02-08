@@ -14,7 +14,7 @@ const Map = props => {
   const context = useContext(MapGeneratorContext);
   return (
     <MapPaper>
-      <PanelTypography variant="headline">Map Result</PanelTypography>
+      <PanelTypography variant="h5">Map Result</PanelTypography>
       <Divider />
       <PanelSection>
         <USMap
