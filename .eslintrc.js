@@ -13,7 +13,7 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react", "prettier"
+        "react", "react-hooks", "prettier"
     ],
     "rules": {
         "linebreak-style": [
@@ -22,6 +22,7 @@ module.exports = {
         ],
         "react/jsx-uses-vars": 2,
         "react/jsx-uses-react": 2,
+        "react-hooks/rules-of-hooks": "error",
         "prettier/prettier": [
         "error",
             {
