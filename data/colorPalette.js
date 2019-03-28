@@ -1,4 +1,4 @@
-export const sequentialColorPalettes = [
+export const sequentialPalettes = [
   {
     id: 2,
     palette: [
@@ -185,7 +185,7 @@ export const sequentialColorPalettes = [
   },
 ];
 
-export const divergentColorPalettes = [
+export const divergentPalettes = [
   {
     id: 1,
     palette: ['#fecf0a', '#f8a994', '#ed1a6a'],
@@ -340,7 +340,7 @@ export const divergentColorPalettes = [
   },
 ];
 
-export const qualitativeColorPalettes = [
+export const qualitativePalettes = [
   {
     id: 1,
     palette: ['#edf8b1', '#2c7fb8'],
