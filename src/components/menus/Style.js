@@ -1,10 +1,5 @@
 import React, { useContext } from 'react';
 
-import { StyleContext } from '../../DataContext';
-
-const Style = () => {
-  const data = useContext(StyleContext);
-  return <div />;
-};
+const Style = () => <div />;
 
 export default Style;

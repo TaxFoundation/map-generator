@@ -1,19 +1,5 @@
 export const sequentialColorPalettes = [
   {
-    id: 1,
-    palette: [
-      '#f7fcfd',
-      '#e5f5f9',
-      '#ccece6',
-      '#99d8c9',
-      '#66c2a4',
-      '#41ae76',
-      '#238b45',
-      '#006d2c',
-      '#00441b',
-    ],
-  },
-  {
     id: 2,
     palette: [
       '#f7fcfd',
@@ -28,7 +14,7 @@ export const sequentialColorPalettes = [
     ],
   },
   {
-    id: 3,
+    id: 1,
     palette: [
       '#ffffd9',
       '#edf8b1',
@@ -39,6 +25,20 @@ export const sequentialColorPalettes = [
       '#225ea8',
       '#253494',
       '#081d58',
+    ],
+  },
+  {
+    id: 3,
+    palette: [
+      '#f7fcfd',
+      '#e5f5f9',
+      '#ccece6',
+      '#99d8c9',
+      '#66c2a4',
+      '#41ae76',
+      '#238b45',
+      '#006d2c',
+      '#00441b',
     ],
   },
   {

@@ -1,5 +1,7 @@
 import { createContext } from 'react';
 
-export const DataContext = createContext();
+import STATES from '../../data/states';
+
+export const DataContext = createContext(STATES);
 
 export const DataProvider = DataContext.Provider;
