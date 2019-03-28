@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Lato', sans-serif;
     font-size: ${props => props.theme.fontSize};
     font-weight: ${props => props.theme.fontWeight};
-    height: 100%;
+    height: 100vh;
     line-height: 1.6;
   }
 `;

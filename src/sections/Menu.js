@@ -1,5 +1,11 @@
 import React from 'react';
 
-const Menu = () => <div />;
+import Panel from '../components/ui/Panel';
+
+const Menu = () => (
+  <Panel>
+    <h2>Menu</h2>
+  </Panel>
+);
 
 export default Menu;

@@ -5,10 +5,14 @@ const StyledHeader = styled.header`
   background-color: #0094ff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   color: #fff;
-  font-size: 3rem;
-  font-weight: 300;
   grid-column: 1 / 4;
   text-align: center;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    padding-bottom: 0.5rem;
+  }
 `;
 
 const Header = () => (

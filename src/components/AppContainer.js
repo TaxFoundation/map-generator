@@ -6,7 +6,8 @@ const AppContainer = styled.div`
     'header header header'
     'map    map    menu';
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
 `;
 
 export default AppContainer;
