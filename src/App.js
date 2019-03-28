@@ -1,8 +1,12 @@
-import React, { createContext, useContext } from 'react';
+import React from 'react';
 import { Reset } from 'styled-reset';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import Theme from './Theme';
+import AppContainer from './components/AppContainer';
+import Header from './sections/Header';
+import Map from './sections/Map';
+import Menu from './sections/Menu';
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i&subset=latin-ext');
@@ -22,7 +26,16 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => (
   <ThemeProvider theme={Theme}>
-    <Reset />
-    <GlobalStyle />
+    <>
+      <Reset />
+      <GlobalStyle />
+      <AppContainer>
+        <Header />
+        <Map />
+        <Menu />
+      </AppContainer>
+    </>
   </ThemeProvider>
 );
+
+export default App;
