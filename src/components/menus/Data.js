@@ -5,7 +5,20 @@ import { DataContext } from '../../contexts/DataContext';
 const Data = () => {
   const { data, updateData } = useContext(DataContext);
   return (
-    <div>
+    <form>
+      <label htmlFor="map-data-type">What type of data is this?</label>
+      <select
+        name="map-data-type"
+        id="map-data-type"
+        value={data.mapDataType}
+        onChange={e =>
+          updateData({ do: 'update', id: 'mapDataType', value: e.target.value })
+        }
+      >
+        <option value="sequential">Sequential</option>
+        <option value="divergent">Divergent</option>
+        <option value="qualitative">Qualitative</option>
+      </select>
       <button
         type="button"
         onClick={() => {
@@ -15,7 +28,7 @@ const Data = () => {
       >
         Rando
       </button>
-    </div>
+    </form>
   );
 };
 
