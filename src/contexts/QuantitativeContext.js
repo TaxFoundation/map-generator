@@ -4,7 +4,7 @@ const initialState = {
   dataType: 'number',
   decimals: 0,
   comma: true,
-  unit: '',
+  unit: 1,
   colorMode: 'lch',
   bins: 10,
 };
