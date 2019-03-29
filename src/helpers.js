@@ -1,7 +1,11 @@
 import chroma from 'chroma-js';
 import { csvParse } from 'd3-dsv';
 import { format } from 'd3-format';
-// import states from '../data/states';
+import {
+  sequentialPalettes,
+  divergentPalettes,
+  qualitativePalettes,
+} from './data/colorPalette';
 
 export const colorScale = (colors, theDomain, value, steps, mode = 'lch') =>
   chroma
@@ -60,4 +64,32 @@ export const formatter = (parameters, value) => {
   }${percentage}`;
 
   return format(theFormat)(value / parameters.unit);
+};
+
+export const getPalette = (id, type) => {
+  switch (type) {
+    case 'qualitative':
+      return (
+        qualitativePalettes.find(p => p.id === id).palette || [
+          '#000000',
+          '#ffffff',
+        ]
+      );
+    case 'divergent':
+      return (
+        divergentPalettes.find(p => p.id === id).palette || [
+          '#000000',
+          '#ffffff',
+        ]
+      );
+    case 'sequential':
+      return (
+        sequentialPalettes.find(p => p.id === id).palette || [
+          '#000000',
+          '#ffffff',
+        ]
+      );
+    default:
+      return ['#000000', '#ffffff'];
+  }
 };

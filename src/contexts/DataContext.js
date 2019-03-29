@@ -1,11 +1,11 @@
 import { createContext } from 'react';
 
-import STATES from '../../data/states';
+import STATES from '../data/states';
 
 const initialState = {
   mapGeographyType: 'states',
   mapDataType: 'sequential',
-  paletteId: 0,
+  paletteId: 1,
   domain: [
     Math.min(...STATES.map(s => s.value)),
     Math.max(...STATES.map(s => s.value)),
@@ -13,6 +13,7 @@ const initialState = {
   idColumn: 'id',
   valueColumn: 'value',
   rankColumn: 'rank',
+  showRank: false,
   mapData: STATES,
 };
 

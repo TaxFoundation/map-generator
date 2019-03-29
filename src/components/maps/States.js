@@ -1,35 +1,33 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 
 import { DataContext } from '../../contexts/DataContext';
 import { QuantitativeContext } from '../../contexts/QuantitativeContext';
 import { QualitativeContext } from '../../contexts/QualitativeContext';
-import {
-  SequentialPalettes,
-  DivergentPalettes,
-  QualitativePalettes,
-} from '../../../data/colorPalette';
-import { colorScale } from '../../helpers';
-import Features from '../../../data/us.json';
-import states from '../data/states';
-import adjustments from '../data/adjustments';
-import smallStateRects from '../data/smallStateRects';
-import { Label, SmallStateRect } from '../components/map/Label';
-import StateOutlines from '../components/map/StateOutlines';
+import { colorScale, getPalette } from '../../helpers';
+import Features from '../../data/us.json';
+import states from '../../data/states';
+import adjustments from '../../data/adjustments';
+import smallStateRects from '../../data/smallStateRects';
+import { Label, SmallStateRect } from '../map-parts/Label';
 
 const States = () => {
   const mapContext = useContext(DataContext);
   const quantContext = useContext(QuantitativeContext);
   const qualContext = useContext(QualitativeContext);
 
+  // Set initial dimensions and scaling
   const scale = 780;
   const xScale = 600;
   const yScale = 400;
   const xScalar = xScale / 600;
   const yScalar = yScale / 400;
 
+  // Select correct palette for fills
+  const palette = getPalette(mapContext.paletteId, mapContext.mapDataType);
+  console.log(palette);
+  // Construct the path object
   const path = geoPath().projection(
     geoAlbersUsa()
       .scale(scale)
@@ -40,15 +38,16 @@ const States = () => {
     Features.objects[mapContext.mapGeographyType]
   ).features;
 
+  // Create geographies with fills
   const geographies = USDataFeatures.map(d => {
     // Match state's path to the current state data
     const data = mapContext.mapData.find(s => +s.id === +d.id);
 
     let fill = '#777777';
 
-    if (data !== undefined && mapContext.mapDataType === 'sequential') {
+    if (data !== undefined) {
       fill = colorScale(
-        SequentialPalettes[mapContext.paletteId],
+        palette,
         mapContext.domain,
         data.value,
         quantContext.bins,
@@ -68,173 +67,88 @@ const States = () => {
       />
     );
   });
+
+  const labels = USDataFeatures.map(d => {
+    // Match state's path to the current state data
+    const { abbr, value, rank } =
+      mapContext.mapData.find(s => +s.id === +d.id) || 2;
+
+    let isSmallState = false;
+    let fill = '#777777';
+    let adjustment = [0, 0];
+
+    if (value !== undefined) {
+      fill = colorScale(
+        mapContext.domain,
+        value,
+        quantContext.bins,
+        quantContext.colorMode
+      );
+
+      // Creat rect/label for small states
+      if (d.id in smallStateRects) {
+        isSmallState = true;
+      }
+
+      if (d.id in adjustments) {
+        adjustment = adjustments[d.id];
+      }
+    }
+
+    return isSmallState ? (
+      <SmallStateRect
+        key={`ssr-${d.id}`}
+        smallState={smallStateRects[d.id]}
+        fill={fill}
+        abbr={abbr}
+        value={value}
+        rank={rank || null}
+      />
+    ) : (
+      <Label
+        key={`label-${d.id}`}
+        id={d.id}
+        fill={fill}
+        center={path.centroid(d)}
+        adjustment={adjustment}
+        abbr={abbr}
+        value={value}
+        rank={rank || null}
+      />
+    );
+  });
+
+  const legend = [...Array(quantContext.bins).keys()].map(d => {
+    const keyGap = 10;
+    const keyWidth = (xScale / 2 / quantContext.bins - keyGap) * xScalar;
+
+    return (
+      <rect
+        key={`legend-${d}`}
+        fill={colorScale(
+          palette,
+          [0, quantContext.bins - 1],
+          d,
+          quantContext.bins,
+          quantContext.colorMode
+        )}
+        height={20 * yScalar}
+        width={keyWidth}
+        x={xScale / 2 + (keyWidth + keyGap) * d}
+        y={380 * yScalar}
+      />
+    );
+  });
+
+  return (
+    <div>
+      <svg id="generated-map" width="100%" viewBox={`0 0 ${xScale} ${yScale}`}>
+        <g className="geographies">{geographies}</g>
+        <g className="labels">{labels}</g>
+        <g className="legend">{legend}</g>
+      </svg>
+    </div>
+  );
 };
-
-// class USMap extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.scale = 780;
-//     this.xScale = 600;
-//     this.yScale = 400;
-//     this.xScalar = this.xScale / 600;
-//     this.yScalar = this.yScale / 400;
-//   }
-
-//   render() {
-//     const path = geoPath().projection(
-//       geoAlbersUsa()
-//         .scale(this.scale)
-//         .translate([this.xScale / 2, this.yScale / 2 - 25])
-//     );
-//     const USDataFeatures = feature(
-//       Features,
-//       Features.objects[this.props.mapType]
-//     ).features;
-
-//     const geographies = USDataFeatures.map(d => {
-//       // Match state's path to the current state data
-//       const data = this.props.mapData.find(s => +s.id === +d.id);
-
-//       let fill = '#777777';
-
-//       if (data !== undefined) {
-//         fill = colorScale(
-//           this.props.colors,
-//           this.props.domain,
-//           data.value,
-//           this.props.steps,
-//           this.props.colorMode
-//         );
-//       }
-
-//       return (
-//         <path
-//           d={path(d)}
-//           id={`geography-${d.id}`}
-//           key={`geography-${d.id}`}
-//           className="state"
-//           fill={fill}
-//           stroke={this.props.mapType === 'states' ? '#ffffff' : 'none'}
-//           strokeLinejoin="bevel"
-//         />
-//       );
-//     });
-
-//     const labels = USDataFeatures.map(d => {
-//       // Match state's path to the current state data
-//       const data = this.props.mapData.find(s => +s.id === +d.id);
-
-//       let isSmallState = false;
-//       let fill = '#777777';
-//       let abbr;
-//       let value = '';
-//       let adjustment = [0, 0];
-//       let rank = null;
-
-//       if (data !== undefined) {
-//         value = data.value;
-//         if (data.rank) {
-//           rank = data.rank;
-//         }
-//         fill = colorScale(
-//           this.props.colors,
-//           this.props.domain,
-//           value,
-//           this.props.steps,
-//           this.props.colorMode
-//         );
-
-//         if (this.props.mapType === 'states') {
-//           abbr = states.filter(s => +s.id === +data.id)[0].abbr;
-
-//           // Creat rect/label for small states
-//           if (d.id in smallStateRects) {
-//             isSmallState = true;
-//           }
-
-//           if (d.id in adjustments) {
-//             adjustment = adjustments[d.id];
-//           }
-//         }
-//       }
-
-//       return this.props.mapType === 'states' ? (
-//         isSmallState ? (
-//           <SmallStateRect
-//             key={`ssr-${d.id}`}
-//             smallState={smallStateRects[d.id]}
-//             fill={fill}
-//             abbr={abbr}
-//             value={value}
-//             rank={rank || null}
-//           />
-//         ) : (
-//           <Label
-//             key={`label-${d.id}`}
-//             id={d.id}
-//             fill={fill}
-//             center={path.centroid(d)}
-//             adjustment={adjustment}
-//             abbr={abbr}
-//             value={value}
-//             rank={rank || null}
-//           />
-//         )
-//       ) : null;
-//     });
-
-//     const legend = [...Array(this.props.steps).keys()].map(d => {
-//       const keyGap = 10;
-//       const keyWidth =
-//         (this.xScale / 2 / this.props.steps - keyGap) * this.xScalar;
-
-//       return (
-//         <rect
-//           key={`legend-${d}`}
-//           fill={colorScale(
-//             this.props.colors,
-//             [0, this.props.steps - 1],
-//             d,
-//             this.props.steps,
-//             this.props.colorMode
-//           )}
-//           height={20 * this.yScalar}
-//           width={keyWidth}
-//           x={this.xScale / 2 + (keyWidth + keyGap) * d}
-//           y={380 * this.yScalar}
-//         />
-//       );
-//     });
-
-//     return (
-//       <div>
-//         <svg
-//           id="generated-map"
-//           width="100%"
-//           viewBox={`0 0 ${this.xScale} ${this.yScale}`}
-//         >
-//           <g className="geographies">{geographies}</g>
-//           <g className="labels">{labels}</g>
-//           <g className="legend">{legend}</g>
-//           {this.props.mapType === 'counties' ? (
-//             <g className="state-outlines">
-//               <StateOutlines path={path} />
-//             </g>
-//           ) : null}
-//         </svg>
-//       </div>
-//     );
-//   }
-// }
-
-// States.propTypes = {
-//   colorMode: PropTypes.string,
-//   colors: PropTypes.arrayOf(PropTypes.string),
-//   domain: PropTypes.arrayOf(PropTypes.number),
-//   mapData: PropTypes.arrayOf(PropTypes.object),
-//   mapType: PropTypes.string,
-//   steps: PropTypes.number,
-// };
 
 export default States;
