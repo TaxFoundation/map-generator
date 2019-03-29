@@ -147,7 +147,7 @@ Label.propTypes = {
   center: PropTypes.arrayOf(PropTypes.number),
   adjustment: PropTypes.arrayOf(PropTypes.number),
   id: PropTypes.number,
-  fill: PropTypes.string,
+  fill: PropTypes.oneOf(PropTypes.string, PropTypes.object),
   rank: PropTypes.number,
   value: PropTypes.oneOfType(PropTypes.number, PropTypes.string).isRequired,
   abbr: PropTypes.string,
@@ -155,7 +155,7 @@ Label.propTypes = {
 
 SmallStateRect.propTypes = {
   smallState: PropTypes.object,
-  fill: PropTypes.string,
+  fill: PropTypes.oneOf(PropTypes.string, PropTypes.object),
   rank: PropTypes.number,
   value: PropTypes.oneOfType(PropTypes.number, PropTypes.string).isRequired,
   abbr: PropTypes.string,

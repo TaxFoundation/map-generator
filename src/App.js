@@ -3,6 +3,7 @@ import { Reset } from 'styled-reset';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import Theme from './Theme';
+import { DataProvider } from './contexts/DataContext';
 import AppContainer from './components/AppContainer';
 import Header from './sections/Header';
 import Map from './sections/Map';
@@ -27,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => (
   <ThemeProvider theme={Theme}>
-    <>
+    <DataProvider>
       <Reset />
       <GlobalStyle />
       <AppContainer>
@@ -35,7 +36,7 @@ const App = () => (
         <Map />
         <Menu />
       </AppContainer>
-    </>
+    </DataProvider>
   </ThemeProvider>
 );
 

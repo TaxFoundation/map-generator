@@ -7,13 +7,12 @@ import { QuantitativeContext } from '../../contexts/QuantitativeContext';
 import { QualitativeContext } from '../../contexts/QualitativeContext';
 import { colorScale, getPalette } from '../../helpers';
 import Features from '../../data/us.json';
-import states from '../../data/states';
 import adjustments from '../../data/adjustments';
 import smallStateRects from '../../data/smallStateRects';
 import { Label, SmallStateRect } from '../map-parts/Label';
 
 const States = () => {
-  const mapContext = useContext(DataContext);
+  const { data: mapContext } = useContext(DataContext);
   const quantContext = useContext(QuantitativeContext);
   const qualContext = useContext(QualitativeContext);
 
@@ -23,10 +22,8 @@ const States = () => {
   const yScale = 400;
   const xScalar = xScale / 600;
   const yScalar = yScale / 400;
-
   // Select correct palette for fills
   const palette = getPalette(mapContext.paletteId, mapContext.mapDataType);
-  console.log(palette);
   // Construct the path object
   const path = geoPath().projection(
     geoAlbersUsa()

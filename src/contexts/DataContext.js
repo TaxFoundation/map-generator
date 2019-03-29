@@ -1,4 +1,5 @@
-import { createContext } from 'react';
+import React, { createContext, useReducer } from 'react';
+import PropTypes from 'prop-types';
 
 import STATES from '../data/states';
 
@@ -17,6 +18,23 @@ const initialState = {
   mapData: STATES,
 };
 
-export const DataContext = createContext(initialState);
+const reducer = (state, action) => {
+  switch (action.do) {
+    case 'update':
+      return { ...state, [action.id]: action.value };
+    default:
+      return state;
+  }
+};
 
-export const DataProvider = DataContext.Provider;
+export const DataContext = createContext();
+
+export const DataProvider = ({ children }) => {
+  const [data, updateData] = useReducer(reducer, initialState);
+  const value = { data, updateData };
+  return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
+};
+
+DataProvider.propTypes = {
+  children: PropTypes.any,
+};
