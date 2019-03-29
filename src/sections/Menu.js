@@ -1,10 +1,11 @@
 import React from 'react';
 
 import Panel from '../components/ui/Panel';
+import PanelHeading from '../components/ui/PanelHeading';
 
 const Menu = () => (
   <Panel>
-    <h2>Menu</h2>
+    <PanelHeading>Menu</PanelHeading>
   </Panel>
 );
 

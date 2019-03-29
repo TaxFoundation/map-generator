@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
   }
   html,
   body {
+    color: #333;
     font-family: 'Lato', sans-serif;
     font-size: ${props => props.theme.fontSize};
     font-weight: ${props => props.theme.fontWeight};

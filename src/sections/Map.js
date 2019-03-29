@@ -1,10 +1,11 @@
 import React from 'react';
 
 import Panel from '../components/ui/Panel';
+import PanelHeading from '../components/ui/PanelHeading';
 
 const Map = () => (
   <Panel columns={2}>
-    <h2>Map</h2>
+    <PanelHeading>Map</PanelHeading>
   </Panel>
 );
 
