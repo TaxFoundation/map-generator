@@ -79,6 +79,7 @@ const States = () => {
 
     if (value !== undefined) {
       fill = colorScale(
+        palette,
         mapContext.domain,
         value,
         quantContext.bins,
