@@ -59,7 +59,7 @@ const States = () => {
         key={`geography-${d.id}`}
         className="state"
         fill={fill}
-        stroke={mapContext.mapType === 'states' ? '#ffffff' : 'none'}
+        stroke="#ffffff"
         strokeLinejoin="bevel"
       />
     );

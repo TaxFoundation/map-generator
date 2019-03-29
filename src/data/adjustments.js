@@ -13,7 +13,7 @@ const adjustments = {
   42: [0, -3],
   47: [0, -1],
   51: [5, -6],
-  54: [-3, 0],
+  54: [-2, 0],
 };
 
 export default adjustments;
