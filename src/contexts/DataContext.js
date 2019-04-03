@@ -29,12 +29,10 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  switch (action.do) {
-    case 'update':
-      return { ...state, [action.id]: action.value };
-    default:
-      return state;
+  if (action.id) {
+    return { ...state, [action.id]: action.value };
   }
+  return state;
 };
 
 export const DataContext = createContext();

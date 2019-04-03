@@ -14,7 +14,6 @@ const Data = () => {
           value={data.mapGeographyType}
           onChange={e =>
             updateData({
-              do: 'update',
               id: 'mapGeographyType',
               value: e.target.value,
             })
@@ -33,7 +32,6 @@ const Data = () => {
           value={data.mapDataType}
           onChange={e =>
             updateData({
-              do: 'update',
               id: 'mapDataType',
               value: e.target.value,
             })
@@ -47,7 +45,7 @@ const Data = () => {
       <button
         type="button"
         onClick={() => {
-          updateData({ do: 'update', id: 'paletteId', value: 2 });
+          updateData({ id: 'paletteId', value: 2 });
           console.log(data);
         }}
       >
