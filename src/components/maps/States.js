@@ -3,6 +3,7 @@ import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 
 import { DataContext } from '../../contexts/DataContext';
+import STATES from '../../data/states';
 import { colorScale, getPalette } from '../../helpers';
 import Features from '../../data/us.json';
 import adjustments from '../../data/adjustments';
@@ -34,7 +35,12 @@ const States = () => {
   // Create geographies with fills
   const geographies = USDataFeatures.map(d => {
     // Match state's path to the current state data
-    const data = mapContext.mapData.find(s => +s.id === +d.id);
+    let data;
+    if (mapContext.mapData) {
+      data = mapContext.mapData.find(s => +s.id === +d.id);
+    } else {
+      data = STATES.find(s => +s.id === +d.id);
+    }
 
     let fill = '#777777';
 
@@ -46,35 +52,40 @@ const States = () => {
         mapContext.quantitative.bins,
         mapContext.quantitative.colorMode
       );
+      return (
+        <path
+          d={path(d)}
+          id={`geography-${d.id}`}
+          key={`geography-${d.id}`}
+          className="state"
+          fill={fill}
+          stroke="#ffffff"
+          strokeLinejoin="bevel"
+        />
+      );
     }
 
-    return (
-      <path
-        d={path(d)}
-        id={`geography-${d.id}`}
-        key={`geography-${d.id}`}
-        className="state"
-        fill={fill}
-        stroke="#ffffff"
-        strokeLinejoin="bevel"
-      />
-    );
+    return null;
   });
 
   const labels = USDataFeatures.map(d => {
     // Match state's path to the current state data
-    const { abbr, value, rank } =
-      mapContext.mapData.find(s => +s.id === +d.id) || 2;
+    let data;
+    if (mapContext.mapData) {
+      data = mapContext.mapData.find(s => +s.id === +d.id);
+    } else {
+      data = STATES.find(s => +s.id === +d.id);
+    }
 
     let isSmallState = false;
     let fill = '#777777';
     let adjustment = [0, 0];
 
-    if (value !== undefined) {
+    if (data !== undefined) {
       fill = colorScale(
         palette,
         mapContext.domain,
-        value,
+        data.value,
         mapContext.quantitative.bins,
         mapContext.quantitative.colorMode
       );
@@ -87,29 +98,30 @@ const States = () => {
       if (d.id in adjustments) {
         adjustment = adjustments[d.id];
       }
+      return isSmallState ? (
+        <SmallStateRect
+          key={`ssr-${d.id}`}
+          smallState={smallStateRects[d.id]}
+          fill={fill}
+          abbr={data.abbr}
+          value={data.value}
+          rank={data.rank || null}
+        />
+      ) : (
+        <Label
+          key={`label-${d.id}`}
+          id={d.id}
+          fill={fill}
+          center={path.centroid(d)}
+          adjustment={adjustment}
+          abbr={data.abbr}
+          value={data.value}
+          rank={data.rank || null}
+        />
+      );
     }
 
-    return isSmallState ? (
-      <SmallStateRect
-        key={`ssr-${d.id}`}
-        smallState={smallStateRects[d.id]}
-        fill={fill}
-        abbr={abbr}
-        value={value}
-        rank={rank || null}
-      />
-    ) : (
-      <Label
-        key={`label-${d.id}`}
-        id={d.id}
-        fill={fill}
-        center={path.centroid(d)}
-        adjustment={adjustment}
-        abbr={abbr}
-        value={value}
-        rank={rank || null}
-      />
-    );
+    return null;
   });
 
   const legend = [...Array(mapContext.quantitative.bins).keys()].map(d => {
