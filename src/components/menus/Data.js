@@ -42,15 +42,6 @@ const Data = () => {
           <option value="qualitative">Qualitative</option>
         </select>
       </div>
-      <button
-        type="button"
-        onClick={() => {
-          updateData({ id: 'paletteId', value: 2 });
-          console.log(data);
-        }}
-      >
-        Rando
-      </button>
     </form>
   );
 };

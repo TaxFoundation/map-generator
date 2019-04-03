@@ -22,7 +22,7 @@ const getMap = geography => {
     case 'states':
       return <States />;
     default:
-      return null;
+      return <div>Waiting for map geography type selection.</div>;
   }
 };
 

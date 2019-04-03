@@ -39,8 +39,11 @@ export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [data, updateData] = useReducer(reducer, initialState);
-  const value = { data, updateData };
-  return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
+  return (
+    <DataContext.Provider value={{ data, updateData }}>
+      {children}
+    </DataContext.Provider>
+  );
 };
 
 DataProvider.propTypes = {
