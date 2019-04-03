@@ -16,6 +16,15 @@ const initialState = {
   rankColumn: 'rank',
   showRank: false,
   mapData: STATES,
+  quantitative: {
+    dataType: 'number',
+    decimals: 0,
+    comma: true,
+    unit: 1,
+    colorMode: 'lch',
+    bins: 10,
+  },
+  qualitative: {},
 };
 
 const reducer = (state, action) => {

@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { DataContext } from '../../contexts/DataContext';
-import { QuantitativeContext } from '../../contexts/QuantitativeContext';
-import { QualitativeContext } from '../../contexts/QualitativeContext';
 import { formatter, labelColor } from '../../helpers';
 
 const fontSize = showRank => (showRank ? 8.5 : 10);
@@ -22,8 +20,7 @@ const offsets = (showRank, start) => {
 };
 
 const Label = props => {
-  const mapContext = useContext(DataContext);
-  const quantContext = useContext(QuantitativeContext);
+  const { data: mapContext } = useContext(DataContext);
   const { center, adjustment, id, fill, rank, value, abbr } = props;
   if (!Number.isNaN(center[0]) && !Number.isNaN(center[1])) {
     const labelX = center[0] + adjustment[0];
@@ -54,10 +51,10 @@ const Label = props => {
         >
           {formatter(
             {
-              format: quantContext.dataType,
-              decimals: quantContext.decimals,
-              comma: quantContext.comma,
-              unit: quantContext.unit,
+              format: mapContext.quantitative.dataType,
+              decimals: mapContext.quantitative.decimals,
+              comma: mapContext.quantitative.comma,
+              unit: mapContext.quantitative.unit,
             },
             value
           )}
@@ -80,8 +77,7 @@ const Label = props => {
 };
 
 const SmallStateRect = props => {
-  const mapContext = useContext(DataContext);
-  const quantContext = useContext(QuantitativeContext);
+  const { data: mapContext } = useContext(DataContext);
   const dimension = 24;
   const padding = 6;
   const offsetGen = offsets(mapContext.showRank, -14);
@@ -119,10 +115,10 @@ const SmallStateRect = props => {
       >
         {formatter(
           {
-            format: quantContext.dataType,
-            decimals: quantContext.decimals,
-            comma: quantContext.comma,
-            unit: quantContext.unit,
+            format: mapContext.quantitative.dataType,
+            decimals: mapContext.quantitative.decimals,
+            comma: mapContext.quantitative.comma,
+            unit: mapContext.quantitative.unit,
           },
           value
         )}

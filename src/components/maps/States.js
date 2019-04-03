@@ -3,8 +3,6 @@ import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 
 import { DataContext } from '../../contexts/DataContext';
-import { QuantitativeContext } from '../../contexts/QuantitativeContext';
-import { QualitativeContext } from '../../contexts/QualitativeContext';
 import { colorScale, getPalette } from '../../helpers';
 import Features from '../../data/us.json';
 import adjustments from '../../data/adjustments';
@@ -13,8 +11,6 @@ import { Label, SmallStateRect } from '../map-parts/Label';
 
 const States = () => {
   const { data: mapContext } = useContext(DataContext);
-  const quantContext = useContext(QuantitativeContext);
-  const qualContext = useContext(QualitativeContext);
 
   // Set initial dimensions and scaling
   const scale = 780;
@@ -47,8 +43,8 @@ const States = () => {
         palette,
         mapContext.domain,
         data.value,
-        quantContext.bins,
-        quantContext.colorMode
+        mapContext.quantitative.bins,
+        mapContext.quantitative.colorMode
       );
     }
 
@@ -79,8 +75,8 @@ const States = () => {
         palette,
         mapContext.domain,
         value,
-        quantContext.bins,
-        quantContext.colorMode
+        mapContext.quantitative.bins,
+        mapContext.quantitative.colorMode
       );
 
       // Creat rect/label for small states
@@ -116,19 +112,20 @@ const States = () => {
     );
   });
 
-  const legend = [...Array(quantContext.bins).keys()].map(d => {
+  const legend = [...Array(mapContext.quantitative.bins).keys()].map(d => {
     const keyGap = 10;
-    const keyWidth = (xScale / 2 / quantContext.bins - keyGap) * xScalar;
+    const keyWidth =
+      (xScale / 2 / mapContext.quantitative.bins - keyGap) * xScalar;
 
     return (
       <rect
         key={`legend-${d}`}
         fill={colorScale(
           palette,
-          [0, quantContext.bins - 1],
+          [0, mapContext.quantitative.bins - 1],
           d,
-          quantContext.bins,
-          quantContext.colorMode
+          mapContext.quantitative.bins,
+          mapContext.quantitative.colorMode
         )}
         height={20 * yScalar}
         width={keyWidth}
