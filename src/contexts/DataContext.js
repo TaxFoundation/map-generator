@@ -25,6 +25,7 @@ const initialState = {
     bins: 10,
   },
   qualitative: {},
+  fontScale: 1,
 };
 
 const reducer = (state, action) => {

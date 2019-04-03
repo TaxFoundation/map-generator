@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { DataContext } from '../../contexts/DataContext';
 import { formatter, labelColor } from '../../helpers';
 
-const fontSize = showRank => (showRank ? 8.5 : 10);
+const fontSize = (showRank, fontScale = 1) =>
+  showRank ? 8.5 * fontScale : 10 * fontScale;
 
 const offsets = (showRank, start) => {
   const offsetAmount = showRank ? 10 : 12;
