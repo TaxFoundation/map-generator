@@ -49,6 +49,7 @@ const Data = () => {
                 })
               }
             >
+              <option value={null}>¯\_(ツ)_/¯</option>
               {data.columns.map(c => (
                 <option value={c}>{c}</option>
               ))}
@@ -69,6 +70,7 @@ const Data = () => {
                 })
               }
             >
+              <option value={null}>¯\_(ツ)_/¯</option>
               {data.columns.map(c => (
                 <option value={c}>{c}</option>
               ))}
