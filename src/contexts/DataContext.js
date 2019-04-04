@@ -7,15 +7,13 @@ const initialState = {
   mapGeographyType: 'states',
   mapDataType: 'sequential',
   paletteId: 1,
-  domain: [
-    Math.min(...STATES.map(s => s.value)),
-    Math.max(...STATES.map(s => s.value)),
-  ],
+  domain: null,
   idColumn: 'id',
   valueColumn: 'value',
-  rankColumn: 'rank',
+  rankColumn: null,
   showRank: false,
   filename: null,
+  rawData: null,
   mapData: null,
   columns: null,
   dataType: 'number',
@@ -27,11 +25,61 @@ const initialState = {
   fontScale: 1,
 };
 
+const generateMapData = (rawData, id, value, rank = null) => {
+  const mapData = rawData.map(d => {
+    if (rank) {
+      return { id: d[id], value: d[value], rank: d[rank] };
+    }
+    return { id: d[id], value: d[value] };
+  });
+  return mapData;
+};
+
 const reducer = (state, action) => {
-  if (action.id) {
-    return { ...state, [action.id]: action.value };
+  switch (action.id) {
+    case 'idColumn': {
+      const newMapData = generateMapData(
+        state.rawData,
+        action.value,
+        state.valueColumn,
+        state.rankColumn
+      );
+      return { ...state, idColumn: action.value, mapData: newMapData };
+    }
+    case 'valueColumn': {
+      const newMapData = generateMapData(
+        state.rawData,
+        state.idColumn,
+        action.value,
+        state.rankColumn
+      );
+      let newDomain;
+      if (!state.domain) {
+        newDomain = [
+          Math.min(newMapData.map(d => +d.value)),
+          Math.max(newMapData.map(d => +d.value)),
+        ];
+        return {
+          ...state,
+          valueColumn: action.value,
+          mapData: newMapData,
+          domain: newDomain,
+        };
+      }
+      return { ...state, valueColumn: action.value, mapData: newMapData };
+    }
+    case 'rankColumn': {
+      const newMapData = generateMapData(
+        state.rawData,
+        state.idColumn,
+        state.valueColumn,
+        action.value
+      );
+      return { ...state, rankColumn: action.value, mapData: newMapData };
+    }
+    default:
+      return { ...state, [action.id]: action.value };
   }
-  return state;
 };
 
 export const DataContext = createContext();

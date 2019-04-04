@@ -36,10 +36,13 @@ const States = () => {
   const geographies = USDataFeatures.map(d => {
     // Match state's path to the current state data
     let data;
+    let domain;
     if (mapContext.mapData) {
       data = mapContext.mapData.find(s => +s.id === +d.id);
+      domain = mapContext.domain;
     } else {
       data = STATES.find(s => +s.id === +d.id);
+      domain = [1, 50];
     }
 
     let fill = '#777777';
@@ -47,7 +50,7 @@ const States = () => {
     if (data !== undefined) {
       fill = colorScale(
         palette,
-        mapContext.domain,
+        domain,
         data.value,
         mapContext.bins,
         mapContext.colorMode
@@ -71,10 +74,13 @@ const States = () => {
   const labels = USDataFeatures.map(d => {
     // Match state's path to the current state data
     let data;
+    let domain;
     if (mapContext.mapData) {
       data = mapContext.mapData.find(s => +s.id === +d.id);
+      domain = mapContext.domain;
     } else {
       data = STATES.find(s => +s.id === +d.id);
+      domain = [1, 50];
     }
 
     let isSmallState = false;
@@ -84,7 +90,7 @@ const States = () => {
     if (data !== undefined) {
       fill = colorScale(
         palette,
-        mapContext.domain,
+        domain,
         data.value,
         mapContext.bins,
         mapContext.colorMode
