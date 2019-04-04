@@ -56,8 +56,8 @@ const reducer = (state, action) => {
       let newDomain;
       if (!state.domain) {
         newDomain = [
-          Math.min(newMapData.map(d => +d.value)),
-          Math.max(newMapData.map(d => +d.value)),
+          Math.min(...newMapData.map(d => Number(d.value))),
+          Math.max(...newMapData.map(d => Number(d.value))),
         ];
         return {
           ...state,

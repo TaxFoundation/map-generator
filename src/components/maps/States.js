@@ -109,7 +109,7 @@ const States = () => {
           key={`ssr-${d.id}`}
           smallState={smallStateRects[d.id]}
           fill={fill}
-          abbr={data.abbr}
+          abbr={STATES.find(s => +s.id === +d.id).abbr}
           value={data.value}
           rank={data.rank || null}
         />
@@ -120,7 +120,7 @@ const States = () => {
           fill={fill}
           center={path.centroid(d)}
           adjustment={adjustment}
-          abbr={data.abbr}
+          abbr={STATES.find(s => +s.id === +d.id).abbr}
           value={data.value}
           rank={data.rank || null}
         />
