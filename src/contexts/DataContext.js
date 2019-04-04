@@ -15,6 +15,7 @@ const initialState = {
   valueColumn: 'value',
   rankColumn: 'rank',
   showRank: false,
+  filename: null,
   mapData: null,
   columns: null,
   dataType: 'number',
