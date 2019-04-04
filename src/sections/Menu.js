@@ -25,6 +25,7 @@ const MenuOption = styled.h3`
   font-size: 1.6rem;
   padding: 0.5rem;
   text-align: center;
+  text-transform: capitalize;
 `;
 
 const getMenu = id => {
@@ -42,28 +43,20 @@ const getMenu = id => {
 
 const Menu = () => {
   const [menuSelection, setMenuSelection] = useState('data');
+  const options = ['data', 'style', 'output'];
+
   return (
     <Panel>
       <PanelHeading>Options</PanelHeading>
       <MenuSelection>
-        <MenuOption
-          onClick={() => setMenuSelection('data')}
-          selected={menuSelection === 'data'}
-        >
-          Data
-        </MenuOption>
-        <MenuOption
-          onClick={() => setMenuSelection('style')}
-          selected={menuSelection === 'style'}
-        >
-          Style
-        </MenuOption>
-        <MenuOption
-          onClick={() => setMenuSelection('output')}
-          selected={menuSelection === 'output'}
-        >
-          Output
-        </MenuOption>
+        {options.map(o => (
+          <MenuOption
+            onClick={() => setMenuSelection(o)}
+            selected={menuSelection === o}
+          >
+            {o}
+          </MenuOption>
+        ))}
       </MenuSelection>
       {getMenu(menuSelection)}
     </Panel>
