@@ -16,6 +16,7 @@ const initialState = {
   rankColumn: 'rank',
   showRank: false,
   mapData: null,
+  columns: null,
   quantitative: {
     dataType: 'number',
     decimals: 0,
