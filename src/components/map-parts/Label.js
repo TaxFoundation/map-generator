@@ -52,10 +52,10 @@ const Label = props => {
         >
           {formatter(
             {
-              format: mapContext.quantitative.dataType,
-              decimals: mapContext.quantitative.decimals,
-              comma: mapContext.quantitative.comma,
-              unit: mapContext.quantitative.unit,
+              format: mapContext.dataType,
+              decimals: mapContext.decimals,
+              comma: mapContext.comma,
+              unit: mapContext.unit,
             },
             value
           )}
@@ -116,10 +116,10 @@ const SmallStateRect = props => {
       >
         {formatter(
           {
-            format: mapContext.quantitative.dataType,
-            decimals: mapContext.quantitative.decimals,
-            comma: mapContext.quantitative.comma,
-            unit: mapContext.quantitative.unit,
+            format: mapContext.dataType,
+            decimals: mapContext.decimals,
+            comma: mapContext.comma,
+            unit: mapContext.unit,
           },
           value
         )}

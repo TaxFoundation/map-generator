@@ -49,8 +49,8 @@ const States = () => {
         palette,
         mapContext.domain,
         data.value,
-        mapContext.quantitative.bins,
-        mapContext.quantitative.colorMode
+        mapContext.bins,
+        mapContext.colorMode
       );
       return (
         <path
@@ -86,8 +86,8 @@ const States = () => {
         palette,
         mapContext.domain,
         data.value,
-        mapContext.quantitative.bins,
-        mapContext.quantitative.colorMode
+        mapContext.bins,
+        mapContext.colorMode
       );
 
       // Creat rect/label for small states
@@ -124,20 +124,19 @@ const States = () => {
     return null;
   });
 
-  const legend = [...Array(mapContext.quantitative.bins).keys()].map(d => {
+  const legend = [...Array(mapContext.bins).keys()].map(d => {
     const keyGap = 10;
-    const keyWidth =
-      (xScale / 2 / mapContext.quantitative.bins - keyGap) * xScalar;
+    const keyWidth = (xScale / 2 / mapContext.bins - keyGap) * xScalar;
 
     return (
       <rect
         key={`legend-${d}`}
         fill={colorScale(
           palette,
-          [0, mapContext.quantitative.bins - 1],
+          [0, mapContext.bins - 1],
           d,
-          mapContext.quantitative.bins,
-          mapContext.quantitative.colorMode
+          mapContext.bins,
+          mapContext.colorMode
         )}
         height={20 * yScalar}
         width={keyWidth}

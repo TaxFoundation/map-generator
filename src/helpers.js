@@ -50,10 +50,10 @@ export const saveSVG = elementId => {
 
 export const formatter = (parameters, value) => {
   const dollar = parameters.format === 'dollar' ? '$' : '';
-  const percentage = parameters.format === 'percentage' ? '%' : '';
+  const percentage = parameters.format === 'percent' ? '%' : '';
   const comma = parameters.comma ? ',' : '';
   let decimalPlaces = '';
-  if (parameters.format === 'percentage') {
+  if (parameters.format === 'percent') {
     decimalPlaces = `.${parameters.decimals}`;
   } else {
     decimalPlaces = `.${parameters.decimals}f`;

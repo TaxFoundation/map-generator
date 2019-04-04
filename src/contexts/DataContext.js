@@ -17,15 +17,12 @@ const initialState = {
   showRank: false,
   mapData: null,
   columns: null,
-  quantitative: {
-    dataType: 'number',
-    decimals: 0,
-    comma: true,
-    unit: 1,
-    colorMode: 'lch',
-    bins: 10,
-  },
-  qualitative: {},
+  dataType: 'number',
+  decimals: 0,
+  comma: true,
+  unit: 1,
+  colorMode: 'lch',
+  bins: 10,
   fontScale: 1,
 };
 
