@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 const initialState = {
-  mapGeographyType: 'states',
+  mapGeographyType: null,
   mapDataType: 'sequential',
   paletteId: 1,
   domain: null,

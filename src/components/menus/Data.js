@@ -90,6 +90,7 @@ const Data = () => {
               })
             }
           >
+            <option value={null}>¯\_(ツ)_/¯</option>
             <option value="states">US States</option>
             <option value="counties">US Counties</option>
             <option value="europe">European Nations</option>
