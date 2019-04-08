@@ -53,13 +53,15 @@ const States = () => {
     let fill = '#777777';
 
     if (data !== undefined) {
-      fill = colorScale(
-        palette,
-        domain,
-        data.value,
-        mapContext.bins,
-        mapContext.colorMode
-      );
+      if (mapContext.isNumeric) {
+        fill = colorScale(
+          palette,
+          domain,
+          data.value,
+          mapContext.bins,
+          mapContext.colorMode
+        );
+      }
       return (
         <path
           d={path(d)}
@@ -93,13 +95,15 @@ const States = () => {
     let adjustment = [0, 0];
 
     if (data !== undefined) {
-      fill = colorScale(
-        palette,
-        domain,
-        data.value,
-        mapContext.bins,
-        mapContext.colorMode
-      );
+      if (mapContext.isNumeric) {
+        fill = colorScale(
+          palette,
+          domain,
+          data.value,
+          mapContext.bins,
+          mapContext.colorMode
+        );
+      }
 
       // Creat rect/label for small states
       if (d.id in smallStateRects) {

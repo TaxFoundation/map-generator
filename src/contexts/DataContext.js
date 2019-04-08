@@ -58,15 +58,15 @@ const reducer = (state, action) => {
           action.value,
           state.rankColumn
         );
+        let newIsNumeric = false;
         let newDomain = state.domain;
-        if (!state.domain) {
+        if (isNumericData(newMapData)) {
+          newIsNumeric = true;
           newDomain = [
             Math.min(...newMapData.map(d => Number(d.value))),
             Math.max(...newMapData.map(d => Number(d.value))),
           ];
         }
-        let newIsNumeric = false;
-        if (isNumericData(newMapData)) newIsNumeric = true;
         return {
           ...state,
           valueColumn: action.value,
