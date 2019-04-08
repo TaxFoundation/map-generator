@@ -93,3 +93,12 @@ export const getPalette = (id, type) => {
       return ['#000000', '#ffffff'];
   }
 };
+
+export const isNumericData = values => {
+  for (let i = 0, j = values.length; i < j; i++) {
+    if (Number.isNaN(+values[i].value)) {
+      return false;
+    }
+  }
+  return true;
+};

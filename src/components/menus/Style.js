@@ -2,15 +2,7 @@ import React, { useContext } from 'react';
 
 import { DataContext } from '../../contexts/DataContext';
 import Label from '../ui/Label';
-
-const isNumericData = values => {
-  for (let i = 0, j = values.length; i < j; i++) {
-    if (Number.isNaN(+values[i].value)) {
-      return false;
-    }
-  }
-  return true;
-};
+import { isNumericData } from '../../helpers';
 
 const Style = () => {
   const { data, updateData } = useContext(DataContext);
@@ -18,38 +10,36 @@ const Style = () => {
     <div>
       {data.mapData ? (
         <form>
-          <div>
-            <Label htmlFor="map-data-type">What type of data is this?</Label>
-            <select
-              name="map-data-type"
-              id="map-data-type"
-              value={data.mapDataType}
-              onChange={e =>
-                updateData({
-                  id: 'mapDataType',
-                  value: e.target.value,
-                })
-              }
-            >
-              {isNumericData(data.mapData) ? (
-                <>
-                  <option value="sequential">Sequential</option>
-                  <option value="divergent">Divergent</option>
-                </>
-              ) : null}
-
-              <option value="qualitative">Qualitative</option>
-            </select>
-          </div>
+          {data.isNumeric ? (
+            <div>
+              <Label htmlFor="numeric-data-type">
+                What type of quantitative data is this?
+              </Label>
+              <select
+                name="numeric-data-type"
+                id="numeric-data-type"
+                value={data.numericDataType}
+                onChange={e =>
+                  updateData({
+                    id: 'numericDataType',
+                    value: e.target.value,
+                  })
+                }
+              >
+                <option value="sequential">Sequential</option>
+                <option value="divergent">Divergent</option>
+              </select>
+            </div>
+          ) : null}
           <div>
             <label htmlFor="number-format">
               How should the values be formatted?
             </label>
             <input
-              checked={data.dataType === 'number'}
+              checked={data.formatType === 'number'}
               onChange={e =>
                 updateData({
-                  id: 'dataType',
+                  id: 'formatType',
                   value: e.target.value,
                 })
               }
@@ -60,10 +50,10 @@ const Style = () => {
             />
             <label htmlFor="number-format-1">Number</label>
             <input
-              checked={data.dataType === 'percent'}
+              checked={data.formatType === 'percent'}
               onChange={e =>
                 updateData({
-                  id: 'dataType',
+                  id: 'formatType',
                   value: e.target.value,
                 })
               }
@@ -74,10 +64,10 @@ const Style = () => {
             />
             <label htmlFor="number-format-2">Percent</label>
             <input
-              checked={data.dataType === 'dollar'}
+              checked={data.formatType === 'dollar'}
               onChange={e =>
                 updateData({
-                  id: 'dataType',
+                  id: 'formatType',
                   value: e.target.value,
                 })
               }

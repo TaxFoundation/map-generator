@@ -1,9 +1,12 @@
 import React, { createContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
+import { isNumericData } from '../helpers';
+
 const initialState = {
   mapGeographyType: null,
-  mapDataType: 'sequential',
+  isNumeric: true,
+  numericDataType: 'sequential',
   paletteId: 1,
   domain: null,
   idColumn: null,
@@ -14,7 +17,7 @@ const initialState = {
   rawData: null,
   mapData: null,
   columns: null,
-  dataType: 'number',
+  formatType: 'number',
   decimals: 0,
   comma: true,
   unit: 1,
@@ -55,20 +58,22 @@ const reducer = (state, action) => {
           action.value,
           state.rankColumn
         );
-        let newDomain;
+        let newDomain = state.domain;
         if (!state.domain) {
           newDomain = [
             Math.min(...newMapData.map(d => Number(d.value))),
             Math.max(...newMapData.map(d => Number(d.value))),
           ];
-          return {
-            ...state,
-            valueColumn: action.value,
-            mapData: newMapData,
-            domain: newDomain,
-          };
         }
-        return { ...state, valueColumn: action.value, mapData: newMapData };
+        let newIsNumeric = false;
+        if (isNumericData(newMapData)) newIsNumeric = true;
+        return {
+          ...state,
+          valueColumn: action.value,
+          mapData: newMapData,
+          isNumeric: newIsNumeric,
+          domain: newDomain,
+        };
       }
       return { ...state, valueColumn: action.value };
     }

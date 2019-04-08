@@ -20,7 +20,12 @@ const States = () => {
   const xScalar = xScale / 600;
   const yScalar = yScale / 400;
   // Select correct palette for fills
-  const palette = getPalette(mapContext.paletteId, mapContext.mapDataType);
+  let palette;
+  if (mapContext.isNumeric) {
+    palette = getPalette(mapContext.paletteId, mapContext.numericDataType);
+  } else {
+    palette = getPalette(mapContext.paletteId, 'qualitative');
+  }
   // Construct the path object
   const path = geoPath().projection(
     geoAlbersUsa()
