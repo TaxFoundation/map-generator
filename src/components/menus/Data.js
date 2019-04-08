@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { csvParse } from 'd3-dsv';
 
 import { DataContext } from '../../contexts/DataContext';
+import Label from '../ui/Label';
 
 const Data = () => {
   const { data, updateData } = useContext(DataContext);
@@ -9,9 +10,9 @@ const Data = () => {
     <div>
       <form>
         <div>
-          <label htmlFor="upload">
+          <Label htmlFor="upload">
             {data.filename ? data.filename : 'Click to upload CSV file'}
-          </label>
+          </Label>
           <input
             type="file"
             id="upload"
@@ -37,7 +38,7 @@ const Data = () => {
         </div>
         {data.columns ? (
           <div>
-            <label htmlFor="id-column">Which column is the ID?</label>
+            <Label htmlFor="id-column">Which column is the ID?</Label>
             <select
               name="id-column"
               id="id-column"
@@ -58,7 +59,7 @@ const Data = () => {
         ) : null}
         {data.columns ? (
           <div>
-            <label htmlFor="id-column">Which column is the value?</label>
+            <Label htmlFor="id-column">Which column is the value?</Label>
             <select
               name="value-column"
               id="value-column"
@@ -78,7 +79,7 @@ const Data = () => {
           </div>
         ) : null}
         <div>
-          <label htmlFor="map-geo-type">What type of map is this?</label>
+          <Label htmlFor="map-geo-type">What type of map is this?</Label>
           <select
             name="map-geo-type"
             id="map-geo-type"
@@ -94,24 +95,6 @@ const Data = () => {
             <option value="states">US States</option>
             <option value="counties">US Counties</option>
             <option value="europe">European Nations</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="map-data-type">What type of data is this?</label>
-          <select
-            name="map-data-type"
-            id="map-data-type"
-            value={data.mapDataType}
-            onChange={e =>
-              updateData({
-                id: 'mapDataType',
-                value: e.target.value,
-              })
-            }
-          >
-            <option value="sequential">Sequential</option>
-            <option value="divergent">Divergent</option>
-            <option value="qualitative">Qualitative</option>
           </select>
         </div>
       </form>
