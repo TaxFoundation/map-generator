@@ -8,8 +8,10 @@ import Style from '../components/menus/Style';
 import Output from '../components/menus/Output';
 
 const MenuSelection = styled.div`
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   display: flex;
   margin-bottom: 1rem;
+  padding-bottom: 1rem;
 
   & > * {
     flex: 1;

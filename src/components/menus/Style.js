@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 
 import { DataContext } from '../../contexts/DataContext';
 import Label from '../ui/Label';
-import { isNumericData } from '../../helpers';
 
 const Style = () => {
   const { data, updateData } = useContext(DataContext);
