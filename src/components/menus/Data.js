@@ -16,6 +16,8 @@ const FileLabel = styled.label`
   padding: 0.5rem;
   text-align: center;
   text-overflow: ellipsis;
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+  user-select: none;
   white-space: nowrap;
 
   &:hover,

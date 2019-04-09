@@ -30,6 +30,7 @@ const MenuOption = styled.h3`
   text-align: center;
   text-transform: capitalize;
   transition: background-color 0.1s ease-in-out, border 0.1s ease-in-out;
+  user-select: none;
 
   &:hover {
     background-color: ${props => (props.selected ? '#0094ff' : '#99d5ff')};
