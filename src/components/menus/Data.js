@@ -1,8 +1,47 @@
 import React, { useContext } from 'react';
 import { csvParse } from 'd3-dsv';
+import styled from 'styled-components';
 
 import { DataContext } from '../../contexts/DataContext';
 import Label from '../ui/Label';
+
+const FileLabel = styled.label`
+  border-radius: 4px;
+  border: 1px solid #0094ff;
+  color: #0094ff;
+  cursor: pointer;
+  display: block;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 0.5rem;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus,
+  & + input[type='file']:focus,
+  & + input[type='file']:hover {
+    background-color: #0094ff;
+    color: #fff;
+  }
+
+  & + input[type='file']:focus {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+`;
+
+const FileInput = styled.input`
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0.1px;
+  z-index: -1;
+`;
 
 const Data = () => {
   const { data, updateData } = useContext(DataContext);
@@ -10,10 +49,10 @@ const Data = () => {
     <div>
       <form>
         <div>
-          <Label htmlFor="upload">
+          <FileLabel htmlFor="upload">
             {data.filename ? data.filename : 'Click to upload CSV file'}
-          </Label>
-          <input
+          </FileLabel>
+          <FileInput
             type="file"
             id="upload"
             name="upload"
