@@ -4,6 +4,7 @@ import { DataContext } from '../../contexts/DataContext';
 import Label from '../ui/Label';
 import Select from '../ui/Select';
 import RadioGroup from '../ui/RadioGroup';
+import NumberInput from '../ui/NumberInput';
 
 const Style = () => {
   const { data, updateData } = useContext(DataContext);
@@ -29,6 +30,10 @@ const Style = () => {
               { id: 'percent', label: 'Percent' },
               { id: 'dollar', label: 'Dollar' },
             ]}
+          />
+          <NumberInput
+            label="How many bins should this data be divided into?"
+            id="bins"
           />
         </form>
       ) : null}
