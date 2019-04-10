@@ -1,6 +1,6 @@
 import React from 'react';
 import { Reset } from 'styled-reset';
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import Theme from './Theme';
 import { DataProvider } from './contexts/DataContext';
