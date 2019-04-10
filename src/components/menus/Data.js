@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { DataContext } from '../../contexts/DataContext';
 import Label from '../ui/Label';
+import Select from '../ui/Select';
 
 const FileLabel = styled.label`
   border-radius: 4px;
@@ -78,46 +79,18 @@ const Data = () => {
           />
         </div>
         {data.columns ? (
-          <div>
-            <Label htmlFor="id-column">Which column is the ID?</Label>
-            <select
-              name="id-column"
-              id="id-column"
-              value={data.idColumn}
-              onChange={e =>
-                updateData({
-                  id: 'idColumn',
-                  value: e.target.value,
-                })
-              }
-            >
-              <option value={null}>¯\_(ツ)_/¯</option>
-              {data.columns.map(c => (
-                <option value={c}>{c}</option>
-              ))}
-            </select>
-          </div>
-        ) : null}
-        {data.columns ? (
-          <div>
-            <Label htmlFor="id-column">Which column is the value?</Label>
-            <select
-              name="value-column"
-              id="value-column"
-              value={data.valueColumn}
-              onChange={e =>
-                updateData({
-                  id: 'valueColumn',
-                  value: e.target.value,
-                })
-              }
-            >
-              <option value={null}>¯\_(ツ)_/¯</option>
-              {data.columns.map(c => (
-                <option value={c}>{c}</option>
-              ))}
-            </select>
-          </div>
+          <>
+            <Select
+              id="idColumn"
+              label="Which column is the ID?"
+              options={data.columns}
+            />
+            <Select
+              id="valueColumn"
+              label="Which column is the value?"
+              options={data.columns}
+            />
+          </>
         ) : null}
         <div>
           <Label htmlFor="map-geo-type">What type of map is this?</Label>
