@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import { DataContext } from '../../contexts/DataContext';
 import Label from '../ui/Label';
+import Select from '../ui/Select';
 import RadioGroup from '../ui/RadioGroup';
 
 const Style = () => {
@@ -11,25 +12,14 @@ const Style = () => {
       {data.mapData ? (
         <form>
           {data.isNumeric ? (
-            <div>
-              <Label htmlFor="numeric-data-type">
-                What type of quantitative data is this?
-              </Label>
-              <select
-                name="numeric-data-type"
-                id="numeric-data-type"
-                value={data.numericDataType}
-                onChange={e =>
-                  updateData({
-                    id: 'numericDataType',
-                    value: e.target.value,
-                  })
-                }
-              >
-                <option value="sequential">Sequential</option>
-                <option value="divergent">Divergent</option>
-              </select>
-            </div>
+            <Select
+              id="numericDataType"
+              label="What type of quantitative data is this?"
+              options={[
+                { id: 'sequential', label: 'Sequential →' },
+                { id: 'divergent', label: 'Divergent ↔' },
+              ]}
+            />
           ) : null}
           <RadioGroup
             id="formatType"
