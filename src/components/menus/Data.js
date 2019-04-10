@@ -16,34 +16,30 @@ const Data = () => {
             <Select
               id="idColumn"
               label="Which column is the ID?"
-              options={data.columns}
+              options={data.columns.map(column => ({
+                id: column,
+                label: column,
+              }))}
             />
             <Select
               id="valueColumn"
               label="Which column is the value?"
-              options={data.columns}
+              options={data.columns.map(column => ({
+                id: column,
+                label: column,
+              }))}
             />
           </>
         ) : null}
-        <div>
-          <Label htmlFor="map-geo-type">What type of map is this?</Label>
-          <select
-            name="map-geo-type"
-            id="map-geo-type"
-            value={data.mapGeographyType}
-            onChange={e =>
-              updateData({
-                id: 'mapGeographyType',
-                value: e.target.value,
-              })
-            }
-          >
-            <option value={null}>¯\_(ツ)_/¯</option>
-            <option value="states">US States</option>
-            <option value="counties">US Counties</option>
-            <option value="europe">European Nations</option>
-          </select>
-        </div>
+        <Select
+          id="mapGeographyType"
+          label="What type of map is this?"
+          options={[
+            { id: 'states', label: 'US States' },
+            { id: 'counties', label: 'US Counties' },
+            { id: 'europe', label: 'European Nations' },
+          ]}
+        />
       </form>
     </div>
   );

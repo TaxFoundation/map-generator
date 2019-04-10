@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import PropType from 'prop-types';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { DataContext } from '../../contexts/DataContext';
@@ -66,9 +66,14 @@ const RadioGroup = ({ label, id, options }) => {
 };
 
 RadioGroup.propTypes = {
-  label: PropType.string,
-  id: PropType.string.isRequired,
-  options: PropType.arrayOf(PropType.object),
+  label: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      label: PropTypes.string,
+    })
+  ),
 };
 
 export default RadioGroup;

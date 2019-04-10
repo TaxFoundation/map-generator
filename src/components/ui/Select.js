@@ -21,8 +21,8 @@ const Select = ({ label, id, options }) => {
         }
       >
         <option value={null}>¯\_(ツ)_/¯</option>
-        {options.map(c => (
-          <option value={c}>{c}</option>
+        {options.map(option => (
+          <option value={option.id}>{option.label}</option>
         ))}
       </select>
     </div>
@@ -32,7 +32,12 @@ const Select = ({ label, id, options }) => {
 Select.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.string),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      label: PropTypes.string,
+    })
+  ),
 };
 
 export default Select;
