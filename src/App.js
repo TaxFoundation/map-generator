@@ -12,17 +12,22 @@ import Menu from './sections/Menu';
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i&subset=latin-ext');
 
-  * {
-    box-sizing: border-box;
+  html {
+    font-size: 10px;
   }
-  html,
+
   body {
+    box-sizing: border-box;
     color: #333;
     font-family: 'Lato', sans-serif;
     font-size: ${props => props.theme.fontSize};
     font-weight: ${props => props.theme.fontWeight};
     height: 100vh;
     line-height: 1.6;
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
   }
 `;
 

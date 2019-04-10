@@ -1,5 +1,5 @@
 const Theme = {
-  fontSize: '10px',
+  fontSize: '1.4rem',
   fontWeight: 400,
 };
 
