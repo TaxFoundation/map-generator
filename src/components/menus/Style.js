@@ -13,28 +13,30 @@ const Style = () => {
       {data.mapData ? (
         <form>
           {data.isNumeric ? (
-            <Select
-              id="numericDataType"
-              label="What type of quantitative data is this?"
-              options={[
-                { id: 'sequential', label: 'Sequential →' },
-                { id: 'divergent', label: 'Divergent ↔' },
-              ]}
-            />
+            <>
+              <Select
+                id="numericDataType"
+                label="What type of quantitative data is this?"
+                options={[
+                  { id: 'sequential', label: 'Sequential →' },
+                  { id: 'divergent', label: 'Divergent ↔' },
+                ]}
+              />
+              <RadioGroup
+                id="formatType"
+                label="How should the values be formatted?"
+                options={[
+                  { id: 'number', label: 'Number' },
+                  { id: 'percent', label: 'Percent' },
+                  { id: 'dollar', label: 'Dollar' },
+                ]}
+              />
+              <NumberInput
+                label="How many bins should this data be divided into?"
+                id="bins"
+              />
+            </>
           ) : null}
-          <RadioGroup
-            id="formatType"
-            label="How should the values be formatted?"
-            options={[
-              { id: 'number', label: 'Number' },
-              { id: 'percent', label: 'Percent' },
-              { id: 'dollar', label: 'Dollar' },
-            ]}
-          />
-          <NumberInput
-            label="How many bins should this data be divided into?"
-            id="bins"
-          />
         </form>
       ) : null}
     </div>
