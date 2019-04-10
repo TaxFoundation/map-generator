@@ -61,6 +61,7 @@ const Menu = () => {
       <MenuSelection>
         {options.map(o => (
           <MenuOption
+            key={`menu-${o}`}
             role="button"
             onClick={() => setMenuSelection(o)}
             selected={menuSelection === o}

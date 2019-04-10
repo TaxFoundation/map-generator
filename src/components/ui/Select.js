@@ -12,17 +12,19 @@ const Select = ({ label, id, options }) => {
       <select
         name={`set-${id}`}
         id={`set-${id}`}
-        value={data[id]}
+        value={data[id] ? data[id] : ''}
         onChange={e =>
           updateData({
             id,
-            value: e.target.value,
+            value: e.target.value !== '' ? e.target.value : null,
           })
         }
       >
-        <option value={null}>¯\_(ツ)_/¯</option>
+        <option value="">¯\_(ツ)_/¯</option>
         {options.map(option => (
-          <option value={option.id}>{option.label}</option>
+          <option key={`select-${id}-${option.id}`} value={option.id}>
+            {option.label}
+          </option>
         ))}
       </select>
     </div>

@@ -139,10 +139,9 @@ const States = () => {
     return null;
   });
 
-  const legend = [...Array(+mapContext.bins).keys()].map(d => {
+  const legend = [...Array(mapContext.bins).keys()].map(d => {
     const keyGap = 10;
     const keyWidth = (xScale / 2 / mapContext.bins - keyGap) * xScalar;
-    console.log(mapContext.bins, d);
     return (
       <rect
         key={`legend-${d}`}
