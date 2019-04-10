@@ -32,6 +32,10 @@ const Style = () => {
                 ]}
               />
               <NumberInput
+                label="How many decimal places should be displayed?"
+                id="decimals"
+              />
+              <NumberInput
                 label="How many bins should this data be divided into?"
                 id="bins"
               />

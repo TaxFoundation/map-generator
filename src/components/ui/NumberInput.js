@@ -12,9 +12,9 @@ const NumberInput = ({ label, id }) => {
       <Label>{label}</Label>
       <input
         type="number"
-        value={data.bins}
+        value={data[id]}
         onChange={e => {
-          updateData({ id, value: e.target.value });
+          updateData({ id, value: parseInt(e.target.value) });
         }}
       />
     </div>
