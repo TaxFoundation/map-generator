@@ -86,6 +86,9 @@ const reducer = (state, action) => {
       );
       return { ...state, rankColumn: action.value, mapData: newMapData };
     }
+    case 'bins': {
+      return { ...state, bins: parseInt(action.value) };
+    }
     default: {
       let newValue = action.value;
       if (action.value === '¯\\_(ツ)_/¯') newValue = null;
