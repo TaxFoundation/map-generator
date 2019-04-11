@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -10,8 +10,8 @@ const LabelText = styled.text`
   font-family: 'Lato', sans-serif;
   font-size: ${props => props.fontSize || 10}px;
   font-weight: ${props => props.fontWeight || 400};
-  pointer-events: none;
   text-anchor: middle;
+  user-select: none;
 `;
 
 const fontSize = (showRank, fontScale = 1) =>
@@ -31,19 +31,40 @@ const offsets = (showRank, start) => {
 };
 
 const Label = props => {
+  const [dragging, setDragging] = useState(false);
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+  const [tempX, setTempX] = useState(0);
+  const [tempY, setTempY] = useState(0);
   const { data: mapContext } = useContext(DataContext);
   const { center, adjustment, id, fill, rank, value, abbr } = props;
   if (Number.isNaN(center[0]) || Number.isNaN(center[1])) return null;
 
-  const labelX = center[0] + adjustment[0];
-  const labelY = center[1] + adjustment[1] + 6;
+  const labelX = center[0] + adjustment[0] + x;
+  const labelY = center[1] + adjustment[1] + y + 6;
   const color = id === 15 ? '#333' : labelColor(fill);
   const offsetGen = offsets(mapContext.showRank, -6);
 
   return (
     <g
       transform={`translate(${labelX}, ${labelY})`}
-      onMouseDown={e => console.log(e)}
+      onMouseDown={e => {
+        setTempX(e.pageX);
+        setTempY(e.pageY);
+        setDragging(true);
+      }}
+      onMouseMove={e => {
+        if (dragging) {
+          e.preventDefault();
+          setX(e.pageX - tempX);
+          setY(e.pageY - tempY);
+        }
+      }}
+      onMouseUp={e => {
+        setTempX(0);
+        setTempY(0);
+        setDragging(false);
+      }}
     >
       <LabelText
         dy={offsetGen[0]}
