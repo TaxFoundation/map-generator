@@ -1,8 +1,18 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { DataContext } from '../../contexts/DataContext';
 import { formatter, labelColor } from '../../helpers';
+
+const LabelText = styled.text`
+  color: ${props => props.fill || '#333'};
+  font-family: 'Lato', sans-serif;
+  font-size: ${props => props.fontSize || 10}px;
+  font-weight: ${props => props.fontWeight || 400};
+  pointer-events: none;
+  text-anchor: middle;
+`;
 
 const fontSize = (showRank, fontScale = 1) =>
   showRank ? 8.5 * fontScale : 10 * fontScale;
@@ -23,58 +33,52 @@ const offsets = (showRank, start) => {
 const Label = props => {
   const { data: mapContext } = useContext(DataContext);
   const { center, adjustment, id, fill, rank, value, abbr } = props;
-  if (!Number.isNaN(center[0]) && !Number.isNaN(center[1])) {
-    const labelX = center[0] + adjustment[0];
-    const labelY = center[1] + adjustment[1] + 6;
+  if (Number.isNaN(center[0]) || Number.isNaN(center[1])) return null;
 
-    const color = id === 15 ? '#333' : labelColor(fill);
+  const labelX = center[0] + adjustment[0];
+  const labelY = center[1] + adjustment[1] + 6;
+  const color = id === 15 ? '#333' : labelColor(fill);
+  const offsetGen = offsets(mapContext.showRank, -6);
 
-    const offsetGen = offsets(mapContext.showRank, -6);
-
-    return (
-      <g transform={`translate(${labelX}, ${labelY})`}>
-        <text
-          dy={offsetGen[0]}
+  return (
+    <g
+      transform={`translate(${labelX}, ${labelY})`}
+      onMouseDown={e => console.log(e)}
+    >
+      <LabelText
+        dy={offsetGen[0]}
+        fill={color}
+        fontSize={fontSize(mapContext.showRank)}
+        fontWeight="700"
+      >
+        {abbr}
+      </LabelText>
+      <LabelText
+        dy={offsetGen[1]}
+        fill={color}
+        fontSize={fontSize(mapContext.showRank)}
+      >
+        {formatter(
+          {
+            format: mapContext.formatType,
+            decimals: mapContext.decimals,
+            comma: mapContext.comma,
+            unit: mapContext.unit,
+          },
+          value
+        )}
+      </LabelText>
+      {rank && mapContext.showRank ? (
+        <LabelText
+          dy={offsetGen[2]}
           fill={color}
-          fontFamily="Lato"
           fontSize={fontSize(mapContext.showRank)}
-          fontWeight="700"
-          textAnchor="middle"
         >
-          {abbr}
-        </text>
-        <text
-          dy={offsetGen[1]}
-          fill={color}
-          fontFamily="Lato"
-          fontSize={fontSize(mapContext.showRank)}
-          textAnchor="middle"
-        >
-          {formatter(
-            {
-              format: mapContext.formatType,
-              decimals: mapContext.decimals,
-              comma: mapContext.comma,
-              unit: mapContext.unit,
-            },
-            value
-          )}
-        </text>
-        {rank && mapContext.showRank ? (
-          <text
-            dy={offsetGen[2]}
-            fill={color}
-            fontFamily="Lato"
-            fontSize={fontSize(mapContext.showRank)}
-            textAnchor="middle"
-          >
-            {`#${rank}`}
-          </text>
-        ) : null}
-      </g>
-    );
-  }
-  return null;
+          {`#${rank}`}
+        </LabelText>
+      ) : null}
+    </g>
+  );
 };
 
 const SmallStateRect = props => {
