@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -32,16 +32,14 @@ const offsets = (showRank, start) => {
 
 const Label = props => {
   const [dragging, setDragging] = useState(false);
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
-  const [tempX, setTempX] = useState(0);
-  const [tempY, setTempY] = useState(0);
+  const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
+  const [origin, setOrigin] = useState({ x: 0, y: 0 });
   const { data: mapContext } = useContext(DataContext);
   const { center, adjustment, id, fill, rank, value, abbr } = props;
   if (Number.isNaN(center[0]) || Number.isNaN(center[1])) return null;
 
-  const labelX = center[0] + adjustment[0] + x;
-  const labelY = center[1] + adjustment[1] + y + 6;
+  const labelX = center[0] + adjustment[0] + coordinates.x;
+  const labelY = center[1] + adjustment[1] + coordinates.y + 6;
   const color = id === 15 ? '#333' : labelColor(fill);
   const offsetGen = offsets(mapContext.showRank, -6);
 
@@ -49,20 +47,19 @@ const Label = props => {
     <g
       transform={`translate(${labelX}, ${labelY})`}
       onMouseDown={e => {
-        setTempX(e.pageX);
-        setTempY(e.pageY);
+        setOrigin({ x: e.clientX, y: e.clientY });
         setDragging(true);
       }}
       onMouseMove={e => {
         if (dragging) {
-          e.preventDefault();
-          setX(e.pageX - tempX);
-          setY(e.pageY - tempY);
+          setCoordinates({
+            x: e.clientX - origin.x,
+            y: e.clientY - origin.y,
+          });
+          // Scale this with getBBox() and SVG size
         }
       }}
-      onMouseUp={e => {
-        setTempX(0);
-        setTempY(0);
+      onMouseUp={() => {
         setDragging(false);
       }}
     >
