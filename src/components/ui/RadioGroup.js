@@ -38,7 +38,7 @@ const RadioGroup = ({ label, id, options }) => {
       <Label htmlFor={`radio-group-${id}`}>{label}</Label>
       <FormatSelection>
         {options.map((option, i) => (
-          <div key={`radio-${id}-${options.id}`}>
+          <div key={`radio-${id}-${option.id}`}>
             <FormatRadio
               checked={data[id] === option.id}
               onChange={e =>
