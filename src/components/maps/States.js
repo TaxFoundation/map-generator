@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 
@@ -12,11 +12,24 @@ import { Label, SmallStateRect } from '../map-parts/Label';
 
 const States = () => {
   const { data: mapContext } = useContext(DataContext);
+  const [bounds, setBounds] = useState({
+    width: mapContext.mapXScale / mapContext.mapXScale,
+    height: mapContext.mapYScale / mapContext.mapYScale,
+  });
+  useEffect(() => {
+    const { width, height } = document
+      .getElementById('generated-map')
+      .getBoundingClientRect();
+    setBounds({
+      width: mapContext.mapXScale / width,
+      height: mapContext.mapYScale / height,
+    });
+  }, [mapContext.mapXScale, mapContext.mapXYScale, mapContext.mapYScale]);
 
   // Set initial dimensions and scaling
   const scale = 780;
-  const xScale = 600;
-  const yScale = 400;
+  const xScale = mapContext.mapXScale;
+  const yScale = mapContext.mapYScale;
   const xScalar = xScale / 600;
   const yScalar = yScale / 400;
   // Select correct palette for fills
@@ -129,6 +142,7 @@ const States = () => {
           fill={fill}
           center={path.centroid(d)}
           adjustment={adjustment}
+          bounds={bounds}
           abbr={STATES.find(s => +s.id === +d.id).abbr}
           value={data.value}
           rank={data.rank || null}

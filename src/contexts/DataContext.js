@@ -24,6 +24,8 @@ const initialState = {
   colorMode: 'lch',
   bins: 10,
   fontScale: 1,
+  mapXScale: 600,
+  mapYScale: 400,
 };
 
 const generateMapData = (rawData, id, value, rank = null) => {

@@ -35,7 +35,7 @@ const Label = props => {
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
   const [origin, setOrigin] = useState({ x: 0, y: 0 });
   const { data: mapContext } = useContext(DataContext);
-  const { center, adjustment, id, fill, rank, value, abbr } = props;
+  const { bounds, center, adjustment, id, fill, rank, value, abbr } = props;
   if (Number.isNaN(center[0]) || Number.isNaN(center[1])) return null;
 
   const labelX = center[0] + adjustment[0] + coordinates.x;
@@ -53,8 +53,8 @@ const Label = props => {
       onMouseMove={e => {
         if (dragging) {
           setCoordinates({
-            x: e.clientX - origin.x,
-            y: e.clientY - origin.y,
+            x: (e.clientX - origin.x) * bounds.width,
+            y: (e.clientY - origin.y) * bounds.height,
           });
           // Scale this with getBBox() and SVG size
         }
@@ -163,6 +163,7 @@ const SmallStateRect = props => {
 };
 
 Label.propTypes = {
+  bounds: PropTypes.object,
   center: PropTypes.arrayOf(PropTypes.number),
   adjustment: PropTypes.arrayOf(PropTypes.number),
   id: PropTypes.number,
