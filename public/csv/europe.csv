@@ -1,0 +1,56 @@
+﻿id,name,abbr,value
+8,Albania,ALB,1
+20,Andorra,AND,2
+31,Azerbaijan,AZE,3
+40,Austria,AUT,4
+51,Armenia,ARM,5
+56,Belgium,BEL,6
+70,Bosnia and Herz.,BIH,7
+100,Bulgaria,BGR,8
+112,Belarus,BLR,9
+191,Croatia,HRV,10
+196,Cyprus,CYP,11
+203,Czech Rep.,CZE,12
+208,Denmark,DNK,13
+233,Estonia,EST,14
+234,Faeroe Is.,FRO,15
+246,Finland,FIN,16
+248,Aland,ALA,17
+250,France,FRA,18
+268,Georgia,GEO,19
+276,Germany,DEU,20
+300,Greece,GRC,21
+304,Greenland,GRL,22
+336,Vatican,VAT,23
+348,Hungary,HUN,24
+352,Iceland,ISL,25
+372,Ireland,IRL,26
+380,Italy,ITA,27
+398,Kazakhstan,KAZ,28
+428,Latvia,LVA,29
+438,Liechtenstein,LIE,30
+440,Lithuania,LTU,31
+442,Luxembourg,LUX,32
+492,Monaco,MCO,33
+498,Moldova,MDA,34
+499,Montenegro,MNE,35
+528,Netherlands,NLD,36
+578,Norway,NOR,37
+616,Poland,POL,38
+620,Portugal,PRT,39
+642,Romania,ROU,40
+674,San Marino,SMR,41
+688,Serbia,SRB,42
+703,Slovakia,SVK,43
+705,Slovenia,SVN,44
+724,Spain,ESP,45
+752,Sweden,SWE,46
+756,Switzerland,CHE,47
+792,Turkey,TUR,48
+795,Turkmenistan,TKM,49
+804,Ukraine,UKR,50
+807,Macedonia,MKD,51
+826,United Kingdom,GBR,52
+831,Guernsey,GGY,53
+832,Jersey,JEY,54
+833,Isle of Man,IMN,55
