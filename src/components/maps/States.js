@@ -24,7 +24,7 @@ const States = () => {
       width: mapContext.mapXScale / width,
       height: mapContext.mapYScale / height,
     });
-  }, [mapContext.mapXScale, mapContext.mapXYScale, mapContext.mapYScale]);
+  }, [mapContext.mapXScale, mapContext.mapYScale]);
 
   // Set initial dimensions and scaling
   const scale = 780;
