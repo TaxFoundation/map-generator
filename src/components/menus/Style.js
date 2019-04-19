@@ -12,7 +12,7 @@ const Style = () => {
     <div>
       {data.mapData ? (
         <form>
-          {data.isNumeric ? (
+          {data.isNumeric && (
             <>
               <Select
                 id="numericDataType"
@@ -39,10 +39,34 @@ const Style = () => {
                 label="How many bins should this data be divided into?"
                 id="bins"
               />
+              <div>
+                <Label>Lowest Value in Scale</Label>
+                <input
+                  type="text"
+                  value={data.domain[0]}
+                  onChange={e => {
+                    const newDomain = [+e.target.value, data.domain[1]];
+                    updateData({ id: 'domain', value: newDomain });
+                  }}
+                />
+              </div>
+              <div>
+                <Label>Highest Value in Scale</Label>
+                <input
+                  type="text"
+                  value={data.domain[1]}
+                  onChange={e => {
+                    const newDomain = [data.domain[0], +e.target.value];
+                    updateData({ id: 'domain', value: newDomain });
+                  }}
+                />
+              </div>
             </>
-          ) : null}
+          )}
         </form>
-      ) : null}
+      ) : (
+        <p>Waiting for map data options to be set...</p>
+      )}
     </div>
   );
 };

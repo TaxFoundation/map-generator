@@ -86,7 +86,7 @@ const Label = props => {
           value
         )}
       </LabelText>
-      {rank && mapContext.showRank ? (
+      {rank && mapContext.showRank && (
         <LabelText
           dy={offsetGen[2]}
           fill={color}
@@ -94,7 +94,7 @@ const Label = props => {
         >
           {`#${rank}`}
         </LabelText>
-      ) : null}
+      )}
     </g>
   );
 };
@@ -146,7 +146,7 @@ const SmallStateRect = props => {
           value
         )}
       </text>
-      {rank && mapContext.showRank ? (
+      {rank && mapContext.showRank && (
         <text
           dy={offsetGen[2]}
           fontFamily="Lato"
@@ -157,7 +157,7 @@ const SmallStateRect = props => {
         >
           {abbr === 'DC' ? `(#${rank})` : `#${rank}`}
         </text>
-      ) : null}
+      )}
     </g>
   );
 };

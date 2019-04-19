@@ -11,7 +11,7 @@ const Data = () => {
     <div>
       <form>
         <FileInput />
-        {data.columns ? (
+        {data.columns && (
           <>
             <Select
               id="idColumn"
@@ -30,7 +30,7 @@ const Data = () => {
               }))}
             />
           </>
-        ) : null}
+        )}
         <Select
           id="mapGeographyType"
           label="What type of map is this?"
