@@ -28,30 +28,20 @@ const DataValidation = () => {
       <div>
         <h3>Waiting for the following to be set...</h3>
         <ul>
-          <li>
-            <Check valid={mapContext.rawData !== null}>
-              {mapContext.rawData ? '✓' : '✗'}
-            </Check>{' '}
-            Data Uploaded
-          </li>
-          <li>
-            <Check valid={mapContext.idColumn !== null}>
-              {mapContext.idColumn ? '✓' : '✗'}
-            </Check>{' '}
-            ID Chosen
-          </li>
-          <li>
-            <Check valid={mapContext.valueColumn !== null}>
-              {mapContext.valueColumn ? '✓' : '✗'}
-            </Check>{' '}
-            Value Chosen
-          </li>
-          <li>
-            <Check valid={mapContext.mapGeographyType !== null}>
-              {mapContext.mapGeographyType ? '✓' : '✗'}
-            </Check>{' '}
-            Geography Type Chosen
-          </li>
+          {[
+            { data: mapContext.rawData, label: 'Data Uploaded' },
+            { data: mapContext.idColumn, label: 'ID Chosen' },
+            { data: mapContext.valueColumn, label: 'Value Chosen' },
+            {
+              data: mapContext.mapGeographyType,
+              label: 'Geography Type Chosen',
+            },
+          ].map(item => (
+            <li>
+              <Check valid={item.data !== null}>{item.data ? '✓' : '✗'}</Check>{' '}
+              {item.label}
+            </li>
+          ))}
         </ul>
       </div>
       <HR />
