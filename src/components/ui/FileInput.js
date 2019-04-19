@@ -49,7 +49,7 @@ const FileInput = () => {
   return (
     <div>
       <StyledFileLabel htmlFor="upload">
-        {data.filename ? data.filename : 'Click to upload CSV file'}
+        {data.filename ? `Using ${data.filename}` : 'Click to upload CSV file'}
       </StyledFileLabel>
       <StyledFileInput
         type="file"
@@ -69,7 +69,7 @@ const FileInput = () => {
               updateData({ id: 'columns', value: fileData.columns });
             };
             reader.readAsText(files[0]);
-            updateData({ id: 'filename', value: `Using ${files[0].name}` });
+            updateData({ id: 'filename', value: `${files[0].name}` });
           }
         }}
       />

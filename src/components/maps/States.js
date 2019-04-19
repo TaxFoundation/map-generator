@@ -176,7 +176,7 @@ const States = () => {
 
   return (
     <div>
-      <svg id="generated-map" width="100%" viewBox={`0 0 ${xScale} ${yScale}`}>
+      <svg id="generated-map" viewBox={`0 0 ${xScale} ${yScale}`}>
         <g className="geographies">{geographies}</g>
         <g className="labels">{labels}</g>
         <g className="legend">{legend}</g>
