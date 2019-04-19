@@ -9004,6 +9004,11 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
+simple-statistics@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/simple-statistics/-/simple-statistics-7.0.2.tgz#46671f45cb6f9b68207dccd6a3c4f7e745e6e638"
+  integrity sha512-wqTjlmbiaL6Fqaw28tSjQrthjxVV17MMfi/H/qvE0jAvtLspB2S7gEtcR27uvhSRAa64LhjhoO169rX8sFW3pg==
+
 simple-swizzle@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/simple-swizzle/-/simple-swizzle-0.2.2.tgz#a4da6b635ffcccca33f70d17cb92592de95e557a"
