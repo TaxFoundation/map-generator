@@ -1,34 +1,8 @@
 import React, { createContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
+import { prodInitialState, devUSInitialState } from './Data';
 import { isNumericData } from '../helpers';
-
-const initialState = {
-  mapGeographyType: null,
-  isNumeric: true,
-  numericDataType: 'sequential',
-  paletteId: 1,
-  min: null,
-  max: null,
-  domain: null,
-  idColumn: null,
-  valueColumn: null,
-  rankColumn: null,
-  showRank: false,
-  filename: null,
-  rawData: null,
-  mapData: null,
-  columns: null,
-  formatType: 'number',
-  decimals: 0,
-  comma: true,
-  unit: 1,
-  colorMode: 'lch',
-  bins: 10,
-  fontScale: 1,
-  mapXScale: 600,
-  mapYScale: 400,
-};
 
 const generateMapData = (rawData, id, value, rank = null) => {
   const mapData = rawData.map(d => {
@@ -105,7 +79,7 @@ const reducer = (state, action) => {
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const [data, updateData] = useReducer(reducer, initialState);
+  const [data, updateData] = useReducer(reducer, devUSInitialState);
   return (
     <DataContext.Provider value={{ data, updateData }}>
       {children}
