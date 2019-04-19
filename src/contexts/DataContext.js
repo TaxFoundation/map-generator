@@ -8,6 +8,8 @@ const initialState = {
   isNumeric: true,
   numericDataType: 'sequential',
   paletteId: 1,
+  min: null,
+  max: null,
   domain: null,
   idColumn: null,
   valueColumn: null,
@@ -61,19 +63,23 @@ const reducer = (state, action) => {
           state.rankColumn
         );
         let newIsNumeric = false;
+        let newMin = state.min;
+        let newMax = state.max;
         let newDomain = state.domain;
         if (isNumericData(newMapData)) {
           newIsNumeric = true;
-          newDomain = [
-            Math.min(...newMapData.map(d => Number(d.value))),
-            Math.max(...newMapData.map(d => Number(d.value))),
-          ];
+          const values = newMapData.map(d => Number(d.value));
+          newMin = Math.min(...values);
+          newMax = Math.max(...values);
+          newDomain = [newMin, newMax];
         }
         return {
           ...state,
           valueColumn: action.value,
           mapData: newMapData,
           isNumeric: newIsNumeric,
+          min: newMin,
+          max: newMax,
           domain: newDomain,
         };
       }
