@@ -2,17 +2,8 @@ import React, { createContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import { prodInitialState, devUSInitialState } from './Data';
-import { isNumericData } from '../helpers';
-
-const generateMapData = (rawData, id, value, rank = null) => {
-  const mapData = rawData.map(d => {
-    if (rank) {
-      return { id: d[id], value: d[value], rank: d[rank] };
-    }
-    return { id: d[id], value: d[value] };
-  });
-  return mapData;
-};
+import { isNumericData, generateMapData } from '../helpers';
+import ValueColumnReducer from './reducers/ValueColumnReducer';
 
 const reducer = (state, action) => {
   switch (action.id) {
@@ -28,37 +19,8 @@ const reducer = (state, action) => {
       }
       return { ...state, idColumn: action.value };
     }
-    case 'valueColumn': {
-      if (state.idColumn) {
-        const newMapData = generateMapData(
-          state.rawData,
-          state.idColumn,
-          action.value,
-          state.rankColumn
-        );
-        let newIsNumeric = false;
-        let newMin = state.min;
-        let newMax = state.max;
-        let newDomain = state.domain;
-        if (isNumericData(newMapData)) {
-          newIsNumeric = true;
-          const values = newMapData.map(d => Number(d.value));
-          newMin = Math.min(...values);
-          newMax = Math.max(...values);
-          newDomain = [newMin, newMax];
-        }
-        return {
-          ...state,
-          valueColumn: action.value,
-          mapData: newMapData,
-          isNumeric: newIsNumeric,
-          min: newMin,
-          max: newMax,
-          domain: newDomain,
-        };
-      }
-      return { ...state, valueColumn: action.value };
-    }
+    case 'valueColumn':
+      return ValueColumnReducer(state, action);
     case 'rankColumn': {
       const newMapData = generateMapData(
         state.rawData,

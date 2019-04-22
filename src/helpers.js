@@ -102,3 +102,13 @@ export const isNumericData = values => {
   }
   return true;
 };
+
+export const generateMapData = (rawData, id, value, rank = null) => {
+  const mapData = rawData.map(d => {
+    if (rank) {
+      return { id: d[id], value: d[value], rank: d[rank] };
+    }
+    return { id: d[id], value: d[value] };
+  });
+  return mapData;
+};
