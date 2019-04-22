@@ -2,34 +2,19 @@ import React, { createContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import { prodInitialState, devUSInitialState } from './Data';
-import { isNumericData, generateMapData } from '../helpers';
+import { generateMapData } from '../helpers';
+import IDColumnReducer from './reducers/IDColumnReducer';
 import ValueColumnReducer from './reducers/ValueColumnReducer';
+import RankColumnReducer from './reducers/RankColumnReducer';
 
 const reducer = (state, action) => {
   switch (action.id) {
-    case 'idColumn': {
-      if (state.valueColumn) {
-        const newMapData = generateMapData(
-          state.rawData,
-          action.value,
-          state.valueColumn,
-          state.rankColumn
-        );
-        return { ...state, idColumn: action.value, mapData: newMapData };
-      }
-      return { ...state, idColumn: action.value };
-    }
+    case 'idColumn':
+      return IDColumnReducer(state, action);
     case 'valueColumn':
       return ValueColumnReducer(state, action);
-    case 'rankColumn': {
-      const newMapData = generateMapData(
-        state.rawData,
-        state.idColumn,
-        state.valueColumn,
-        action.value
-      );
-      return { ...state, rankColumn: action.value, mapData: newMapData };
-    }
+    case 'rankColumn':
+      return RankColumnReducer(state, action);
     default: {
       let newValue = action.value;
       if (action.value === '¯\\_(ツ)_/¯') newValue = null;
