@@ -62,6 +62,7 @@ const Label = props => {
       onMouseUp={() => {
         setDragging(false);
       }}
+      style={{ cursor: 'move' }}
     >
       <LabelText
         dy={offsetGen[0]}
