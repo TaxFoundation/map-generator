@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 
 import { DataContext } from '../../contexts/DataContext';
 import FileInput from '../ui/FileInput';
-import Label from '../ui/Label';
 import Select from '../ui/Select';
+import Toggle from '../ui/Toggle';
 
 const Data = () => {
   const { data, updateData } = useContext(DataContext);
@@ -40,6 +40,7 @@ const Data = () => {
             { id: 'europe', label: 'European Nations' },
           ]}
         />
+        <Toggle id="showRank" label="Data has rankings?" />
       </form>
     </div>
   );
