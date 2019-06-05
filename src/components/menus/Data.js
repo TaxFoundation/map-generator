@@ -41,6 +41,16 @@ const Data = () => {
           ]}
         />
         <Toggle id="showRank" label="Data has rankings?" />
+        {data.showRank && (
+          <Select
+            id="rankColumn"
+            label="Which column is the rank?"
+            options={data.columns.map(column => ({
+              id: column,
+              label: column,
+            }))}
+          />
+        )}
       </form>
     </div>
   );
