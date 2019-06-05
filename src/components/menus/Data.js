@@ -6,7 +6,7 @@ import Select from '../ui/Select';
 import Toggle from '../ui/Toggle';
 
 const Data = () => {
-  const { data, updateData } = useContext(DataContext);
+  const { data } = useContext(DataContext);
   return (
     <div>
       <form>

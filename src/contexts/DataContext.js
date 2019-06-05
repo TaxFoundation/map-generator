@@ -2,7 +2,6 @@ import React, { createContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import { prodInitialState, devUSInitialState } from './Data';
-import { generateMapData } from '../helpers';
 import IDColumnReducer from './reducers/IDColumnReducer';
 import ValueColumnReducer from './reducers/ValueColumnReducer';
 import RankColumnReducer from './reducers/RankColumnReducer';
