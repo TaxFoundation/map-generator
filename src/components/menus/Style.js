@@ -5,6 +5,7 @@ import Label from '../ui/Label';
 import Select from '../ui/Select';
 import RadioGroup from '../ui/RadioGroup';
 import NumberInput from '../ui/NumberInput';
+import PaletteSelect from '../ui/PaletteSelect';
 
 const Style = () => {
   const { data, updateData } = useContext(DataContext);
@@ -74,6 +75,7 @@ const Style = () => {
                   { id: 'hsv', label: 'Hue, Saturation, Value' },
                 ]}
               />
+              <PaletteSelect />
             </>
           )}
         </form>
