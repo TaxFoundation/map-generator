@@ -10,6 +10,17 @@ import {
 import { colorScale } from '../../helpers';
 import Modal from './Modal';
 
+function choosePalette(type) {
+  switch (type) {
+    case 'sequential':
+      return sequentialPalettes;
+    case 'divergent':
+      return divergentPalettes;
+    default:
+      return qualitativePalettes;
+  }
+}
+
 const PaletteList = ({ palettes }) => {
   const { data, updateData } = useContext(DataContext);
   return (
@@ -50,6 +61,7 @@ const PaletteSelect = () => {
       {open && (
         <Modal>
           <h1>Test Palette Select</h1>
+          <PaletteList palettes={choosePalette(data.numericDataType)} />
         </Modal>
       )}
     </div>
