@@ -7,7 +7,7 @@ import {
   qualitativePalettes,
 } from './data/colorPalette';
 
-export const colorScale = (colors, theDomain, value, steps, mode = 'lch') =>
+export const colorScale = (colors, theDomain, value, steps, mode) =>
   chroma
     .scale(colors)
     .domain(theDomain)

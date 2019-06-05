@@ -61,6 +61,19 @@ const Style = () => {
                   }}
                 />
               </div>
+              <Select
+                id="colorMode"
+                label="What color mode should be used?"
+                options={[
+                  { id: 'lch', label: 'Lightness, chroma, hue' },
+                  { id: 'rgb', label: 'Red, Green, Blue' },
+                  { id: 'lrgb', label: 'Linear Red, Green, Blue' },
+                  { id: 'lab', label: 'Lightness, a, b' },
+                  { id: 'hsl', label: 'Hue, Saturation, Lightness' },
+                  { id: 'hcl', label: 'Hue, Chroma, Lightness' },
+                  { id: 'hsv', label: 'Hue, Saturation, Value' },
+                ]}
+              />
             </>
           )}
         </form>
