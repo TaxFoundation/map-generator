@@ -19,6 +19,7 @@ const Content = styled.div`
   border: 1px solid #fff;
   border-radius: 4px;
   grid-area: 2 / 2 / span 1 / span 1;
+  padding: 1rem;
 `;
 
 const Modal = ({ children }) => (
