@@ -112,7 +112,7 @@ const PaletteSelect = () => {
       </StyledButton>
       {open && (
         <Modal>
-          <h1>Test Palette Select</h1>
+          <h1>Choose another palette!</h1>
           <PaletteList
             palettes={choosePalette(data.numericDataType)}
             close={() => setOpen(false)}
