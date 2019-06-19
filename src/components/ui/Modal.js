@@ -14,6 +14,20 @@ const Wrapper = styled.div`
   z-index: 100;
 `;
 
+const Heading = styled.div`
+  align-items: baseline;
+  border-bottom: 1px solid #333;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template: auto / 1fr auto;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+
+  h1 {
+    font-size: 2rem;
+  }
+`;
+
 const Content = styled.div`
   background-color: #fff;
   border: 1px solid #fff;
@@ -22,14 +36,23 @@ const Content = styled.div`
   padding: 1rem;
 `;
 
-const Modal = ({ children }) => (
+const Modal = ({ title, close, children }) => (
   <Wrapper>
-    <Content>{children}</Content>
+    <Content>
+      <Heading>
+        <h1>{title}</h1>
+        <div style={{ cursor: 'pointer' }} onClick={close}>
+          Close
+        </div>
+      </Heading>
+      {children}
+    </Content>
   </Wrapper>
 );
 
 Modal.propTypes = {
-  show: PropTypes.bool,
+  title: PropTypes.string,
+  close: PropTypes.func,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
