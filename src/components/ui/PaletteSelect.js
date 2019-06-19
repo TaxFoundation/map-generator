@@ -25,7 +25,7 @@ function choosePalette(type) {
 
 const StyledPaletteList = styled.ul`
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
   grid-template: auto / repeat(3, 1fr);
 `;
 
@@ -34,12 +34,12 @@ const Palette = styled.li`
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: repeat(${props => props.columns}, 1fr);
-  grid-template-rows: 20px;
+  grid-template-rows: 40px;
 `;
 
 const PaletteChunk = styled.div`
   background-color: ${props => props.bg};
-  height: 20px;
+  height: 40px;
 `;
 
 const StyledButton = styled.button`
