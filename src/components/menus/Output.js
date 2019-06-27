@@ -26,13 +26,13 @@ const Download = styled.a`
 const Output = () => {
   const { data } = useContext(DataContext);
   const theSVG = document.getElementById('generated-map');
+
+  const filename = data.filename || 'map';
+
   if (theSVG) {
     return (
       <div>
-        <Download
-          href={saveSVG('generated-map')}
-          download={`${data.filename}.svg`}
-        >
+        <Download href={saveSVG('generated-map')} download={`${filename}.svg`}>
           Download Map SVG
         </Download>
       </div>
