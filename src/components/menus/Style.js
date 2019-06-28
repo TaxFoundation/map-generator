@@ -23,6 +23,7 @@ const Style = () => {
                   { id: 'divergent', label: 'Divergent ↔' },
                 ]}
               />
+              <PaletteSelect />
               <RadioGroup
                 id="formatType"
                 label="How should the values be formatted?"
@@ -75,7 +76,6 @@ const Style = () => {
                   { id: 'hsv', label: 'Hue, Saturation, Value' },
                 ]}
               />
-              <PaletteSelect />
             </>
           )}
         </form>
