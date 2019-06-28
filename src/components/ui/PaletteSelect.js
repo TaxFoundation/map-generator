@@ -50,14 +50,15 @@ const StyledButton = styled.button`
   width: 100%;
 `;
 
-const PaletteList = ({ palettes, close }) => {
+const PaletteList = ({ palettes, type, close }) => {
   const { data, updateData } = useContext(DataContext);
+
   return (
     <StyledPaletteList>
       {palettes.map(p => (
         <Palette
           columns={data.bins}
-          key={`palette-${data.numericDataType}-${p.id}`}
+          key={`palette-${type}-${p.id}`}
           onClick={() => {
             updateData({ id: 'paletteId', value: p.id });
             close();
@@ -72,7 +73,7 @@ const PaletteList = ({ palettes, close }) => {
                 data.bins,
                 data.colorMode
               )}
-              key={`palette-${data.numericDataType}-${p.id}-${i}`}
+              key={`palette-${type}-${p.id}-${i}`}
             />
           ))}
         </Palette>
@@ -85,7 +86,9 @@ const PaletteSelect = () => {
   const { data } = useContext(DataContext);
   const [open, setOpen] = useState(false);
 
-  const currentPalette = choosePalette(data.numericDataType).find(
+  const paletteType = data.isNumeric ? data.numericDataType : 'divergent';
+
+  const currentPalette = choosePalette(paletteType).find(
     p => data.paletteId === p.id
   );
 
@@ -103,9 +106,7 @@ const PaletteSelect = () => {
                 data.bins,
                 data.colorMode
               )}
-              key={`current-palette-${data.numericDataType}-${
-                data.paletteId
-              }-${i}`}
+              key={`current-palette-${paletteType}-${data.paletteId}-${i}`}
             />
           ))}
         </Palette>
@@ -113,7 +114,8 @@ const PaletteSelect = () => {
       {open && (
         <Modal title="Choose a New Palette" close={() => setOpen(false)}>
           <PaletteList
-            palettes={choosePalette(data.numericDataType)}
+            type={paletteType}
+            palettes={choosePalette(paletteType)}
             close={() => setOpen(false)}
           />
         </Modal>
