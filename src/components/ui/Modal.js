@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 const Heading = styled.div`
-  align-items: baseline;
+  align-items: center;
   border-bottom: 1px solid #333;
   display: grid;
   grid-gap: 1rem;
@@ -25,6 +25,24 @@ const Heading = styled.div`
 
   h1 {
     font-size: 2rem;
+  }
+`;
+
+const CloseButton = styled.button`
+  border: 1px solid #0094ff;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #0094ff;
+  cursor: pointer;
+  display: block;
+  padding: 0.5rem;
+  transition: all 0.1s ease-in-out;
+  user-select: none;
+
+  &:hover {
+    background-color: #0094ff;
+    color: #fff;
+    transform: scale(1.1);
   }
 `;
 
@@ -41,9 +59,7 @@ const Modal = ({ title, close, children }) => (
     <Content>
       <Heading>
         <h1>{title}</h1>
-        <div style={{ cursor: 'pointer' }} onClick={close}>
-          Close
-        </div>
+        <CloseButton onClick={close}>Close</CloseButton>
       </Heading>
       {children}
     </Content>

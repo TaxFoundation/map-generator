@@ -18,9 +18,14 @@ const FormatLabel = styled.label`
   background-color: ${props => (props.selected ? '#0094ff' : '#fff')};
   color: ${props => (props.selected ? '#fff' : '#0094ff')};
   cursor: pointer;
+  display: block;
   padding: 0.5rem;
-  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
   user-select: none;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const FormatRadio = styled.input`
