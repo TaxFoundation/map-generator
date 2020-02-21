@@ -57,7 +57,11 @@ const Countries = () => {
     let domain;
     if (mapContext.mapData) {
       data = mapContext.mapData.find(s => {
-        if (+s.id === +d.properties.iso_n3 || s.id === d.properties.iso_a3) {
+        if (
+          +s.id === +d.properties.iso_n3 ||
+          s.id === d.properties.iso_a3 ||
+          s.id === d.properties.iso_a2
+        ) {
           return true;
         }
         return false;
@@ -65,7 +69,11 @@ const Countries = () => {
       domain = mapContext.domain;
     } else {
       data = EUROPE.find(s => {
-        if (+s.id === +d.properties.iso_n3 || s.id === d.properties.iso_a3) {
+        if (
+          +s.id === +d.properties.iso_n3 ||
+          s.id === d.properties.iso_a3 ||
+          s.id === d.properties.iso_a2
+        ) {
           return true;
         }
         return false;
@@ -106,10 +114,28 @@ const Countries = () => {
     let data;
     let domain;
     if (mapContext.mapData) {
-      data = mapContext.mapData.find(s => +s.id === +d.properties.iso_n3);
+      data = mapContext.mapData.find(s => {
+        if (
+          +s.id === +d.properties.iso_n3 ||
+          s.id === d.properties.iso_a3 ||
+          s.id === d.properties.iso_a2
+        ) {
+          return true;
+        }
+        return false;
+      });
       domain = mapContext.domain;
     } else {
-      data = EUROPE.find(s => +s.id === +d.properties.iso_n3);
+      data = EUROPE.find(s => {
+        if (
+          +s.id === +d.properties.iso_n3 ||
+          s.id === d.properties.iso_a3 ||
+          s.id === d.properties.iso_a2
+        ) {
+          return true;
+        }
+        return false;
+      });
       domain = [1, 50];
     }
 
@@ -155,7 +181,7 @@ const Countries = () => {
           bounds={bounds}
           abbr={EUROPE.find(s => +s.id === +d.properties.iso_n3).iso_a2}
           value={data.value}
-          rank={data.rank || null}
+          rank={+data.rank || null}
         />
       );
     }
