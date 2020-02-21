@@ -22,7 +22,6 @@ const EUROPE = [
   { id: 352, name: 'Iceland', iso_a2: 'IS', iso_a3: 'ISL', value: 25 },
   { id: 372, name: 'Ireland', iso_a2: 'IE', iso_a3: 'IRL', value: 26 },
   { id: 380, name: 'Italy', iso_a2: 'IT', iso_a3: 'ITA', value: 27 },
-  { id: 383, name: 'Kosovo', iso_a2: 'XK', iso_a3: 'UNK', value: 29 },
   { id: 428, name: 'Latvia', iso_a2: 'LV', iso_a3: 'LVA', value: 29 },
   { id: 438, name: 'Liechtenstein', iso_a2: 'LI', iso_a3: 'LIE', value: 30 },
   { id: 440, name: 'Lithuania', iso_a2: 'LT', iso_a3: 'LTU', value: 31 },
