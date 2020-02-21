@@ -27,7 +27,7 @@ const Countries = () => {
   }, [mapContext.mapXScale, mapContext.mapYScale]);
 
   // Set initial dimensions and scaling
-  const scale = 780;
+  const scale = 500;
   const xScale = mapContext.mapXScale;
   const yScale = mapContext.mapYScale;
   const xScalar = xScale / 600;
@@ -43,14 +43,12 @@ const Countries = () => {
   const path = geoPath().projection(
     geoConicConformal()
       .scale(scale)
-      .translate([xScale / 2, yScale / 2 - 25])
+      .translate([150, 700])
   );
   const EuropeDataFeatures = feature(
     Features,
     Features.objects[mapContext.mapGeographyType]
   ).features;
-
-  console.log(EuropeDataFeatures);
 
   // Create geographies with fills
   const geographies = EuropeDataFeatures.map(d => {
@@ -98,16 +96,16 @@ const Countries = () => {
     let data;
     let domain;
     if (mapContext.mapData) {
-      data = mapContext.mapData.find(s => +s.id === +d.id);
+      data = mapContext.mapData.find(s => +s.id === +d.properties.iso_n3);
       domain = mapContext.domain;
     } else {
-      data = EUROPE.find(s => +s.id === +d.id);
+      data = EUROPE.find(s => +s.id === +d.properties.iso_n3);
       domain = [1, 50];
     }
 
-    let isSmallState = false;
+    const isSmallState = false;
     let fill = '#777777';
-    let adjustment = [0, 0];
+    const adjustment = [0, 0];
 
     if (data !== undefined) {
       if (mapContext.isNumeric) {
@@ -121,31 +119,31 @@ const Countries = () => {
       }
 
       // Creat rect/label for small states
-      if (d.id in smallStateRects) {
-        isSmallState = true;
-      }
+      // if (d.id in smallStateRects) {
+      //   isSmallState = true;
+      // }
 
-      if (d.id in adjustments) {
-        adjustment = adjustments[d.id];
-      }
+      // if (d.id in adjustments) {
+      //   adjustment = adjustments[d.id];
+      // }
       return isSmallState ? (
         <SmallStateRect
-          key={`ssr-${d.id}`}
-          smallState={smallStateRects[d.id]}
+          key={`ssr-${d.properties.iso_n3}`}
+          smallState={smallStateRects[d.properties.iso_n3]}
           fill={fill}
-          abbr={EUROPE.find(s => +s.id === +d.id).abbr}
+          abbr={EUROPE.find(s => +s.id === +d.properties.iso_n3).abbr}
           value={data.value}
           rank={data.rank || null}
         />
       ) : (
         <Label
-          key={`label-${d.id}`}
-          id={d.id}
+          key={`label-${d.properties.iso_n3}`}
+          id={+d.properties.iso_n3}
           fill={fill}
           center={path.centroid(d)}
           adjustment={adjustment}
           bounds={bounds}
-          abbr={EUROPE.find(s => +s.id === +d.id).abbr}
+          abbr={EUROPE.find(s => +s.id === +d.properties.iso_n3).abbr}
           value={data.value}
           rank={data.rank || null}
         />
