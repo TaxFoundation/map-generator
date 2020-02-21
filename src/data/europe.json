@@ -792,9 +792,10 @@
       }, {
         "type": "Polygon",
         "properties": {
-          "iso_n3": "-99",
+          "iso_n3": "383",
           "name": "Kosovo",
-          "iso_a3": "-99"
+          "iso_a3": "UNK",
+          "iso_a2": "XK"
         },
         "arcs": [
           [245, -1, 246, 247]

@@ -53,38 +53,26 @@ const Countries = () => {
   // Create geographies with fills
   const geographies = EuropeDataFeatures.map(d => {
     // Match country's path to the current country data
-    let data;
-    let domain;
-    if (mapContext.mapData) {
-      data = mapContext.mapData.find(s => {
-        if (
-          +s.id === +d.properties.iso_n3 ||
-          s.id === d.properties.iso_a3 ||
-          s.id === d.properties.iso_a2
-        ) {
-          return true;
-        }
-        return false;
-      });
-      domain = mapContext.domain;
-    } else {
-      data = EUROPE.find(s => {
-        if (
-          +s.id === +d.properties.iso_n3 ||
-          s.id === d.properties.iso_a3 ||
-          s.id === d.properties.iso_a2
-        ) {
-          return true;
-        }
-        return false;
-      });
-      domain = [1, 58];
-    }
+    if (EUROPE.find(c => c.iso_a3 === d.properties.iso_a3)) {
+      let data;
+      let { domain } = mapContext;
+      if (!domain) domain = [1, 58];
+      if (mapContext.mapData) {
+        data = mapContext.mapData.find(s => {
+          if (
+            +s.id === +d.properties.iso_n3 ||
+            s.id === d.properties.iso_a3 ||
+            s.id === d.properties.iso_a2
+          ) {
+            return true;
+          }
+          return false;
+        });
+      }
 
-    let fill = '#777777';
+      let fill = '#777777';
 
-    if (data !== undefined) {
-      if (mapContext.isNumeric) {
+      if (data && mapContext.isNumeric) {
         fill = colorScale(
           palette,
           domain,
@@ -93,6 +81,7 @@ const Countries = () => {
           mapContext.colorMode
         );
       }
+
       return (
         <path
           d={path(d)}
@@ -105,7 +94,6 @@ const Countries = () => {
         />
       );
     }
-
     return null;
   });
 
