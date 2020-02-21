@@ -131,7 +131,7 @@ const Countries = () => {
           key={`ssr-${d.properties.iso_n3}`}
           smallState={smallStateRects[d.properties.iso_n3]}
           fill={fill}
-          abbr={EUROPE.find(s => +s.id === +d.properties.iso_n3).abbr}
+          abbr={EUROPE.find(s => +s.id === +d.properties.iso_n3).iso_a2}
           value={data.value}
           rank={data.rank || null}
         />
@@ -143,7 +143,7 @@ const Countries = () => {
           center={path.centroid(d)}
           adjustment={adjustment}
           bounds={bounds}
-          abbr={EUROPE.find(s => +s.id === +d.properties.iso_n3).abbr}
+          abbr={EUROPE.find(s => +s.id === +d.properties.iso_n3).iso_a2}
           value={data.value}
           rank={data.rank || null}
         />
