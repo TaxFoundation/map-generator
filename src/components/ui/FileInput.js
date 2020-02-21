@@ -67,6 +67,9 @@ const FileInput = () => {
               const fileData = await csvParse(event.target.result);
               updateData({ id: 'rawData', value: fileData });
               updateData({ id: 'columns', value: fileData.columns });
+              updateData({ id: 'idColumn', value: null });
+              updateData({ id: 'valueColumn', value: null });
+              updateData({ id: 'rankColumn', value: null });
             };
             reader.readAsText(files[0]);
             updateData({ id: 'filename', value: `${files[0].name}` });
