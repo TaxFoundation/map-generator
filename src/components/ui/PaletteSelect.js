@@ -8,9 +8,10 @@ import {
   divergentPalettes,
   qualitativePalettes,
 } from '../../data/colorPalette';
-import { colorScale } from '../../helpers';
+import { colorScale, directedPalette } from '../../helpers';
 import Modal from './Modal';
 import Label from './Label';
+import Toggle from './Toggle';
 
 function choosePalette(type) {
   switch (type) {
@@ -67,7 +68,7 @@ const PaletteList = ({ palettes, type, close }) => {
           {[...Array(data.bins).keys()].map((d, i) => (
             <PaletteChunk
               bg={colorScale(
-                p.palette,
+                directedPalette(p.palette, data.paletteDirectionFlipped),
                 [0, data.bins - 1],
                 d,
                 data.bins,
@@ -100,7 +101,10 @@ const PaletteSelect = () => {
           {[...Array(data.bins).keys()].map((d, i) => (
             <PaletteChunk
               bg={colorScale(
-                currentPalette.palette,
+                directedPalette(
+                  currentPalette.palette,
+                  data.paletteDirectionFlipped
+                ),
                 [0, data.bins - 1],
                 d,
                 data.bins,
@@ -120,6 +124,7 @@ const PaletteSelect = () => {
           />
         </Modal>
       )}
+      <Toggle id="paletteDirectionFlipped" label="Flip palette direction?" />
     </div>
   );
 };
