@@ -66,31 +66,35 @@ export const formatter = (parameters, value) => {
   return format(theFormat)(value / parameters.unit);
 };
 
-export const getPalette = (id, type) => {
+export const directedPalette = (palette, flipped) =>
+  flipped ? palette.reverse : palette;
+
+export const getPalette = (id, type, flipped) => {
+  const defaultPalette = directedPalette(['#000000', '#ffffff']);
   switch (type) {
     case 'qualitative':
       return (
-        qualitativePalettes.find(p => p.id === id).palette || [
-          '#000000',
-          '#ffffff',
-        ]
+        directedPalette(
+          qualitativePalettes.find(p => p.id === id).palette,
+          flipped
+        ) || defaultPalette
       );
     case 'divergent':
       return (
-        divergentPalettes.find(p => p.id === id).palette || [
-          '#000000',
-          '#ffffff',
-        ]
+        directedPalette(
+          divergentPalettes.find(p => p.id === id).palette,
+          flipped
+        ) || defaultPalette
       );
     case 'sequential':
       return (
-        sequentialPalettes.find(p => p.id === id).palette || [
-          '#000000',
-          '#ffffff',
-        ]
+        directedPalette(
+          sequentialPalettes.find(p => p.id === id).palette,
+          flipped
+        ) || defaultPalette
       );
     default:
-      return ['#000000', '#ffffff'];
+      return defaultPalette;
   }
 };
 
