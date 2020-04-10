@@ -51,24 +51,26 @@ const StyledButton = styled.button`
   width: 100%;
 `;
 
-const PaletteList = ({ palettes, type, close }) => {
-  const { data, updateData } = useContext(DataContext);
-
-  return (
-    <StyledPaletteList>
-      {palettes.map(p => (
-        <Palette
-          columns={data.bins}
-          key={`palette-${type}-${p.id}`}
-          onClick={() => {
-            updateData({ id: 'paletteId', value: p.id });
-            close();
-          }}
-        >
-          {[...Array(data.bins).keys()].map((d, i) => (
+const PaletteList = ({ palettes, type, close, data, updateData }) => (
+  <StyledPaletteList>
+    {palettes.map(p => (
+      <Palette
+        columns={data.bins}
+        key={`palette-${type}-${p.id}`}
+        onClick={() => {
+          updateData({ id: 'paletteId', value: p.id });
+          close();
+        }}
+      >
+        {[...Array(data.bins).keys()].map((d, i) => {
+          const palette = directedPalette(
+            p.palette,
+            data.paletteDirectionFlipped
+          );
+          return (
             <PaletteChunk
               bg={colorScale(
-                directedPalette(p.palette, data.paletteDirectionFlipped),
+                palette,
                 [0, data.bins - 1],
                 d,
                 data.bins,
@@ -76,21 +78,26 @@ const PaletteList = ({ palettes, type, close }) => {
               )}
               key={`palette-${type}-${p.id}-${i}`}
             />
-          ))}
-        </Palette>
-      ))}
-    </StyledPaletteList>
-  );
-};
+          );
+        })}
+      </Palette>
+    ))}
+  </StyledPaletteList>
+);
 
 const PaletteSelect = () => {
-  const { data } = useContext(DataContext);
+  const { data, updateData } = useContext(DataContext);
   const [open, setOpen] = useState(false);
 
   const paletteType = data.isNumeric ? data.numericDataType : 'divergent';
 
   const currentPalette = choosePalette(paletteType).find(
     p => data.paletteId === p.id
+  );
+
+  const palette = directedPalette(
+    currentPalette.palette,
+    data.paletteDirectionFlipped
   );
 
   return (
@@ -101,10 +108,7 @@ const PaletteSelect = () => {
           {[...Array(data.bins).keys()].map((d, i) => (
             <PaletteChunk
               bg={colorScale(
-                directedPalette(
-                  currentPalette.palette,
-                  data.paletteDirectionFlipped
-                ),
+                palette,
                 [0, data.bins - 1],
                 d,
                 data.bins,
@@ -118,6 +122,8 @@ const PaletteSelect = () => {
       {open && (
         <Modal title="Choose a New Palette" close={() => setOpen(false)}>
           <PaletteList
+            data={data}
+            updateDate={updateData}
             type={paletteType}
             palettes={choosePalette(paletteType)}
             close={() => setOpen(false)}

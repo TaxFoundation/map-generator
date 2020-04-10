@@ -66,8 +66,10 @@ export const formatter = (parameters, value) => {
   return format(theFormat)(value / parameters.unit);
 };
 
-export const directedPalette = (palette, flipped) =>
-  flipped ? palette.reverse() : palette;
+export const directedPalette = (palette, flipped) => {
+  const thePalette = flipped ? palette.slice().reverse() : palette;
+  return thePalette;
+};
 
 export const getPalette = (id, type, flipped) => {
   const defaultPalette = directedPalette(['#000000', '#ffffff']);
