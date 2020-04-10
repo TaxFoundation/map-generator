@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -7,14 +7,24 @@ import Label from './Label';
 
 const NumberInput = ({ label, id }) => {
   const { data, updateData } = useContext(DataContext);
+  const [value, setValue] = useState(data[id]);
+
+  useEffect(() => {
+    let newValue = data[id];
+    if (!Number.isNaN(value) && +value !== data[id]) newValue = +value;
+    if (newValue !== data[id]) updateData({ id, value: newValue });
+  }, [data, id, updateData, value]);
+
   return (
     <div>
       <Label>{label}</Label>
       <input
-        type="number"
-        value={data[id]}
+        type="text"
+        inputMode="numeric"
+        pattern="-?[0-9]*"
+        value={value}
         onChange={e => {
-          updateData({ id, value: parseInt(e.target.value) });
+          setValue(e.target.value);
         }}
       />
     </div>

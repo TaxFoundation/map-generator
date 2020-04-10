@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { DataContext } from '../../contexts/DataContext';
 import Label from '../ui/Label';
@@ -6,6 +6,49 @@ import Select from '../ui/Select';
 import RadioGroup from '../ui/RadioGroup';
 import NumberInput from '../ui/NumberInput';
 import PaletteSelect from '../ui/PaletteSelect';
+
+const DomainControls = ({ minData, maxData, update }) => {
+  const [min, setMin] = useState(minData);
+  const [max, setMax] = useState(maxData);
+
+  useEffect(() => {
+    let newMin = minData;
+    let newMax = maxData;
+    if (!Number.isNaN(min) && +min !== minData) newMin = +min;
+    if (!Number.isNaN(max) && +max !== maxData) newMax = +max;
+    if (newMin !== minData || newMax !== maxData)
+      update({ id: 'domain', value: [newMin, newMax] });
+  }, [min, max, minData, maxData, update]);
+
+  return (
+    <>
+      <div>
+        <Label>Lowest Value in Scale</Label>
+        <input
+          type="text"
+          inputMode="numeric"
+          pattern="-?[0-9]*"
+          value={min}
+          onChange={e => {
+            setMin(e.target.value);
+          }}
+        />
+      </div>
+      <div>
+        <Label>Highest Value in Scale</Label>
+        <input
+          type="text"
+          inputMode="numeric"
+          pattern="-?[0-9]*"
+          value={max}
+          onChange={e => {
+            setMax(e.target.value);
+          }}
+        />
+      </div>
+    </>
+  );
+};
 
 const Style = () => {
   const { data, updateData } = useContext(DataContext);
@@ -41,28 +84,11 @@ const Style = () => {
                 label="How many bins should this data be divided into?"
                 id="bins"
               />
-              <div>
-                <Label>Lowest Value in Scale</Label>
-                <input
-                  type="text"
-                  value={data.domain[0]}
-                  onChange={e => {
-                    const newDomain = [+e.target.value, data.domain[1]];
-                    updateData({ id: 'domain', value: newDomain });
-                  }}
-                />
-              </div>
-              <div>
-                <Label>Highest Value in Scale</Label>
-                <input
-                  type="text"
-                  value={data.domain[1]}
-                  onChange={e => {
-                    const newDomain = [data.domain[0], +e.target.value];
-                    updateData({ id: 'domain', value: newDomain });
-                  }}
-                />
-              </div>
+              <DomainControls
+                minData={data.domain[0]}
+                maxData={data.domain[1]}
+                update={updateData}
+              />
               <Select
                 id="colorMode"
                 label="What color mode should be used?"
