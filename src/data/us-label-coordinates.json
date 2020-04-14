@@ -187,12 +187,12 @@
     "labelYNoRank": 180,
     "valueXNoRank": 425,
     "valueYNoRank": 192,
-    "labelXRank": 425,
-    "labelYRank": 177,
-    "valueXRank": 425,
-    "valueYRank": 187,
-    "rankX": 425,
-    "rankY": 197
+    "labelXRank": 428,
+    "labelYRank": 175,
+    "valueXRank": 428,
+    "valueYRank": 185,
+    "rankX": 428,
+    "rankY": 195
   },
   {
     "id": 22,
@@ -512,12 +512,12 @@
     "labelYNoRank": 163,
     "valueXNoRank": 466,
     "valueYNoRank": 175,
-    "labelXRank": 466,
-    "labelYRank": 160,
+    "labelXRank": 470,
+    "labelYRank": 159,
     "valueXRank": 466,
-    "valueYRank": 170,
-    "rankX": 466,
-    "rankY": 180
+    "valueYRank": 168,
+    "rankX": 460,
+    "rankY": 176
   },
   {
     "id": 55,
