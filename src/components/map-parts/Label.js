@@ -4,9 +4,10 @@ import styled from 'styled-components';
 
 import { DataContext } from '../../contexts/DataContext';
 import { formatter, labelColor } from '../../helpers';
+import allCoordinates from '../../data/us-label-coordinates.json';
 
 const LabelText = styled.text`
-  color: ${props => props.fill || '#333'};
+  color: ${props => props.fill || '#4d4d4d'};
   font-family: 'Lato', sans-serif;
   font-size: ${props => props.fontSize || 10}px;
   font-weight: ${props => props.fontWeight || 400};
@@ -30,42 +31,33 @@ const offsets = (showRank, start) => {
   return [adjustedStart, adjustedStart + offsetAmount];
 };
 
-const Label = props => {
-  const [dragging, setDragging] = useState(false);
-  const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
-  const [origin, setOrigin] = useState({ x: 0, y: 0 });
+const Label = ({ id, fill, rank, value, abbr }) => {
   const { data: mapContext } = useContext(DataContext);
-  const { bounds, center, adjustment, id, fill, rank, value, abbr } = props;
-  if (Number.isNaN(center[0]) || Number.isNaN(center[1])) return null;
+  const {
+    labelXNoRank,
+    labelYNoRank,
+    valueXNoRank,
+    valueYNoRank,
+    labelXRank,
+    labelYRank,
+    valueXRank,
+    valueYRank,
+    rankX,
+    rankY,
+  } = allCoordinates.find(coords => id === coords.id);
 
-  const labelX = center[0] + adjustment[0] + coordinates.x;
-  const labelY = center[1] + adjustment[1] + coordinates.y + 6;
-  const color = id === 15 ? '#333' : labelColor(fill);
-  const offsetGen = offsets(mapContext.showRank, -6);
+  const labelX = mapContext.showRank ? labelXRank : labelXNoRank;
+  const labelY = mapContext.showRank ? labelYRank : labelYNoRank;
+  const valueX = mapContext.showRank ? valueXRank : valueXNoRank;
+  const valueY = mapContext.showRank ? valueYRank : valueYNoRank;
+
+  const color = id === 15 ? '#4d4d4d' : labelColor(fill);
 
   return (
-    <g
-      transform={`translate(${labelX}, ${labelY})`}
-      onMouseDown={e => {
-        setOrigin({ x: e.clientX, y: e.clientY });
-        setDragging(true);
-      }}
-      onMouseMove={e => {
-        if (dragging) {
-          setCoordinates({
-            x: (e.clientX - origin.x) * bounds.width,
-            y: (e.clientY - origin.y) * bounds.height,
-          });
-          // Scale this with getBBox() and SVG size
-        }
-      }}
-      onMouseUp={() => {
-        setDragging(false);
-      }}
-      style={{ cursor: 'move' }}
-    >
+    <g>
       <LabelText
-        dy={offsetGen[0]}
+        x={labelX}
+        y={labelY}
         fill={color}
         fontSize={fontSize(mapContext.showRank)}
         fontWeight="700"
@@ -73,7 +65,8 @@ const Label = props => {
         {abbr}
       </LabelText>
       <LabelText
-        dy={offsetGen[1]}
+        x={valueX}
+        y={valueY}
         fill={color}
         fontSize={fontSize(mapContext.showRank)}
       >
@@ -89,7 +82,8 @@ const Label = props => {
       </LabelText>
       {rank && mapContext.showRank && (
         <LabelText
-          dy={offsetGen[2]}
+          x={rankX}
+          y={rankY}
           fill={color}
           fontSize={fontSize(mapContext.showRank)}
         >
@@ -164,9 +158,6 @@ const SmallStateRect = props => {
 };
 
 Label.propTypes = {
-  bounds: PropTypes.object,
-  center: PropTypes.arrayOf(PropTypes.number),
-  adjustment: PropTypes.arrayOf(PropTypes.number),
   id: PropTypes.number,
   fill: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   rank: PropTypes.number,
