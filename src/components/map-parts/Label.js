@@ -16,7 +16,7 @@ const LabelText = styled.text`
 `;
 
 const fontSize = (showRank, fontScale = 1) =>
-  showRank ? 8.5 * fontScale : 10 * fontScale;
+  showRank ? 8 * fontScale : 10 * fontScale;
 
 const offsets = (showRank, start) => {
   const offsetAmount = showRank ? 10 : 12;
