@@ -21,7 +21,7 @@ const NumberInput = ({ label, id }) => {
       <input
         type="text"
         inputMode="numeric"
-        pattern="-?[0-9]*"
+        pattern="-?[0-9]*\.?[0-9]*"
         value={value}
         onChange={e => {
           setValue(e.target.value);
