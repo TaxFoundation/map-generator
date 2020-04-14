@@ -123,7 +123,7 @@ const PaletteSelect = () => {
         <Modal title="Choose a New Palette" close={() => setOpen(false)}>
           <PaletteList
             data={data}
-            updateDate={updateData}
+            updateData={updateData}
             type={paletteType}
             palettes={choosePalette(paletteType)}
             close={() => setOpen(false)}
