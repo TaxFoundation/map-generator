@@ -6,11 +6,11 @@
     "valueXNoRank": 411,
     "valueYNoRank": 263,
     "labelXRank": 411,
-    "labelYRank": 248,
+    "labelYRank": 245,
     "valueXRank": 411,
-    "valueYRank": 258,
+    "valueYRank": 255,
     "rankX": 411,
-    "rankY": 268
+    "rankY": 265
   },
   {
     "id": 2,
@@ -45,11 +45,11 @@
     "valueXNoRank": 346,
     "valueYNoRank": 239,
     "labelXRank": 346,
-    "labelYRank": 224,
+    "labelYRank": 221,
     "valueXRank": 346,
-    "valueYRank": 234,
+    "valueYRank": 231,
     "rankX": 346,
-    "rankY": 244
+    "rankY": 241
   },
   {
     "id": 6,
@@ -97,11 +97,11 @@
     "valueXNoRank": 449,
     "valueYNoRank": 261,
     "labelXRank": 449,
-    "labelYRank": 246,
+    "labelYRank": 244,
     "valueXRank": 449,
-    "valueYRank": 256,
+    "valueYRank": 254,
     "rankX": 449,
-    "rankY": 266
+    "rankY": 264
   },
   {
     "id": 15,
@@ -149,11 +149,11 @@
     "valueXNoRank": 407,
     "valueYNoRank": 165,
     "labelXRank": 407,
-    "labelYRank": 150,
+    "labelYRank": 145,
     "valueXRank": 407,
-    "valueYRank": 160,
+    "valueYRank": 155,
     "rankX": 407,
-    "rankY": 170
+    "rankY": 165
   },
   {
     "id": 19,
@@ -175,11 +175,11 @@
     "valueXNoRank": 281,
     "valueYNoRank": 190,
     "labelXRank": 281,
-    "labelYRank": 175,
+    "labelYRank": 172,
     "valueXRank": 281,
-    "valueYRank": 185,
+    "valueYRank": 182,
     "rankX": 281,
-    "rankY": 195
+    "rankY": 192
   },
   {
     "id": 21,
@@ -190,9 +190,9 @@
     "labelXRank": 428,
     "labelYRank": 175,
     "valueXRank": 428,
-    "valueYRank": 185,
+    "valueYRank": 184,
     "rankX": 428,
-    "rankY": 195
+    "rankY": 193
   },
   {
     "id": 22,
@@ -216,9 +216,9 @@
     "labelXRank": 559,
     "labelYRank": 35,
     "valueXRank": 559,
-    "valueYRank": 45,
+    "valueYRank": 43,
     "rankX": 559,
-    "rankY": 55
+    "rankY": 52
   },
   {
     "id": 26,
@@ -253,11 +253,11 @@
     "valueXNoRank": 378,
     "valueYNoRank": 266,
     "labelXRank": 378,
-    "labelYRank": 251,
+    "labelYRank": 248,
     "valueXRank": 378,
-    "valueYRank": 261,
+    "valueYRank": 258,
     "rankX": 378,
-    "rankY": 271
+    "rankY": 268
   },
   {
     "id": 29,
@@ -266,11 +266,11 @@
     "valueXNoRank": 344,
     "valueYNoRank": 191,
     "labelXRank": 344,
-    "labelYRank": 176,
+    "labelYRank": 173,
     "valueXRank": 344,
-    "valueYRank": 186,
+    "valueYRank": 183,
     "rankX": 344,
-    "rankY": 196
+    "rankY": 193
   },
   {
     "id": 30,
@@ -279,11 +279,11 @@
     "valueXNoRank": 180,
     "valueYNoRank": 64,
     "labelXRank": 180,
-    "labelYRank": 49,
+    "labelYRank": 47,
     "valueXRank": 180,
-    "valueYRank": 59,
+    "valueYRank": 57,
     "rankX": 180,
-    "rankY": 69
+    "rankY": 67
   },
   {
     "id": 31,
@@ -292,11 +292,11 @@
     "valueXNoRank": 268,
     "valueYNoRank": 147,
     "labelXRank": 268,
-    "labelYRank": 132,
+    "labelYRank": 131,
     "valueXRank": 268,
-    "valueYRank": 142,
+    "valueYRank": 141,
     "rankX": 268,
-    "rankY": 152
+    "rankY": 151
   },
   {
     "id": 32,
@@ -330,12 +330,12 @@
     "labelYNoRank": 88,
     "valueXNoRank": 513,
     "valueYNoRank": 100,
-    "labelXRank": 513,
-    "labelYRank": 85,
+    "labelXRank": 511,
+    "labelYRank": 82,
     "valueXRank": 513,
-    "valueYRank": 95,
-    "rankX": 513,
-    "rankY": 105
+    "valueYRank": 92,
+    "rankX": 515,
+    "rankY": 102
   },
   {
     "id": 37,
@@ -346,9 +346,10 @@
     "labelXRank": 493,
     "labelYRank": 198,
     "valueXRank": 483,
-    "valueYRank": 210,
+    "valueYRank": 207,
     "rankX": 498,
-    "rankY": 210
+    "rankY": 207,
+    "valueRankSameLine": true
   },
   {
     "id": 38,
@@ -383,11 +384,11 @@
     "valueXNoRank": 290,
     "valueYNoRank": 230,
     "labelXRank": 290,
-    "labelYRank": 215,
+    "labelYRank": 212,
     "valueXRank": 290,
-    "valueYRank": 225,
+    "valueYRank": 222,
     "rankX": 290,
-    "rankY": 235
+    "rankY": 232
   },
   {
     "id": 41,
@@ -409,11 +410,11 @@
     "valueXNoRank": 491,
     "valueYNoRank": 136,
     "labelXRank": 491,
-    "labelYRank": 121,
+    "labelYRank": 123,
     "valueXRank": 491,
     "valueYRank": 131,
     "rankX": 491,
-    "rankY": 141
+    "rankY": 139
   },
   {
     "id": 45,
@@ -450,9 +451,10 @@
     "labelXRank": 410,
     "labelYRank": 208,
     "valueXRank": 403,
-    "valueYRank": 218,
+    "valueYRank": 216,
     "rankX": 417,
-    "rankY": 218
+    "rankY": 216,
+    "valueRankSameLine": true
   },
   {
     "id": 48,
@@ -525,11 +527,11 @@
     "labelYNoRank": 92,
     "valueXNoRank": 364,
     "valueYNoRank": 104,
-    "labelXRank": 364,
+    "labelXRank": 366,
     "labelYRank": 89,
-    "valueXRank": 364,
+    "valueXRank": 366,
     "valueYRank": 99,
-    "rankX": 364,
+    "rankX": 366,
     "rankY": 109
   },
   {
@@ -539,10 +541,10 @@
     "valueXNoRank": 192,
     "valueYNoRank": 121,
     "labelXRank": 192,
-    "labelYRank": 106,
+    "labelYRank": 104,
     "valueXRank": 192,
-    "valueYRank": 116,
+    "valueYRank": 114,
     "rankX": 192,
-    "rankY": 126
+    "rankY": 124
   }
 ]
