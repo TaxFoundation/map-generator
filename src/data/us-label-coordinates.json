@@ -13,19 +13,6 @@
     "rankY": 268
   },
   {
-    "id": 1,
-    "labelXNoRank": 411,
-    "labelYNoRank": 251,
-    "valueXNoRank": 411,
-    "valueYNoRank": 263,
-    "labelXRank": 411,
-    "labelYRank": 248,
-    "valueXRank": 411,
-    "valueYRank": 258,
-    "rankX": 411,
-    "rankY": 268
-  },
-  {
     "id": 2,
     "labelXNoRank": 69,
     "labelYNoRank": 296,
@@ -37,32 +24,6 @@
     "valueYRank": 303,
     "rankX": 69,
     "rankY": 313
-  },
-  {
-    "id": 2,
-    "labelXNoRank": 69,
-    "labelYNoRank": 296,
-    "valueXNoRank": 69,
-    "valueYNoRank": 308,
-    "labelXRank": 69,
-    "labelYRank": 293,
-    "valueXRank": 69,
-    "valueYRank": 303,
-    "rankX": 69,
-    "rankY": 313
-  },
-  {
-    "id": 4,
-    "labelXNoRank": 132,
-    "labelYNoRank": 221,
-    "valueXNoRank": 132,
-    "valueYNoRank": 233,
-    "labelXRank": 132,
-    "labelYRank": 218,
-    "valueXRank": 132,
-    "valueYRank": 228,
-    "rankX": 132,
-    "rankY": 238
   },
   {
     "id": 4,
@@ -91,19 +52,6 @@
     "rankY": 244
   },
   {
-    "id": 5,
-    "labelXNoRank": 346,
-    "labelYNoRank": 227,
-    "valueXNoRank": 346,
-    "valueYNoRank": 239,
-    "labelXRank": 346,
-    "labelYRank": 224,
-    "valueXRank": 346,
-    "valueYRank": 234,
-    "rankX": 346,
-    "rankY": 244
-  },
-  {
     "id": 6,
     "labelXNoRank": 57,
     "labelYNoRank": 165,
@@ -115,32 +63,6 @@
     "valueYRank": 172,
     "rankX": 57,
     "rankY": 182
-  },
-  {
-    "id": 6,
-    "labelXNoRank": 57,
-    "labelYNoRank": 165,
-    "valueXNoRank": 57,
-    "valueYNoRank": 177,
-    "labelXRank": 57,
-    "labelYRank": 162,
-    "valueXRank": 57,
-    "valueYRank": 172,
-    "rankX": 57,
-    "rankY": 182
-  },
-  {
-    "id": 8,
-    "labelXNoRank": 206,
-    "labelYNoRank": 166,
-    "valueXNoRank": 206,
-    "valueYNoRank": 178,
-    "labelXRank": 206,
-    "labelYRank": 163,
-    "valueXRank": 206,
-    "valueYRank": 173,
-    "rankX": 206,
-    "rankY": 183
   },
   {
     "id": 8,
@@ -169,19 +91,6 @@
     "rankY": 318
   },
   {
-    "id": 12,
-    "labelXNoRank": 478,
-    "labelYNoRank": 301,
-    "valueXNoRank": 478,
-    "valueYNoRank": 313,
-    "labelXRank": 478,
-    "labelYRank": 298,
-    "valueXRank": 478,
-    "valueYRank": 308,
-    "rankX": 478,
-    "rankY": 318
-  },
-  {
     "id": 13,
     "labelXNoRank": 449,
     "labelYNoRank": 249,
@@ -193,32 +102,6 @@
     "valueYRank": 256,
     "rankX": 449,
     "rankY": 266
-  },
-  {
-    "id": 13,
-    "labelXNoRank": 449,
-    "labelYNoRank": 249,
-    "valueXNoRank": 449,
-    "valueYNoRank": 261,
-    "labelXRank": 449,
-    "labelYRank": 246,
-    "valueXRank": 449,
-    "valueYRank": 256,
-    "rankX": 449,
-    "rankY": 266
-  },
-  {
-    "id": 15,
-    "labelXNoRank": 167,
-    "labelYNoRank": 336,
-    "valueXNoRank": 167,
-    "valueYNoRank": 348,
-    "labelXRank": 167,
-    "labelYRank": 333,
-    "valueXRank": 167,
-    "valueYRank": 343,
-    "rankX": 167,
-    "rankY": 353
   },
   {
     "id": 15,
@@ -247,19 +130,6 @@
     "rankY": 97
   },
   {
-    "id": 16,
-    "labelXNoRank": 127,
-    "labelYNoRank": 80,
-    "valueXNoRank": 127,
-    "valueYNoRank": 92,
-    "labelXRank": 127,
-    "labelYRank": 77,
-    "valueXRank": 127,
-    "valueYRank": 87,
-    "rankX": 127,
-    "rankY": 97
-  },
-  {
     "id": 17,
     "labelXNoRank": 375,
     "labelYNoRank": 147,
@@ -271,32 +141,6 @@
     "valueYRank": 154,
     "rankX": 375,
     "rankY": 164
-  },
-  {
-    "id": 17,
-    "labelXNoRank": 375,
-    "labelYNoRank": 147,
-    "valueXNoRank": 375,
-    "valueYNoRank": 159,
-    "labelXRank": 375,
-    "labelYRank": 144,
-    "valueXRank": 375,
-    "valueYRank": 154,
-    "rankX": 375,
-    "rankY": 164
-  },
-  {
-    "id": 18,
-    "labelXNoRank": 407,
-    "labelYNoRank": 153,
-    "valueXNoRank": 407,
-    "valueYNoRank": 165,
-    "labelXRank": 407,
-    "labelYRank": 150,
-    "valueXRank": 407,
-    "valueYRank": 160,
-    "rankX": 407,
-    "rankY": 170
   },
   {
     "id": 18,
@@ -325,19 +169,6 @@
     "rankY": 145
   },
   {
-    "id": 19,
-    "labelXNoRank": 331,
-    "labelYNoRank": 128,
-    "valueXNoRank": 331,
-    "valueYNoRank": 140,
-    "labelXRank": 331,
-    "labelYRank": 125,
-    "valueXRank": 331,
-    "valueYRank": 135,
-    "rankX": 331,
-    "rankY": 145
-  },
-  {
     "id": 20,
     "labelXNoRank": 281,
     "labelYNoRank": 178,
@@ -349,32 +180,6 @@
     "valueYRank": 185,
     "rankX": 281,
     "rankY": 195
-  },
-  {
-    "id": 20,
-    "labelXNoRank": 281,
-    "labelYNoRank": 178,
-    "valueXNoRank": 281,
-    "valueYNoRank": 190,
-    "labelXRank": 281,
-    "labelYRank": 175,
-    "valueXRank": 281,
-    "valueYRank": 185,
-    "rankX": 281,
-    "rankY": 195
-  },
-  {
-    "id": 21,
-    "labelXNoRank": 425,
-    "labelYNoRank": 180,
-    "valueXNoRank": 425,
-    "valueYNoRank": 192,
-    "labelXRank": 425,
-    "labelYRank": 177,
-    "valueXRank": 425,
-    "valueYRank": 187,
-    "rankX": 425,
-    "rankY": 197
   },
   {
     "id": 21,
@@ -403,19 +208,6 @@
     "rankY": 296
   },
   {
-    "id": 22,
-    "labelXNoRank": 346,
-    "labelYNoRank": 279,
-    "valueXNoRank": 346,
-    "valueYNoRank": 291,
-    "labelXRank": 346,
-    "labelYRank": 276,
-    "valueXRank": 346,
-    "valueYRank": 286,
-    "rankX": 346,
-    "rankY": 296
-  },
-  {
     "id": 23,
     "labelXNoRank": 559,
     "labelYNoRank": 38,
@@ -427,32 +219,6 @@
     "valueYRank": 45,
     "rankX": 559,
     "rankY": 55
-  },
-  {
-    "id": 23,
-    "labelXNoRank": 559,
-    "labelYNoRank": 38,
-    "valueXNoRank": 559,
-    "valueYNoRank": 50,
-    "labelXRank": 559,
-    "labelYRank": 35,
-    "valueXRank": 559,
-    "valueYRank": 45,
-    "rankX": 559,
-    "rankY": 55
-  },
-  {
-    "id": 26,
-    "labelXNoRank": 416,
-    "labelYNoRank": 102,
-    "valueXNoRank": 416,
-    "valueYNoRank": 114,
-    "labelXRank": 416,
-    "labelYRank": 99,
-    "valueXRank": 416,
-    "valueYRank": 109,
-    "rankX": 416,
-    "rankY": 119
   },
   {
     "id": 26,
@@ -481,19 +247,6 @@
     "rankY": 88
   },
   {
-    "id": 27,
-    "labelXNoRank": 319,
-    "labelYNoRank": 71,
-    "valueXNoRank": 319,
-    "valueYNoRank": 83,
-    "labelXRank": 319,
-    "labelYRank": 68,
-    "valueXRank": 319,
-    "valueYRank": 78,
-    "rankX": 319,
-    "rankY": 88
-  },
-  {
     "id": 28,
     "labelXNoRank": 378,
     "labelYNoRank": 254,
@@ -505,32 +258,6 @@
     "valueYRank": 261,
     "rankX": 378,
     "rankY": 271
-  },
-  {
-    "id": 28,
-    "labelXNoRank": 378,
-    "labelYNoRank": 254,
-    "valueXNoRank": 378,
-    "valueYNoRank": 266,
-    "labelXRank": 378,
-    "labelYRank": 251,
-    "valueXRank": 378,
-    "valueYRank": 261,
-    "rankX": 378,
-    "rankY": 271
-  },
-  {
-    "id": 29,
-    "labelXNoRank": 344,
-    "labelYNoRank": 179,
-    "valueXNoRank": 344,
-    "valueYNoRank": 191,
-    "labelXRank": 344,
-    "labelYRank": 176,
-    "valueXRank": 344,
-    "valueYRank": 186,
-    "rankX": 344,
-    "rankY": 196
   },
   {
     "id": 29,
@@ -559,19 +286,6 @@
     "rankY": 69
   },
   {
-    "id": 30,
-    "labelXNoRank": 180,
-    "labelYNoRank": 52,
-    "valueXNoRank": 180,
-    "valueYNoRank": 64,
-    "labelXRank": 180,
-    "labelYRank": 49,
-    "valueXRank": 180,
-    "valueYRank": 59,
-    "rankX": 180,
-    "rankY": 69
-  },
-  {
     "id": 31,
     "labelXNoRank": 268,
     "labelYNoRank": 135,
@@ -583,32 +297,6 @@
     "valueYRank": 142,
     "rankX": 268,
     "rankY": 152
-  },
-  {
-    "id": 31,
-    "labelXNoRank": 268,
-    "labelYNoRank": 135,
-    "valueXNoRank": 268,
-    "valueYNoRank": 147,
-    "labelXRank": 268,
-    "labelYRank": 132,
-    "valueXRank": 268,
-    "valueYRank": 142,
-    "rankX": 268,
-    "rankY": 152
-  },
-  {
-    "id": 32,
-    "labelXNoRank": 93,
-    "labelYNoRank": 143,
-    "valueXNoRank": 93,
-    "valueYNoRank": 155,
-    "labelXRank": 93,
-    "labelYRank": 140,
-    "valueXRank": 93,
-    "valueYRank": 150,
-    "rankX": 93,
-    "rankY": 160
   },
   {
     "id": 32,
@@ -637,19 +325,6 @@
     "rankY": 245
   },
   {
-    "id": 35,
-    "labelXNoRank": 194,
-    "labelYNoRank": 228,
-    "valueXNoRank": 194,
-    "valueYNoRank": 240,
-    "labelXRank": 194,
-    "labelYRank": 225,
-    "valueXRank": 194,
-    "valueYRank": 235,
-    "rankX": 194,
-    "rankY": 245
-  },
-  {
     "id": 36,
     "labelXNoRank": 513,
     "labelYNoRank": 88,
@@ -661,32 +336,6 @@
     "valueYRank": 95,
     "rankX": 513,
     "rankY": 105
-  },
-  {
-    "id": 36,
-    "labelXNoRank": 513,
-    "labelYNoRank": 88,
-    "valueXNoRank": 513,
-    "valueYNoRank": 100,
-    "labelXRank": 513,
-    "labelYRank": 85,
-    "valueXRank": 513,
-    "valueYRank": 95,
-    "rankX": 513,
-    "rankY": 105
-  },
-  {
-    "id": 37,
-    "labelXNoRank": 493,
-    "labelYNoRank": 198,
-    "valueXNoRank": 493,
-    "valueYNoRank": 210,
-    "labelXRank": 493,
-    "labelYRank": 195,
-    "valueXRank": 493,
-    "valueYRank": 205,
-    "rankX": 493,
-    "rankY": 215
   },
   {
     "id": 37,
@@ -715,19 +364,6 @@
     "rankY": 71
   },
   {
-    "id": 38,
-    "labelXNoRank": 265,
-    "labelYNoRank": 54,
-    "valueXNoRank": 265,
-    "valueYNoRank": 66,
-    "labelXRank": 265,
-    "labelYRank": 51,
-    "valueXRank": 265,
-    "valueYRank": 61,
-    "rankX": 265,
-    "rankY": 71
-  },
-  {
     "id": 39,
     "labelXNoRank": 442,
     "labelYNoRank": 144,
@@ -739,32 +375,6 @@
     "valueYRank": 151,
     "rankX": 442,
     "rankY": 161
-  },
-  {
-    "id": 39,
-    "labelXNoRank": 442,
-    "labelYNoRank": 144,
-    "valueXNoRank": 442,
-    "valueYNoRank": 156,
-    "labelXRank": 442,
-    "labelYRank": 141,
-    "valueXRank": 442,
-    "valueYRank": 151,
-    "rankX": 442,
-    "rankY": 161
-  },
-  {
-    "id": 40,
-    "labelXNoRank": 290,
-    "labelYNoRank": 218,
-    "valueXNoRank": 290,
-    "valueYNoRank": 230,
-    "labelXRank": 290,
-    "labelYRank": 215,
-    "valueXRank": 290,
-    "valueYRank": 225,
-    "rankX": 290,
-    "rankY": 235
   },
   {
     "id": 40,
@@ -793,19 +403,6 @@
     "rankY": 89
   },
   {
-    "id": 41,
-    "labelXNoRank": 69,
-    "labelYNoRank": 72,
-    "valueXNoRank": 69,
-    "valueYNoRank": 84,
-    "labelXRank": 69,
-    "labelYRank": 69,
-    "valueXRank": 69,
-    "valueYRank": 79,
-    "rankX": 69,
-    "rankY": 89
-  },
-  {
     "id": 42,
     "labelXNoRank": 491,
     "labelYNoRank": 124,
@@ -817,32 +414,6 @@
     "valueYRank": 131,
     "rankX": 491,
     "rankY": 141
-  },
-  {
-    "id": 42,
-    "labelXNoRank": 491,
-    "labelYNoRank": 124,
-    "valueXNoRank": 491,
-    "valueYNoRank": 136,
-    "labelXRank": 491,
-    "labelYRank": 121,
-    "valueXRank": 491,
-    "valueYRank": 131,
-    "rankX": 491,
-    "rankY": 141
-  },
-  {
-    "id": 45,
-    "labelXNoRank": 475,
-    "labelYNoRank": 227,
-    "valueXNoRank": 475,
-    "valueYNoRank": 239,
-    "labelXRank": 475,
-    "labelYRank": 224,
-    "valueXRank": 475,
-    "valueYRank": 234,
-    "rankX": 475,
-    "rankY": 244
   },
   {
     "id": 45,
@@ -871,19 +442,6 @@
     "rankY": 112
   },
   {
-    "id": 46,
-    "labelXNoRank": 265,
-    "labelYNoRank": 95,
-    "valueXNoRank": 265,
-    "valueYNoRank": 107,
-    "labelXRank": 265,
-    "labelYRank": 92,
-    "valueXRank": 265,
-    "valueYRank": 102,
-    "rankX": 265,
-    "rankY": 112
-  },
-  {
     "id": 47,
     "labelXNoRank": 412,
     "labelYNoRank": 208,
@@ -895,32 +453,6 @@
     "valueYRank": 215,
     "rankX": 412,
     "rankY": 225
-  },
-  {
-    "id": 47,
-    "labelXNoRank": 412,
-    "labelYNoRank": 208,
-    "valueXNoRank": 412,
-    "valueYNoRank": 220,
-    "labelXRank": 412,
-    "labelYRank": 205,
-    "valueXRank": 412,
-    "valueYRank": 215,
-    "rankX": 412,
-    "rankY": 225
-  },
-  {
-    "id": 48,
-    "labelXNoRank": 268,
-    "labelYNoRank": 273,
-    "valueXNoRank": 268,
-    "valueYNoRank": 285,
-    "labelXRank": 268,
-    "labelYRank": 270,
-    "valueXRank": 268,
-    "valueYRank": 280,
-    "rankX": 268,
-    "rankY": 290
   },
   {
     "id": 48,
@@ -949,19 +481,6 @@
     "rankY": 170
   },
   {
-    "id": 49,
-    "labelXNoRank": 144,
-    "labelYNoRank": 153,
-    "valueXNoRank": 144,
-    "valueYNoRank": 165,
-    "labelXRank": 144,
-    "labelYRank": 150,
-    "valueXRank": 144,
-    "valueYRank": 160,
-    "rankX": 144,
-    "rankY": 170
-  },
-  {
     "id": 51,
     "labelXNoRank": 494,
     "labelYNoRank": 169,
@@ -973,32 +492,6 @@
     "valueYRank": 176,
     "rankX": 494,
     "rankY": 186
-  },
-  {
-    "id": 51,
-    "labelXNoRank": 494,
-    "labelYNoRank": 169,
-    "valueXNoRank": 494,
-    "valueYNoRank": 181,
-    "labelXRank": 494,
-    "labelYRank": 166,
-    "valueXRank": 494,
-    "valueYRank": 176,
-    "rankX": 494,
-    "rankY": 186
-  },
-  {
-    "id": 53,
-    "labelXNoRank": 82,
-    "labelYNoRank": 27,
-    "valueXNoRank": 82,
-    "valueYNoRank": 39,
-    "labelXRank": 82,
-    "labelYRank": 24,
-    "valueXRank": 82,
-    "valueYRank": 34,
-    "rankX": 82,
-    "rankY": 44
   },
   {
     "id": 53,
@@ -1027,19 +520,6 @@
     "rankY": 180
   },
   {
-    "id": 54,
-    "labelXNoRank": 466,
-    "labelYNoRank": 163,
-    "valueXNoRank": 466,
-    "valueYNoRank": 175,
-    "labelXRank": 466,
-    "labelYRank": 160,
-    "valueXRank": 466,
-    "valueYRank": 170,
-    "rankX": 466,
-    "rankY": 180
-  },
-  {
     "id": 55,
     "labelXNoRank": 364,
     "labelYNoRank": 92,
@@ -1051,32 +531,6 @@
     "valueYRank": 99,
     "rankX": 364,
     "rankY": 109
-  },
-  {
-    "id": 55,
-    "labelXNoRank": 364,
-    "labelYNoRank": 92,
-    "valueXNoRank": 364,
-    "valueYNoRank": 104,
-    "labelXRank": 364,
-    "labelYRank": 89,
-    "valueXRank": 364,
-    "valueYRank": 99,
-    "rankX": 364,
-    "rankY": 109
-  },
-  {
-    "id": 56,
-    "labelXNoRank": 192,
-    "labelYNoRank": 109,
-    "valueXNoRank": 192,
-    "valueYNoRank": 121,
-    "labelXRank": 192,
-    "labelYRank": 106,
-    "valueXRank": 192,
-    "valueYRank": 116,
-    "rankX": 192,
-    "rankY": 126
   },
   {
     "id": 56,
