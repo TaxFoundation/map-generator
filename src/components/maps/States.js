@@ -146,9 +146,6 @@ const States = () => {
           key={`label-${d.id}`}
           id={d.id}
           fill={fill}
-          center={path.centroid(d)}
-          adjustment={adjustment}
-          bounds={bounds}
           abbr={STATES.find(s => +s.id === +d.id).abbr}
           value={data.value}
           rank={data.rank || null}
