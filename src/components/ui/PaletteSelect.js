@@ -123,7 +123,7 @@ const PaletteSelect = () => {
         <Modal title="Choose a New Palette" close={() => setOpen(false)}>
           <PaletteList
             data={data}
-            updateDate={updateData}
+            updateData={updateData}
             type={paletteType}
             palettes={choosePalette(paletteType)}
             close={() => setOpen(false)}
@@ -133,6 +133,14 @@ const PaletteSelect = () => {
       <Toggle id="paletteDirectionFlipped" label="Flip palette direction?" />
     </div>
   );
+};
+
+PaletteList.propTypes = {
+  palettes: PropTypes.array,
+  type: PropTypes.string,
+  close: PropTypes.func,
+  data: PropTypes.object,
+  updateData: PropTypes.func,
 };
 
 export default PaletteSelect;
