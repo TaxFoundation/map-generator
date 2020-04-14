@@ -11,7 +11,7 @@ const LabelText = styled.text`
   font-family: 'Lato', sans-serif;
   font-size: ${props => props.fontSize || 10}px;
   font-weight: ${props => props.fontWeight || 400};
-  text-anchor: middle;
+  text-anchor: ${props => props.textAnchor};
   user-select: none;
 `;
 
@@ -44,6 +44,7 @@ const Label = ({ id, fill, rank, value, abbr }) => {
     valueYRank,
     rankX,
     rankY,
+    valueRankSameLine,
   } = allCoordinates.find(coords => id === coords.id);
 
   const labelX = mapContext.showRank ? labelXRank : labelXNoRank;
@@ -61,6 +62,7 @@ const Label = ({ id, fill, rank, value, abbr }) => {
         fill={color}
         fontSize={fontSize(mapContext.showRank)}
         fontWeight="700"
+        textAnchor="middle"
       >
         {abbr}
       </LabelText>
@@ -69,6 +71,7 @@ const Label = ({ id, fill, rank, value, abbr }) => {
         y={valueY}
         fill={color}
         fontSize={fontSize(mapContext.showRank)}
+        textAnchor={valueRankSameLine && mapContext.showRank ? 'end' : 'middle'}
       >
         {formatter(
           {
@@ -86,6 +89,9 @@ const Label = ({ id, fill, rank, value, abbr }) => {
           y={rankY}
           fill={color}
           fontSize={fontSize(mapContext.showRank)}
+          textAnchor={
+            valueRankSameLine && mapContext.showRank ? 'start' : 'middle'
+          }
         >
           {`#${rank}`}
         </LabelText>
