@@ -100,9 +100,36 @@ export const getPalette = (id, type, flipped) => {
   }
 };
 
+export function convertPercentageString(value) {
+  if (!value) return null;
+  const lazyPercentCheck = String(value).match(/(-?\d+)%/);
+  if (lazyPercentCheck) {
+    return +lazyPercentCheck[1] / 100;
+  }
+}
+
+export function valueConvert(value) {
+  if (!value) return null;
+  if (convertPercentageString(value)) return convertPercentageString(value);
+  if (Number.isNaN(value)) {
+    return value;
+  }
+  return +value;
+}
+
 export const isNumericData = values => {
   for (let i = 0, j = values.length; i < j; i++) {
-    if (Number.isNaN(+values[i].value)) {
+    if (Number.isNaN(valueConvert(values[i].value))) {
+      return false;
+    }
+  }
+  return true;
+};
+
+export const isPercentageStringData = values => {
+  for (let i = 0, j = values.length; i < j; i++) {
+    if (!convertPercentageString(values[i])) {
+      console.log(values[i]);
       return false;
     }
   }
@@ -112,9 +139,9 @@ export const isNumericData = values => {
 export const generateMapData = (rawData, id, value, rank = null) => {
   const mapData = rawData.map(d => {
     if (rank) {
-      return { id: d[id], value: d[value], rank: d[rank] };
+      return { id: d[id], value: valueConvert(d[value]), rank: d[rank] };
     }
-    return { id: d[id], value: d[value] };
+    return { id: d[id], value: valueConvert(d[value]) };
   });
   return mapData;
 };

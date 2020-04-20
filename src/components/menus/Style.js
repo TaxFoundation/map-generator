@@ -27,7 +27,7 @@ const DomainControls = ({ minData, maxData, update }) => {
         <input
           type="text"
           inputMode="numeric"
-          pattern="-?[0-9]*"
+          pattern="-?[0-9]*\.?[0-9]*"
           value={min}
           onChange={e => {
             setMin(e.target.value);
@@ -39,7 +39,7 @@ const DomainControls = ({ minData, maxData, update }) => {
         <input
           type="text"
           inputMode="numeric"
-          pattern="-?[0-9]*"
+          pattern="-?[0-9]*\.?[0-9]*"
           value={max}
           onChange={e => {
             setMax(e.target.value);

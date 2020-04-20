@@ -135,4 +135,12 @@ const PaletteSelect = () => {
   );
 };
 
+PaletteList.propTypes = {
+  palettes: PropTypes.array,
+  type: PropTypes.string,
+  close: PropTypes.func,
+  data: PropTypes.object,
+  updateData: PropTypes.func,
+};
+
 export default PaletteSelect;
