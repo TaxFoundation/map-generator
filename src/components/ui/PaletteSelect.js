@@ -8,9 +8,10 @@ import {
   divergentPalettes,
   qualitativePalettes,
 } from '../../data/colorPalette';
-import { colorScale } from '../../helpers';
+import { colorScale, directedPalette } from '../../helpers';
 import Modal from './Modal';
 import Label from './Label';
+import Toggle from './Toggle';
 
 function choosePalette(type) {
   switch (type) {
@@ -50,24 +51,26 @@ const StyledButton = styled.button`
   width: 100%;
 `;
 
-const PaletteList = ({ palettes, type, close }) => {
-  const { data, updateData } = useContext(DataContext);
-
-  return (
-    <StyledPaletteList>
-      {palettes.map(p => (
-        <Palette
-          columns={data.bins}
-          key={`palette-${type}-${p.id}`}
-          onClick={() => {
-            updateData({ id: 'paletteId', value: p.id });
-            close();
-          }}
-        >
-          {[...Array(data.bins).keys()].map((d, i) => (
+const PaletteList = ({ palettes, type, close, data, updateData }) => (
+  <StyledPaletteList>
+    {palettes.map(p => (
+      <Palette
+        columns={data.bins}
+        key={`palette-${type}-${p.id}`}
+        onClick={() => {
+          updateData({ id: 'paletteId', value: p.id });
+          close();
+        }}
+      >
+        {[...Array(data.bins).keys()].map((d, i) => {
+          const palette = directedPalette(
+            p.palette,
+            data.paletteDirectionFlipped
+          );
+          return (
             <PaletteChunk
               bg={colorScale(
-                p.palette,
+                palette,
                 [0, data.bins - 1],
                 d,
                 data.bins,
@@ -75,21 +78,26 @@ const PaletteList = ({ palettes, type, close }) => {
               )}
               key={`palette-${type}-${p.id}-${i}`}
             />
-          ))}
-        </Palette>
-      ))}
-    </StyledPaletteList>
-  );
-};
+          );
+        })}
+      </Palette>
+    ))}
+  </StyledPaletteList>
+);
 
 const PaletteSelect = () => {
-  const { data } = useContext(DataContext);
+  const { data, updateData } = useContext(DataContext);
   const [open, setOpen] = useState(false);
 
   const paletteType = data.isNumeric ? data.numericDataType : 'divergent';
 
   const currentPalette = choosePalette(paletteType).find(
     p => data.paletteId === p.id
+  );
+
+  const palette = directedPalette(
+    currentPalette.palette,
+    data.paletteDirectionFlipped
   );
 
   return (
@@ -100,7 +108,7 @@ const PaletteSelect = () => {
           {[...Array(data.bins).keys()].map((d, i) => (
             <PaletteChunk
               bg={colorScale(
-                currentPalette.palette,
+                palette,
                 [0, data.bins - 1],
                 d,
                 data.bins,
@@ -114,14 +122,25 @@ const PaletteSelect = () => {
       {open && (
         <Modal title="Choose a New Palette" close={() => setOpen(false)}>
           <PaletteList
+            data={data}
+            updateData={updateData}
             type={paletteType}
             palettes={choosePalette(paletteType)}
             close={() => setOpen(false)}
           />
         </Modal>
       )}
+      <Toggle id="paletteDirectionFlipped" label="Flip palette direction?" />
     </div>
   );
+};
+
+PaletteList.propTypes = {
+  palettes: PropTypes.array,
+  type: PropTypes.string,
+  close: PropTypes.func,
+  data: PropTypes.object,
+  updateData: PropTypes.func,
 };
 
 export default PaletteSelect;

@@ -4,7 +4,7 @@ import { feature } from 'topojson-client';
 
 import { DataContext } from '../../contexts/DataContext';
 import STATES from '../../data/states';
-import { colorScale, getPalette } from '../../helpers';
+import { colorScale, directedPalette, getPalette } from '../../helpers';
 import Features from '../../data/us.json';
 import adjustments from '../../data/adjustments';
 import smallStateRects from '../../data/smallStateRects';
@@ -35,9 +35,15 @@ const States = () => {
   // Select correct palette for fills
   let palette;
   if (mapContext.isNumeric) {
-    palette = getPalette(mapContext.paletteId, mapContext.numericDataType);
+    palette = directedPalette(
+      getPalette(mapContext.paletteId, mapContext.numericDataType),
+      mapContext.paletteDirectionFlipped
+    );
   } else {
-    palette = getPalette(mapContext.paletteId, 'qualitative');
+    palette = directedPalette(
+      getPalette(mapContext.paletteId, 'qualitative'),
+      mapContext.paletteDirectionFlipped
+    );
   }
   // Construct the path object
   const path = geoPath().projection(
@@ -140,9 +146,6 @@ const States = () => {
           key={`label-${d.id}`}
           id={d.id}
           fill={fill}
-          center={path.centroid(d)}
-          adjustment={adjustment}
-          bounds={bounds}
           abbr={STATES.find(s => +s.id === +d.id).abbr}
           value={data.value}
           rank={data.rank || null}

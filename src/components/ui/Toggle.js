@@ -38,22 +38,21 @@ const Input = styled.input`
   }
 `;
 
-const Toggle = ({ id, label, disabled }) => {
+const Toggle = ({ id, label }) => {
   const { data, updateData } = useContext(DataContext);
 
   return (
     <Container>
       <Input
-        disabled={disabled}
         id={`input-${id}`}
         type="checkbox"
-        onChange={e => {
+        onChange={() => {
           updateData({
             id,
-            value: !data.showRank,
+            value: !data[id],
           });
         }}
-        checked={data.showRank}
+        checked={data[id]}
       />
       <Label htmlFor={`input-${id}`}>{label}</Label>
     </Container>
