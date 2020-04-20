@@ -6,7 +6,7 @@ import { DataContext } from '../../contexts/DataContext';
 import STATES from '../../data/states';
 import { colorScale, directedPalette, getPalette } from '../../helpers';
 import Features from '../../data/us.json';
-import adjustments from '../../data/adjustments';
+import allCoordinates from '../../data/us-label-coordinates.json';
 import smallStateRects from '../../data/smallStateRects';
 import { Label, SmallStateRect } from '../map-parts/Label';
 
@@ -111,7 +111,6 @@ const States = () => {
 
     let isSmallState = false;
     let fill = '#777777';
-    let adjustment = [0, 0];
 
     if (data !== undefined) {
       if (mapContext.isNumeric) {
@@ -129,9 +128,6 @@ const States = () => {
         isSmallState = true;
       }
 
-      if (d.id in adjustments) {
-        adjustment = adjustments[d.id];
-      }
       return isSmallState ? (
         <SmallStateRect
           key={`ssr-${d.id}`}
@@ -149,6 +145,7 @@ const States = () => {
           abbr={STATES.find(s => +s.id === +d.id).abbr}
           value={data.value}
           rank={data.rank || null}
+          coordinates={allCoordinates.find(coord => coord.id === d.id)}
         />
       );
     }

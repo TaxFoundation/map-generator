@@ -6,7 +6,7 @@ import { DataContext } from '../../contexts/DataContext';
 import EUROPE from '../../data/europe';
 import { colorScale, getPalette } from '../../helpers';
 import Features from '../../data/europe.json';
-import adjustments from '../../data/adjustments';
+import allCoordinates from '../../data/europe-label-coordinates.json';
 import smallStateRects from '../../data/smallStateRects';
 import { Label, SmallStateRect } from '../map-parts/Label';
 
@@ -129,7 +129,6 @@ const Countries = () => {
 
     const isSmallState = false;
     let fill = '#777777';
-    const adjustment = [0, 0];
 
     if (data !== undefined) {
       if (mapContext.isNumeric) {
@@ -142,14 +141,15 @@ const Countries = () => {
         );
       }
 
+      console.log(
+        allCoordinates.find(coord => +coord.id === +d.properties.iso_n3)
+      );
+
       // Creat rect/label for small states
       // if (d.id in smallStateRects) {
       //   isSmallState = true;
       // }
 
-      // if (d.id in adjustments) {
-      //   adjustment = adjustments[d.id];
-      // }
       return isSmallState ? (
         <SmallStateRect
           key={`ssr-${d.properties.iso_n3}`}
@@ -164,12 +164,13 @@ const Countries = () => {
           key={`label-${d.properties.iso_n3}`}
           id={+d.properties.iso_n3}
           fill={fill}
-          center={path.centroid(d)}
-          adjustment={adjustment}
           bounds={bounds}
           abbr={EUROPE.find(s => +s.id === +d.properties.iso_n3).iso_a2}
           value={data.value}
           rank={+data.rank || null}
+          coordinates={allCoordinates.find(
+            coord => +coord.id === +d.properties.iso_n3
+          )}
         />
       );
     }

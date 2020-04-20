@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import { DataContext } from '../../contexts/DataContext';
 import { formatter, labelColor } from '../../helpers';
-import allCoordinates from '../../data/us-label-coordinates.json';
 
 const LabelText = styled.text`
   color: ${props => props.fill || '#4d4d4d'};
@@ -31,26 +30,21 @@ const offsets = (showRank, start) => {
   return [adjustedStart, adjustedStart + offsetAmount];
 };
 
-const Label = ({ id, fill, rank, value, abbr }) => {
+const Label = ({ id, fill, rank, value, abbr, coordinates }) => {
   const { data: mapContext } = useContext(DataContext);
-  const {
-    labelXNoRank,
-    labelYNoRank,
-    valueXNoRank,
-    valueYNoRank,
-    labelXRank,
-    labelYRank,
-    valueXRank,
-    valueYRank,
-    rankX,
-    rankY,
-    valueRankSameLine,
-  } = allCoordinates.find(coords => id === coords.id);
 
-  const labelX = mapContext.showRank ? labelXRank : labelXNoRank;
-  const labelY = mapContext.showRank ? labelYRank : labelYNoRank;
-  const valueX = mapContext.showRank ? valueXRank : valueXNoRank;
-  const valueY = mapContext.showRank ? valueYRank : valueYNoRank;
+  const labelX = mapContext.showRank
+    ? coordinates.labelXRank
+    : coordinates.labelXNoRank;
+  const labelY = mapContext.showRank
+    ? coordinates.labelYRank
+    : coordinates.labelYNoRank;
+  const valueX = mapContext.showRank
+    ? coordinates.valueXRank
+    : coordinates.valueXNoRank;
+  const valueY = mapContext.showRank
+    ? coordinates.valueYRank
+    : coordinates.valueYNoRank;
 
   const color = id === 15 ? '#4d4d4d' : labelColor(fill);
 
@@ -71,7 +65,11 @@ const Label = ({ id, fill, rank, value, abbr }) => {
         y={valueY}
         fill={color}
         fontSize={fontSize(mapContext.showRank)}
-        textAnchor={valueRankSameLine && mapContext.showRank ? 'end' : 'middle'}
+        textAnchor={
+          coordinates.valueRankSameLine && mapContext.showRank
+            ? 'end'
+            : 'middle'
+        }
       >
         {formatter(
           {
@@ -85,12 +83,14 @@ const Label = ({ id, fill, rank, value, abbr }) => {
       </LabelText>
       {rank && mapContext.showRank && (
         <LabelText
-          x={rankX}
-          y={rankY}
+          x={coordinates.rankX}
+          y={coordinates.rankY}
           fill={color}
           fontSize={fontSize(mapContext.showRank)}
           textAnchor={
-            valueRankSameLine && mapContext.showRank ? 'start' : 'middle'
+            coordinates.valueRankSameLine && mapContext.showRank
+              ? 'start'
+              : 'middle'
           }
         >
           {`#${rank}`}
