@@ -46,7 +46,7 @@ const Label = ({ id, fill, rank, value, abbr, coordinates }) => {
     ? coordinates.valueYRank
     : coordinates.valueYNoRank;
 
-  const color = id === 15 ? '#4d4d4d' : labelColor(fill);
+  const color = coordinates.overBG ? '#4d4d4d' : labelColor(fill);
 
   return (
     <g>
