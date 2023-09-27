@@ -5,9 +5,10 @@ import { csvParse } from 'd3-dsv';
 import { DataContext } from '../../contexts/DataContext';
 
 const StyledFileLabel = styled.label`
-  border-radius: 4px;
-  border: 1px solid #0094ff;
-  color: #0094ff;
+  border-radius: 0px;
+  border: 1px solid #FFD53D;
+  background-color: #FFD53D;
+  color: #162127;
   cursor: pointer;
   display: block;
   font-size: 1.4rem;
@@ -23,8 +24,8 @@ const StyledFileLabel = styled.label`
   &:focus,
   & + input[type='file']:focus,
   & + input[type='file']:hover {
-    background-color: #0094ff;
-    color: #fff;
+    background-color: #FFC800;
+    color: #162127;
   }
 
   & + input[type='file']:focus {

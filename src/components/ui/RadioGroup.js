@@ -13,10 +13,10 @@ const FormatSelection = styled.div`
 `;
 
 const FormatLabel = styled.label`
-  border: 1px solid #0094ff;
+  border: 1px solid #tfBlue;
   border-radius: 4px;
-  background-color: ${props => (props.selected ? '#0094ff' : '#fff')};
-  color: ${props => (props.selected ? '#fff' : '#0094ff')};
+  background-color: ${props => (props.selected ? 'tfBlue' : '#fff')};
+  color: ${props => (props.selected ? '#fff' : '#tfBlue')};
   cursor: pointer;
   display: block;
   padding: 0.5rem;

@@ -19,9 +19,9 @@ const MenuSelection = styled.div`
 `;
 
 const MenuOption = styled.h3`
-  background-color: ${props => (props.selected ? '#0094ff' : '#fff')};
-  border: 1px solid ${props => (props.selected ? '#0094ff' : '#fff')};
-  border-radius: 4px;
+  background-color: ${props => (props.selected ? '#235485' : '#fff')};
+  border: 1px solid ${props => (props.selected ? '#235485' : '#fff')};
+  border-radius: 0px;
   color: ${props => (props.selected ? '#fff' : '#333')};
   cursor: pointer;
   font-size: 1.6rem;
@@ -33,8 +33,8 @@ const MenuOption = styled.h3`
   user-select: none;
 
   &:hover {
-    background-color: ${props => (props.selected ? '#0094ff' : '#99d5ff')};
-    border: 1px solid ${props => (props.selected ? '#0094ff' : '#99d5ff')};
+    background-color: ${props => (props.selected ? '#235485' : '#99d5ff')};
+    border: 1px solid ${props => (props.selected ? '#235485' : '#99d5ff')};
   }
 `;
 

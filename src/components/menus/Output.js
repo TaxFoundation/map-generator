@@ -5,21 +5,28 @@ import { DataContext } from '../../contexts/DataContext';
 import { saveSVG } from '../../helpers';
 
 const Download = styled.a`
-  border: 1px solid #0094ff;
-  border-radius: 4px;
-  background-color: #0094ff;
-  color: #fff;
+  border: 1px solid #FFD53D;
+  border-radius: 0px;
+  background-color: #FFD53D;
+  color: #162127;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
   text-decoration: none;
   transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
   user-select: none;
 
-  &:active,
   &:hover,
-  &:visited {
-    color: #fff;
-    text-decoration: none;
+  &:focus,
+  & + input[type='file']:focus,
+  & + input[type='file']:hover {
+    background-color: #FFC800;
+    color: #162127;
+  }
+
+  & + input[type='file']:focus {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
   }
 `;
 
