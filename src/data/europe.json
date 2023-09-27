@@ -8,7 +8,8 @@
         "properties": {
           "iso_n3": "008",
           "name": "Albania",
-          "iso_a3": "ALB"
+          "iso_a3": "ALB",
+          "iso_a2": "AL"
         },
         "arcs": [
           [0, 1, 2, 3, 4]
@@ -18,7 +19,8 @@
         "properties": {
           "iso_n3": "248",
           "name": "Aland",
-          "iso_a3": "ALA"
+          "iso_a3": "ALA",
+          "iso_a2": "AX"
         },
         "arcs": [
           [
@@ -36,7 +38,8 @@
         "properties": {
           "iso_n3": "020",
           "name": "Andorra",
-          "iso_a3": "AND"
+          "iso_a3": "AND",
+          "iso_a2": "AD"
         },
         "arcs": [
           [8, 9]
@@ -62,7 +65,8 @@
         "properties": {
           "iso_n3": "040",
           "name": "Austria",
-          "iso_a3": "AUT"
+          "iso_a3": "AUT",
+          "iso_a2": "AT"
         },
         "arcs": [
           [17, 18, 19, 20, 21, 22, 23, 24, 25]
@@ -91,7 +95,8 @@
         "properties": {
           "iso_n3": "056",
           "name": "Belgium",
-          "iso_a3": "BEL"
+          "iso_a3": "BEL",
+          "iso_a2": "BE"
         },
         "arcs": [
           [31, 32, 33, 34, 35, 36, 37]
@@ -101,7 +106,8 @@
         "properties": {
           "iso_n3": "100",
           "name": "Bulgaria",
-          "iso_a3": "BGR"
+          "iso_a3": "BGR",
+          "iso_a2": "BG"
         },
         "arcs": [
           [38, 39, 40, 41, 42, 43]
@@ -111,7 +117,8 @@
         "properties": {
           "iso_n3": "070",
           "name": "Bosnia and Herz.",
-          "iso_a3": "BIH"
+          "iso_a3": "BIH",
+          "iso_a2": "BA"
         },
         "arcs": [
           [44, 45, 46, 47, 48]
@@ -121,7 +128,8 @@
         "properties": {
           "iso_n3": "112",
           "name": "Belarus",
-          "iso_a3": "BLR"
+          "iso_a3": "BLR",
+          "iso_a2": "BY"
         },
         "arcs": [
           [49, 50, 51, 52, 53]
@@ -131,7 +139,8 @@
         "properties": {
           "iso_n3": "756",
           "name": "Switzerland",
-          "iso_a3": "CHE"
+          "iso_a3": "CHE",
+          "iso_a2": "CH"
         },
         "arcs": [
           [-24, 54, -22, 55, 56, 57]
@@ -151,7 +160,8 @@
         "properties": {
           "iso_n3": "196",
           "name": "Cyprus",
-          "iso_a3": "CYP"
+          "iso_a3": "CYP",
+          "iso_a2": "CY"
         },
         "arcs": [
           [-59, 60]
@@ -161,7 +171,8 @@
         "properties": {
           "iso_n3": "203",
           "name": "Czech Rep.",
-          "iso_a3": "CZE"
+          "iso_a3": "CZE",
+          "iso_a2": "CZ"
         },
         "arcs": [
           [61, 62, -26, 63]
@@ -171,7 +182,8 @@
         "properties": {
           "iso_n3": "276",
           "name": "Germany",
-          "iso_a3": "DEU"
+          "iso_a3": "DEU",
+          "iso_a2": "DE"
         },
         "arcs": [
           [
@@ -198,7 +210,8 @@
         "properties": {
           "iso_n3": "208",
           "name": "Denmark",
-          "iso_a3": "DNK"
+          "iso_a3": "DNK",
+          "iso_a2": "DK"
         },
         "arcs": [
           [
@@ -243,7 +256,8 @@
         "properties": {
           "iso_n3": "724",
           "name": "Spain",
-          "iso_a3": "ESP"
+          "iso_a3": "ESP",
+          "iso_a2": "ES"
         },
         "arcs": [
           [
@@ -267,7 +281,8 @@
         "properties": {
           "iso_n3": "233",
           "name": "Estonia",
-          "iso_a3": "EST"
+          "iso_a3": "EST",
+          "iso_a2": "EE"
         },
         "arcs": [
           [
@@ -288,7 +303,8 @@
         "properties": {
           "iso_n3": "246",
           "name": "Finland",
-          "iso_a3": "FIN"
+          "iso_a3": "FIN",
+          "iso_a2": "FI"
         },
         "arcs": [
           [
@@ -321,7 +337,8 @@
         "properties": {
           "iso_n3": "250",
           "name": "France",
-          "iso_a3": "FRA"
+          "iso_a3": "FRA",
+          "iso_a2": "FR"
         },
         "arcs": [
           [
@@ -339,7 +356,8 @@
         "properties": {
           "iso_n3": "234",
           "name": "Faeroe Is.",
-          "iso_a3": "FRO"
+          "iso_a3": "FRO",
+          "iso_a2": "FO"
         },
         "arcs": [
           [
@@ -363,7 +381,8 @@
         "properties": {
           "iso_n3": "826",
           "name": "United Kingdom",
-          "iso_a3": "GBR"
+          "iso_a3": "GBR",
+          "iso_a2": "GB"
         },
         "arcs": [
           [
@@ -451,7 +470,8 @@
         "properties": {
           "iso_n3": "831",
           "name": "Guernsey",
-          "iso_a3": "GGY"
+          "iso_a3": "GGY",
+          "iso_a2": "GG"
         },
         "arcs": [
           [155]
@@ -461,7 +481,8 @@
         "properties": {
           "iso_n3": "300",
           "name": "Greece",
-          "iso_a3": "GRC"
+          "iso_a3": "GRC",
+          "iso_a2": "GR"
         },
         "arcs": [
           [
@@ -608,7 +629,8 @@
         "properties": {
           "iso_n3": "191",
           "name": "Croatia",
-          "iso_a3": "HRV"
+          "iso_a3": "HRV",
+          "iso_a2": "HR"
         },
         "arcs": [
           [
@@ -656,7 +678,8 @@
         "properties": {
           "iso_n3": "348",
           "name": "Hungary",
-          "iso_a3": "HUN"
+          "iso_a3": "HUN",
+          "iso_a2": "HU"
         },
         "arcs": [
           [218, 219, 220, -218, 221, -19, 222]
@@ -666,7 +689,8 @@
         "properties": {
           "iso_n3": "833",
           "name": "Isle of Man",
-          "iso_a3": "IMN"
+          "iso_a3": "IMN",
+          "iso_a2": "IM"
         },
         "arcs": [
           [223]
@@ -676,7 +700,8 @@
         "properties": {
           "iso_n3": "372",
           "name": "Ireland",
-          "iso_a3": "IRL"
+          "iso_a3": "IRL",
+          "iso_a2": "IE"
         },
         "arcs": [
           [
@@ -691,7 +716,8 @@
         "properties": {
           "iso_n3": "352",
           "name": "Iceland",
-          "iso_a3": "ISL"
+          "iso_a3": "ISL",
+          "iso_a2": "IS"
         },
         "arcs": [
           [226]
@@ -701,7 +727,8 @@
         "properties": {
           "iso_n3": "380",
           "name": "Italy",
-          "iso_a3": "ITA"
+          "iso_a3": "ITA",
+          "iso_a2": "IT"
         },
         "arcs": [
           [
@@ -735,7 +762,8 @@
         "properties": {
           "iso_n3": "832",
           "name": "Jersey",
-          "iso_a3": "JEY"
+          "iso_a3": "JEY",
+          "iso_a2": "JE"
         },
         "arcs": [
           [237]
@@ -764,19 +792,10 @@
       }, {
         "type": "Polygon",
         "properties": {
-          "iso_n3": "-99",
-          "name": "Kosovo",
-          "iso_a3": "-99"
-        },
-        "arcs": [
-          [245, -1, 246, 247]
-        ]
-      }, {
-        "type": "Polygon",
-        "properties": {
           "iso_n3": "438",
           "name": "Liechtenstein",
-          "iso_a3": "LIE"
+          "iso_a3": "LIE",
+          "iso_a2": "LI"
         },
         "arcs": [
           [-55, -23]
@@ -786,7 +805,8 @@
         "properties": {
           "iso_n3": "440",
           "name": "Lithuania",
-          "iso_a3": "LTU"
+          "iso_a3": "LTU",
+          "iso_a2": "LT"
         },
         "arcs": [
           [
@@ -801,7 +821,8 @@
         "properties": {
           "iso_n3": "442",
           "name": "Luxembourg",
-          "iso_a3": "LUX"
+          "iso_a3": "LUX",
+          "iso_a2": "LU"
         },
         "arcs": [
           [-73, -118, -34]
@@ -811,7 +832,8 @@
         "properties": {
           "iso_n3": "428",
           "name": "Latvia",
-          "iso_a3": "LVA"
+          "iso_a3": "LVA",
+          "iso_a2": "LV"
         },
         "arcs": [
           [254, -54, -254, 255, -103]
@@ -821,7 +843,8 @@
         "properties": {
           "iso_n3": "492",
           "name": "Monaco",
-          "iso_a3": "MCO"
+          "iso_a3": "MCO",
+          "iso_a2": "MC"
         },
         "arcs": [
           [256, -121]
@@ -831,7 +854,8 @@
         "properties": {
           "iso_n3": "498",
           "name": "Moldova",
-          "iso_a3": "MDA"
+          "iso_a3": "MDA",
+          "iso_a2": "MD"
         },
         "arcs": [
           [257, 258]
@@ -841,7 +865,8 @@
         "properties": {
           "iso_n3": "807",
           "name": "Macedonia",
-          "iso_a3": "MKD"
+          "iso_a3": "MKD",
+          "iso_a2": "MK"
         },
         "arcs": [
           [-42, -197, -2, -246, 259]
@@ -851,7 +876,8 @@
         "properties": {
           "iso_n3": "499",
           "name": "Montenegro",
-          "iso_a3": "MNE"
+          "iso_a3": "MNE",
+          "iso_a2": "ME"
         },
         "arcs": [
           [260, -247, -5, 261, -204, -46]
@@ -861,7 +887,8 @@
         "properties": {
           "iso_n3": "528",
           "name": "Netherlands",
-          "iso_a3": "NLD"
+          "iso_a3": "NLD",
+          "iso_a2": "NL"
         },
         "arcs": [
           [
@@ -897,7 +924,8 @@
         "properties": {
           "iso_n3": "578",
           "name": "Norway",
-          "iso_a3": "NOR"
+          "iso_a3": "NOR",
+          "iso_a2": "NO"
         },
         "arcs": [
           [
@@ -975,7 +1003,8 @@
         "properties": {
           "iso_n3": "616",
           "name": "Poland",
-          "iso_a3": "POL"
+          "iso_a3": "POL",
+          "iso_a2": "PL"
         },
         "arcs": [
           [297, -251, -52, 298, 299, -62, -71, 300, -66, 301]
@@ -985,7 +1014,8 @@
         "properties": {
           "iso_n3": "620",
           "name": "Portugal",
-          "iso_a3": "PRT"
+          "iso_a3": "PRT",
+          "iso_a2": "PT"
         },
         "arcs": [
           [
@@ -1018,37 +1048,79 @@
         "properties": {
           "iso_n3": "642",
           "name": "Romania",
-          "iso_a3": "ROU"
+          "iso_a3": "ROU",
+          "iso_a2": "RO"
         },
         "arcs": [
           [310, 311, -44, 312, -220, 313, -258]
+        ]
+      }, {
+        "type": "MultiPolygon",
+        "properties": {
+          "iso_n3": "643",
+          "name": "Russia",
+          "iso_a3": "RUS"
+        },
+        "arcs": [
+          [
+            [314]
+          ],
+          [
+            [-252, -298, 315, -249, 316]
+          ],
+          [
+            [317]
+          ],
+          [
+            [318]
+          ],
+          [
+            [319]
+          ],
+          [
+            [320]
+          ],
+          [
+            [321]
+          ],
+          [
+            [-244, 322, -31, -155, 323, 324, -50, -255, -102, 325, -112, -293, 326]
+          ]
         ]
       }, {
         "type": "Polygon",
         "properties": {
           "iso_n3": "674",
           "name": "San Marino",
-          "iso_a3": "SMR"
+          "iso_a3": "SMR",
+          "iso_a2": "SM"
         },
         "arcs": [
           [-237]
         ]
       }, {
-        "type": "Polygon",
+        "type": "MultiPolygon",
         "properties": {
           "iso_n3": "688",
           "name": "Serbia",
-          "iso_a3": "SRB"
+          "iso_a3": "SRB",
+          "iso_a2": "RS"
         },
         "arcs": [
-          [-313, -43, -260, -248, -261, -45, -215, -221]
+          [
+            [-313, -43, -260, -248, -261, -45, -215, -221]
+          ],
+          [
+            [245, -1, 246, 247]
+          ]
         ]
       }, {
         "type": "Polygon",
         "properties": {
           "iso_n3": "703",
           "name": "Slovakia",
-          "iso_a3": "SVK"
+          "iso_a3": "SVK",
+          "iso_a2": "SK"
         },
         "arcs": [
           [327, -223, -18, -63, -300]
@@ -1058,7 +1130,8 @@
         "properties": {
           "iso_n3": "705",
           "name": "Slovenia",
-          "iso_a3": "SVN"
+          "iso_a3": "SVN",
+          "iso_a2": "SI"
         },
         "arcs": [
           [-217, 328, -235, -20, -222]
@@ -1068,7 +1141,8 @@
         "properties": {
           "iso_n3": "752",
           "name": "Sweden",
-          "iso_a3": "SWE"
+          "iso_a3": "SWE",
+          "iso_a2": "SE"
         },
         "arcs": [
           [
@@ -1110,7 +1184,8 @@
         "properties": {
           "iso_n3": "792",
           "name": "Turkey",
-          "iso_a3": "TUR"
+          "iso_a3": "TUR",
+          "iso_a2": "TR"
         },
         "arcs": [
           [
@@ -1128,7 +1203,8 @@
         "properties": {
           "iso_n3": "804",
           "name": "Ukraine",
-          "iso_a3": "UKR"
+          "iso_a3": "UKR",
+          "iso_a2": "UA"
         },
         "arcs": [
           [
@@ -1143,7 +1219,8 @@
         "properties": {
           "iso_n3": "336",
           "name": "Vatican",
-          "iso_a3": "VAT"
+          "iso_a3": "VAT",
+          "iso_a2": "VA"
         },
         "arcs": [
           [342]

@@ -6,6 +6,7 @@ import Panel from '../components/ui/Panel';
 import PanelHeading from '../components/ui/PanelHeading';
 import HR from '../components/ui/HR';
 import States from '../components/maps/States';
+import Europe from '../components/maps/Europe';
 
 const Check = styled.span`
   color: ${props => (props.valid ? 'green' : 'red')};
@@ -15,6 +16,8 @@ function getMap(geography) {
   switch (geography) {
     case 'states':
       return <States />;
+    case 'europe':
+      return <Europe />;
     default:
       return null;
   }

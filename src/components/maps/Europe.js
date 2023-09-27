@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { geoAlbersUsa, geoPath } from 'd3-geo';
+import { geoConicConformal, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 
 import { DataContext } from '../../contexts/DataContext';
-import STATES from '../../data/states';
-import { colorScale, directedPalette, getPalette } from '../../helpers';
-import Features from '../../data/us.json';
-import allCoordinates from '../../data/us-label-coordinates.json';
+import EUROPE from '../../data/europe';
+import { colorScale, getPalette } from '../../helpers';
+import Features from '../../data/europe.json';
+import allCoordinates from '../../data/europe-label-coordinates.json';
 import smallStateRects from '../../data/smallStateRects';
 import { Label, SmallStateRect } from '../map-parts/Label';
 
-const States = () => {
+const Countries = () => {
   const { data: mapContext } = useContext(DataContext);
   const [bounds, setBounds] = useState({
     width: mapContext.mapXScale / mapContext.mapXScale,
@@ -27,7 +27,7 @@ const States = () => {
   }, [mapContext.mapXScale, mapContext.mapYScale]);
 
   // Set initial dimensions and scaling
-  const scale = 780;
+  const scale = 500;
   const xScale = mapContext.mapXScale;
   const yScale = mapContext.mapYScale;
   const xScalar = xScale / 600;
@@ -35,44 +35,44 @@ const States = () => {
   // Select correct palette for fills
   let palette;
   if (mapContext.isNumeric) {
-    palette = directedPalette(
-      getPalette(mapContext.paletteId, mapContext.numericDataType),
-      mapContext.paletteDirectionFlipped
-    );
+    palette = getPalette(mapContext.paletteId, mapContext.numericDataType);
   } else {
-    palette = directedPalette(
-      getPalette(mapContext.paletteId, 'qualitative'),
-      mapContext.paletteDirectionFlipped
-    );
+    palette = getPalette(mapContext.paletteId, 'qualitative');
   }
   // Construct the path object
   const path = geoPath().projection(
-    geoAlbersUsa()
+    geoConicConformal()
       .scale(scale)
-      .translate([xScale / 2, yScale / 2 - 25])
+      .translate([150, 700])
   );
-  const USDataFeatures = feature(
+  const EuropeDataFeatures = feature(
     Features,
     Features.objects[mapContext.mapGeographyType]
   ).features;
 
   // Create geographies with fills
-  const geographies = USDataFeatures.map(d => {
-    // Match state's path to the current state data
-    let data;
-    let domain;
-    if (mapContext.mapData) {
-      data = mapContext.mapData.find(s => +s.id === +d.id);
-      domain = mapContext.domain;
-    } else {
-      data = STATES.find(s => +s.id === +d.id);
-      domain = [1, 50];
-    }
+  const geographies = EuropeDataFeatures.map(d => {
+    // Match country's path to the current country data
+    if (EUROPE.find(c => c.iso_a3 === d.properties.iso_a3)) {
+      let data;
+      let { domain } = mapContext;
+      if (!domain) domain = [1, 58];
+      if (mapContext.mapData) {
+        data = mapContext.mapData.find(s => {
+          if (
+            +s.id === +d.properties.iso_n3 ||
+            s.id === d.properties.iso_a3 ||
+            s.id === d.properties.iso_a2
+          ) {
+            return true;
+          }
+          return false;
+        });
+      }
 
-    let fill = '#777777';
+      let fill = '#777777';
 
-    if (data !== undefined) {
-      if (mapContext.isNumeric) {
+      if (data && mapContext.isNumeric) {
         fill = colorScale(
           palette,
           domain,
@@ -81,11 +81,12 @@ const States = () => {
           mapContext.colorMode
         );
       }
+
       return (
         <path
           d={path(d)}
-          id={`geography-${d.id}`}
-          key={`geography-${d.id}`}
+          id={`geography-${d.properties.iso_n3}`}
+          key={`geography-${d.properties.iso_n3}`}
           className="state"
           fill={fill}
           stroke="#ffffff"
@@ -93,23 +94,40 @@ const States = () => {
         />
       );
     }
-
     return null;
   });
 
-  const labels = USDataFeatures.map(d => {
+  const labels = EuropeDataFeatures.map(d => {
     // Match state's path to the current state data
     let data;
     let domain;
     if (mapContext.mapData) {
-      data = mapContext.mapData.find(s => +s.id === +d.id);
+      data = mapContext.mapData.find(s => {
+        if (
+          +s.id === +d.properties.iso_n3 ||
+          s.id === d.properties.iso_a3 ||
+          s.id === d.properties.iso_a2
+        ) {
+          return true;
+        }
+        return false;
+      });
       domain = mapContext.domain;
     } else {
-      data = STATES.find(s => +s.id === +d.id);
+      data = EUROPE.find(s => {
+        if (
+          +s.id === +d.properties.iso_n3 ||
+          s.id === d.properties.iso_a3 ||
+          s.id === d.properties.iso_a2
+        ) {
+          return true;
+        }
+        return false;
+      });
       domain = [1, 50];
     }
 
-    let isSmallState = false;
+    const isSmallState = false;
     let fill = '#777777';
 
     if (data !== undefined) {
@@ -123,29 +141,36 @@ const States = () => {
         );
       }
 
+      console.log(
+        allCoordinates.find(coord => +coord.id === +d.properties.iso_n3)
+      );
+
       // Creat rect/label for small states
-      if (d.id in smallStateRects) {
-        isSmallState = true;
-      }
+      // if (d.id in smallStateRects) {
+      //   isSmallState = true;
+      // }
 
       return isSmallState ? (
         <SmallStateRect
-          key={`ssr-${d.id}`}
-          smallState={smallStateRects[d.id]}
+          key={`ssr-${d.properties.iso_n3}`}
+          smallState={smallStateRects[d.properties.iso_n3]}
           fill={fill}
-          abbr={STATES.find(s => +s.id === +d.id).abbr}
+          abbr={EUROPE.find(s => +s.id === +d.properties.iso_n3).iso_a2}
           value={data.value}
           rank={data.rank || null}
         />
       ) : (
         <Label
-          key={`label-${d.id}`}
-          id={d.id}
+          key={`label-${d.properties.iso_n3}`}
+          id={+d.properties.iso_n3}
           fill={fill}
-          abbr={STATES.find(s => +s.id === +d.id).abbr}
+          bounds={bounds}
+          abbr={EUROPE.find(s => +s.id === +d.properties.iso_n3).iso_a2}
           value={data.value}
-          rank={data.rank || null}
-          coordinates={allCoordinates.find(coord => coord.id === d.id)}
+          rank={+data.rank || null}
+          coordinates={allCoordinates.find(
+            coord => +coord.id === +d.properties.iso_n3
+          )}
         />
       );
     }
@@ -177,12 +202,12 @@ const States = () => {
   return (
     <div>
       <svg id="generated-map" viewBox={`0 0 ${xScale} ${yScale}`}>
-        <g className="geographies">{geographies}</g>
-        <g className="labels">{labels}</g>
-        <g className="legend">{legend}</g>
-      </svg>
+        <g className="geographies"> {geographies} </g>{' '}
+        <g className="labels"> {labels} </g>{' '}
+        <g className="legend"> {legend} </g>{' '}
+      </svg>{' '}
     </div>
   );
 };
 
-export default States;
+export default Countries;

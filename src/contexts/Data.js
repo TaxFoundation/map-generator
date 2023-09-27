@@ -1,4 +1,5 @@
 import STATES from '../data/states';
+import EUROPE from '../data/europe';
 
 const prodInitialState = {
   mapGeographyType: null,
@@ -29,21 +30,21 @@ const prodInitialState = {
 };
 
 const devUSInitialState = {
-  mapGeographyType: 'states',
+  mapGeographyType: 'europe',
   isNumeric: true,
   numericDataType: 'sequential',
   paletteId: 1,
   paletteDirectionFlipped: false,
   min: 1,
   max: 56,
-  domain: [1, 56],
+  domain: [1, 900],
   idColumn: 'id',
-  valueColumn: 'value',
-  rankColumn: null,
-  showRank: false,
+  valueColumn: 'id',
+  rankColumn: 'value',
+  showRank: true,
   filename: null,
-  rawData: STATES,
-  mapData: STATES.map(s => ({ id: s.id, value: s.value })),
+  rawData: EUROPE,
+  mapData: EUROPE.map(s => ({ id: s.id, value: s.id, rank: s.value })),
   columns: ['id', 'abbr', 'name', 'value'],
   formatType: 'number',
   decimals: 0,

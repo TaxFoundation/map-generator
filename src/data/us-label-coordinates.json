@@ -114,7 +114,8 @@
     "valueXRank": 167,
     "valueYRank": 343,
     "rankX": 167,
-    "rankY": 353
+    "rankY": 353,
+    "overBG": true
   },
   {
     "id": 16,
